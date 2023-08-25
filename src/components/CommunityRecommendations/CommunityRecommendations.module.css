@@ -1,0 +1,126 @@
+.flex {
+    display: flex;
+}
+
+.flexColumn {
+    flex-direction: column;
+}
+
+.flexHCenter {
+    justify-content: center;
+}
+
+.flexVCenter {
+    align-items: center;
+}
+
+.card {
+    display: flex;
+}
+
+.cardItem {
+    display: flex;
+    height: 255px;
+}
+
+.gameItem {
+    width: 245px;
+    flex-direction: column;
+    background: #32383e;
+    border-radius: .25rem;
+    transition: .15s;
+}
+
+.gameItem:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+    box-shadow: 0 .9rem 1rem rgba(0, 0, 0, .199);
+    z-index: 1;
+}
+
+.gameItem img {
+    width: 100%;
+}
+
+.gameItem h2 {
+    width: 80%;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.gameItem div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.cardButton {
+    display: flex;
+    padding: 8px;
+
+    text-transform: uppercase;
+    font-weight: bold;
+
+    font-size: 75%;
+
+    color: #fff;
+    background: #4799eb;
+
+    border: none;
+    border-radius: .25rem;
+}
+
+.section {
+    max-width: 1000px;
+    /* max-width: 1140px; */
+}
+
+.dark {
+    background-color: #1c1e22;
+    border: 0 solid rgba(0, 0, 0, .6);
+    border-radius: 5px;
+}
+
+/* .flexWidth1n1 {
+    display: flex;
+    flex: 0 0 100%;
+    max-width: 100%;
+} */
+
+.flexWidth1n2 {
+    width: 50%;
+    /* display: flex; */
+    /* flex: 0 0 50%; */
+    /* max-width: 50%; */
+}
+
+.ml5 {
+    margin-left: calc(5 * 4px);
+}
+
+.p4 {
+    padding: calc(4 * 6px);
+}
+
+.mt4 {
+    margin-top: calc(4 * 4px);
+}
+
+.mb12 {
+    margin-bottom: calc(12 * 4px);
+}
+
+.pl10 {
+    padding-left: 10px;
+}
+
+.pr10 {
+    padding-right: 10px;
+}
+
+.text {
+    text-align: justify;
+}

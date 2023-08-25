@@ -1,0 +1,161 @@
+.flex {
+    display: flex;
+}
+
+.flexColumn {
+    flex-direction: column;
+}
+
+.h1 {
+    font-size: 32px;
+}
+
+.p {
+    font-size: 18.75px;
+}
+
+.colorlight {
+    color: #49acff;
+}
+
+.cardBlock {
+    justify-content: center;
+}
+
+.cardItem {
+    flex-direction: column;
+    width: 20%;
+    background: #32383e;
+
+    margin: 0px 10px;
+    border-radius: .25rem;
+}
+
+.cardItem img {
+    width: 100%;
+}
+
+.cardItem h2 {
+    width: 80%;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.cardButton {
+    display: flex;
+    padding: 8px;
+
+    text-transform: uppercase;
+    font-weight: bold;
+
+    font-size: 75%;
+
+    color: #fff;
+    background: #4799eb;
+
+    border: none;
+    border-radius: .25rem;
+}
+
+.cardItem div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.overlayBlock {
+    display: inline-block;
+    position: relative;
+    max-width: 100%;
+    vertical-align: middle;
+    -webkit-backface-visibility: hidden;
+}
+
+.overlay {
+    position: absolute;
+
+    padding: 16px;
+}
+
+.positionBottom {
+    bottom: 0;
+    right: 0;
+}
+
+.backgroundImage {
+    background: url(../../images/background.png);
+    background-repeat: no-repeat;
+    background-color: #1c1e22;
+    background-position: top;
+    background-size: contain;
+
+    padding: 4rem 2rem;
+    border: 1px solid rgba(0, 0, 0, .6);
+}
+
+.textCenter {
+    text-align: center;
+}
+
+.mb12 {
+    margin-bottom: calc(12 * 4px);
+}
+
+.button {
+    padding: 0.75rem 1rem;
+    font-size: .9375rem;
+    line-height: 1.5;
+
+    border: none;
+    border-radius: 8px;
+
+    transition: .15s;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.light {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#4799eb), color-stop(60%, #4799eb), to(#49acff));
+    background-image: linear-gradient(#4799eb, #4799eb 60%, #49acff);
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: 1px solid transparent;
+
+    color: #fff;
+
+    text-align: center;
+    user-select: none;
+}
+
+.light:hover {
+    background-image: linear-gradient(#358de6, #358de6 40%, #2174b9);
+    background-repeat: no-repeat;
+}
+
+.secondary {
+    background: transparent;
+    border: 1px solid #7a8288;
+    color: #7a8288;
+}
+
+.secondary:hover {
+    border-color: #fff;
+    color: #fff;
+}
+
+.ml2 {
+    margin-left: calc(4 * 2px);
+}
+
+.textMuted {
+    color: #7a8288;
+}
+
+.mb4 {
+    margin-bottom: calc(4 * 4px);
+}
