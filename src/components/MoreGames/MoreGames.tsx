@@ -105,7 +105,7 @@ const MoreGames: FC = () => {
     }
 
     return (
-        <section className={`${styles.section} ${styles.flex} ${styles.test}`}>
+        <section className={`${styles.section} ${styles.mb12} ${styles.flex} ${styles.test}`}>
             {
                 <DesktopView />
             }
