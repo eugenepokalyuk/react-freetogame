@@ -7,6 +7,7 @@ import PersonalizedRecommendations from '../../components/PersonalizedRecommenda
 import MoreGames from '../../components/MoreGames/MoreGames';
 import CommunityRecommendations from '../../components/CommunityRecommendations/CommunityRecommendations';
 import MoreFun from '../../components/MoreFun/MoreFun';
+import FindGame from '../../components/FindGame/FindGame';
 
 const HomePage: FC = () => {
     const isDesktop = useMediaQuery({
@@ -21,6 +22,7 @@ const HomePage: FC = () => {
                 <MoreGames />
                 <CommunityRecommendations />
                 <MoreFun />
+                <FindGame />
             </>
         )
     }
