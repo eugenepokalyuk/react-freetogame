@@ -15,7 +15,6 @@ const AppHeader: FC = () => {
     const [isBrowserMenuOpen, setIsBrowserMenuOpen] = useState(false);
     const menuRef = useRef<HTMLUListElement | null>(null);
 
-    // Функция для получения уникальных жанров из массива игр
     const getUniqueGenres = (games: IGame[]) => {
         const uniqueGenres: string[] = [];
         games.forEach((game: IGame) => {
@@ -26,11 +25,9 @@ const AppHeader: FC = () => {
         return uniqueGenres;
     };
 
-    // Фильтрация игр для каждой платформы
     const pcGames = games.filter((game: IGame) => game.platform === "PC (Windows)");
     const browserGames = games.filter((game: IGame) => game.platform === "Web Browser");
 
-    // Получение уникальных жанров для каждой платформы
     const pcGenres = getUniqueGenres(pcGames);
     const browserGenres = getUniqueGenres(browserGames);
 
@@ -102,7 +99,7 @@ const AppHeader: FC = () => {
                                     )}
                                     <div className={`${styles.dropdownDivider}`}></div>
                                     <li key={uuidv4()} className={`${styles.contextMenuItem}`}>
-                                        <NavLink to='/link-5'>
+                                        <NavLink to='/link-5' className={styles.linkColorBlue}>
                                             Free-To-Play Games
                                         </NavLink>
                                     </li>
@@ -121,9 +118,17 @@ const AppHeader: FC = () => {
                                 <ul ref={menuRef} className={`${styles.contextMenu}`} onClick={(e) => e.stopPropagation()}>
                                     {browserGenres.map((item) =>
                                         <li key={uuidv4()} className={`${styles.contextMenuItem}`}>
-                                            Browser {item}
+                                            <NavLink to={`/${item}`}>
+                                                Browser {item}
+                                            </NavLink>
                                         </li>
                                     )}
+                                    <div className={`${styles.dropdownDivider}`}></div>
+                                    <li key={uuidv4()} className={`${styles.contextMenuItem}`}>
+                                        <NavLink to='/link-5' className={styles.linkColorBlue}>
+                                            Browser Games
+                                        </NavLink>
+                                    </li>
                                 </ul>
                             )}
                         </li>
