@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/react-freetogame/static/css/main.4949159a.css",
-    "main.js": "/react-freetogame/static/js/main.3c4752fb.js",
+    "main.css": "/react-freetogame/static/css/main.045b7ea4.css",
+    "main.js": "/react-freetogame/static/js/main.42fce231.js",
     "static/js/787.75073133.chunk.js": "/react-freetogame/static/js/787.75073133.chunk.js",
     "static/media/background.png": "/react-freetogame/static/media/background.0fddd1fbe0a5e0a0af93.png",
     "static/media/ftg-img.jpg": "/react-freetogame/static/media/ftg-img.81fad9108b327d54d7c6.jpg",
     "index.html": "/react-freetogame/index.html",
-    "main.4949159a.css.map": "/react-freetogame/static/css/main.4949159a.css.map",
-    "main.3c4752fb.js.map": "/react-freetogame/static/js/main.3c4752fb.js.map",
+    "main.045b7ea4.css.map": "/react-freetogame/static/css/main.045b7ea4.css.map",
+    "main.42fce231.js.map": "/react-freetogame/static/js/main.42fce231.js.map",
     "787.75073133.chunk.js.map": "/react-freetogame/static/js/787.75073133.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4949159a.css",
-    "static/js/main.3c4752fb.js"
+    "static/css/main.045b7ea4.css",
+    "static/js/main.42fce231.js"
   ]
 }
