@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import styles from './App.module.css';
+
 import AppHeader from "../AppHeader/AppHeader"
 import { DEFAULT_PATH, ERROR_PATH, GAME_PATH } from '../../utils/routePath';
 
@@ -8,56 +10,76 @@ import GamePage from '../../pages/GamePage/GamePage';
 import NotFound from '../../pages/NotFound/NotFound';
 import AppFooter from '../AppFooter/AppFooter';
 
-import { IGame } from '../../services/types';
 import { useAppDispatch } from '../../services/hooks/hooks';
 
 import { fetchGamesData } from '../../utils/api';
-import { FETCH_GAMES_FAILURE, FETCH_GAMES_REQUEST, FETCH_GAMES_SUCCESS, fetchGamesRequest } from '../../services/actions/games';
-
-import discoverGames from '../../utils/discoverGames.json';
+import { FETCH_GAMES_FAILURE, FETCH_GAMES_REQUEST, FETCH_GAMES_SUCCESS } from '../../services/actions/games';
+import Modal from '../Modal/Modal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 function App() {
+  const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const location = useLocation();
   const background = location.state && location.state.background;
+  const [isLoading, setIsLoading] = useState<boolean>(true); // Добавлено состояние isLoading
 
   useEffect(() => {
     dispatch({ type: FETCH_GAMES_REQUEST });
-    dispatch({ type: FETCH_GAMES_SUCCESS, payload: discoverGames });
+    fetchGamesData()
+      .then(res => {
+        dispatch({ type: FETCH_GAMES_SUCCESS, payload: res.data });
 
-    // fetchGamesData()
-    //   .then(res => {
-    //     console.log('res', res);
-    //     dispatch({ type: FETCH_GAMES_SUCCESS, payload: res });
-    //   })
-    //   .catch(error => {
-    //     console.log('error', error);
-    //     dispatch({ type: FETCH_GAMES_FAILURE });
-    //   });
+        // Пауза
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 500)
 
-    // const getIngredientsData = async () => {
-    //   try {
-    //     const data = await fetchGamesData();
-    //     setGamesData(data);
-    //     dispatch(fetchGamesRequest());
-    //   } catch (error) {
-    //     console.log('error', error);
-    //   }
-    // };
-
-    // getIngredientsData();
+      })
+      .catch(error => {
+        dispatch({ type: FETCH_GAMES_FAILURE });
+        setIsLoading(false);
+      });
   }, [dispatch]);
+
+  const closeModal = () => {
+    navigate(-1);
+    setIsModalOpen(false);
+  };
 
   return (
     <>
       <AppHeader />
 
-      <Routes location={background || location}>
-        <Route path={DEFAULT_PATH} element={<HomePage />} />
-        <Route path={GAME_PATH} element={<GamePage />} />
-        <Route path={ERROR_PATH} element={<NotFound />} />
-      </Routes>
+      {isLoading
+        ? (
+          <>
+            <Modal onClose={closeModal}>
+              <div>
+                <p className={`${styles.mb8} ${styles.fontSizeLarge}`}>Please wait, the data for the application is being loaded</p>
+
+                <p className={`${styles.mb8}`}>
+                  <FontAwesomeIcon icon={faHeart} fade size="3x" className={`${styles.mr2}`} />
+                  <FontAwesomeIcon icon={faHeart} fade size="3x" className={`${styles.mr2}`} />
+                  <FontAwesomeIcon icon={faHeart} fade size="3x" />
+                </p>
+              </div>
+
+            </Modal>
+            <main className={styles.main}></main>
+          </>
+        )
+        : (
+          <Routes location={background || location}>
+            <Route path={DEFAULT_PATH} element={<HomePage />} />
+            <Route path={GAME_PATH} element={<GamePage />} />
+            <Route path={ERROR_PATH} element={<NotFound />} />
+          </Routes>
+        )
+      }
 
       <AppFooter />
     </>
