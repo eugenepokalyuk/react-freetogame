@@ -1,0 +1,38 @@
+.wrapper {
+    position: relative;
+    height: 100vh;
+}
+
+.container {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.main {
+    height: 80vh;
+}
+
+.flex {
+    display: flex;
+}
+
+.mb4 {
+    margin-bottom: calc(4 * 4px);
+}
+
+.mt4 {
+    margin-top: calc(4 * 4px);
+}
+
+.mb8 {
+    margin-bottom: calc(8 * 4px);
+}
+
+.mr2 {
+    margin-right: calc(2 * 4px);
+}
+
+.fontSizeLarge {
+    font-size: 200%;
+}
