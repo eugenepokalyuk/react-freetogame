@@ -6,8 +6,6 @@
 
 .footer {
     padding: 1rem;
-    /* background: #333; */
-    color: #fff;
     text-align: center;
 }
 
@@ -34,7 +32,7 @@
     margin-bottom: calc(5 * 4px);
 }
 
-.listOfmb4 li {
+.mb4 {
     margin-bottom: calc(4 * 4px);
 }
 
@@ -66,4 +64,30 @@
 
 .smallFontSize {
     font-size: 80%;
+}
+
+.link {
+    color: #fff;
+}
+
+.link:hover {
+    color: #d9d9d9;
+}
+
+.nav_link {
+    color: rgba(255, 255, 255, .5);
+}
+
+.nav_link_active {
+    color: #4799eb;
+}
+
+.flexCenterMiddle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.w90 {
+    width: 90%;
 }
