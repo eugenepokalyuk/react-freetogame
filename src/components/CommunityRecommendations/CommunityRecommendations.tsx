@@ -4,25 +4,13 @@ import discoverGames from '../../utils/discoverGames.json';
 import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import profileImage from '../../images/profile_image_1.png';
-
-export interface TheGame {
-    id: number;
-    title: string;
-    thumbnail: string;
-    short_description: string;
-    game_url: string;
-    genre: string;
-    platform: string;
-    publisher: string;
-    developer: string;
-    release_date: string;
-    freetogame_profile_url: string;
-}
+import { IGame } from '../../services/types';
+import { useAppSelector } from '../../services/hooks/hooks';
 
 const CommunityRecommendations: FC = () => {
-    // Заменил useMemo на обычные переменные, так как нет необходимости использовать useMemo здесь
-    const filteredFirstGame = discoverGames.find((game) => game.title === 'Genshin Impact');
-    const filteredSecondGame = discoverGames.find((game) => game.title === 'Valorant');
+    const { games } = useAppSelector((store: any) => store.games);
+    const filteredFirstGame = games.find((game: IGame) => game.title === 'Genshin Impact');
+    const filteredSecondGame = games.find((game: IGame) => game.title === 'Valorant');
 
     return (
         <section className={`${styles.section} ${styles.mb12}`}>

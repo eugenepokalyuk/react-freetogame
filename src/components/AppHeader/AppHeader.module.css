@@ -3,16 +3,21 @@
     margin: auto;
 
     box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
-    /* width: 100%; */
 
+    /* display: flex; */
     position: fixed;
     z-index: 1030;
+
+    top: 0;
     right: 0;
     left: 0;
+
+    height: 55.5px;
 }
 
 .container {
     max-width: 1140px;
+    height: 100%;
 
     background: #272b30;
     margin: 0 246px;
@@ -46,6 +51,10 @@
 
 .p1 {
     padding: calc(1 * 4px);
+}
+
+.p01 {
+    padding: 0 calc(1 * 4px);
 }
 
 .p02 {
@@ -114,4 +123,51 @@
 
 .logo img {
     height: 45px;
+}
+
+/*  */
+
+.contextMenu {
+    position: absolute;
+    top: 60px;
+    background: #3a3f44;
+    border-radius: .25rem;
+    padding: .5rem 0;
+}
+
+.contextMenuItem {
+    padding: 4px 24px;
+}
+
+.contextMenuItem:hover {
+    cursor: pointer;
+    color: #fff;
+    background-color: #272b30;
+}
+
+.smallFont {
+    font-size: 80%;
+}
+
+.ml1 {
+    margin-left: calc(1 * 4px);
+}
+
+.dropdownDivider {
+    height: 0;
+    margin: 0.5rem 0;
+    overflow: hidden;
+    border-top: 1px solid rgba(0, 0, 0, .15);
+}
+
+.ml4 {
+    margin-left: calc(4 * 4px);
+}
+
+.fontSizeDefault {
+    font-size: 90%;
+}
+
+.fontStyleCapitalize {
+    text-transform: capitalize;
 }

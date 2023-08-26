@@ -6,6 +6,18 @@
     display: flex;
 }
 
+.flexNoWrap {
+    flex-wrap: nowrap;
+}
+
+.flexAlignBaseline {
+    align-items: baseline;
+}
+
+.iconSize {
+    font-size: 22px;
+}
+
 .flexColumn {
     flex-direction: column;
 }
@@ -91,8 +103,18 @@
     /* max-width: 1140px; */
 }
 
+.h2 {
+    font-size: 30px;
+    font-weight: 510;
+    line-height: 1.2;
+}
+
 .mr1 {
     margin-right: calc(1 * 4px);
+}
+
+.mr2 {
+    margin-right: calc(2 * 4px);
 }
 
 .mr4 {

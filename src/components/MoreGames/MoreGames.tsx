@@ -6,13 +6,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWindowMaximize } from '@fortawesome/free-solid-svg-icons';
 import { faWindows } from '@fortawesome/free-brands-svg-icons'
 
-import discoverGames from '../../utils/discoverGames.json';
 import { shuffle } from 'lodash';
 import { NavLink } from 'react-router-dom';
+import { IGame } from '../../services/types';
 
+import { useAppSelector } from '../../services/hooks/hooks';
 
 const RecentlyAdded: FC = () => {
-    const filteredGames = useMemo(() => discoverGames.filter((game) => game.genre === 'Shooter'), []);
+    const { games } = useAppSelector((store: any) => store.games);
+    const filteredGames = useMemo(() => games.filter((game: IGame) => game.genre === 'Shooter'), [games]);
     const randomGames = useMemo(() => shuffle(filteredGames), [filteredGames]);
     const sevenRandomGames = useMemo(() => randomGames.slice(0, 7), [randomGames]);
 
@@ -63,7 +65,8 @@ const RecentlyAdded: FC = () => {
 }
 
 const MostPlayedToday: FC = () => {
-    const filteredGames = useMemo(() => discoverGames.filter((game) => game.genre === 'Shooter'), []);
+    const { games } = useAppSelector((store: any) => store.games);
+    const filteredGames = useMemo(() => games.filter((game: IGame) => game.genre === 'Shooter'), [games]);
     const randomGames = useMemo(() => shuffle(filteredGames), [filteredGames]);
     const tenRandomGames = useMemo(() => randomGames.slice(0, 4), [randomGames]);
     return (

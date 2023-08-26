@@ -7,11 +7,13 @@
 }
 
 .h1 {
-    font-size: 32px;
+    font-size: 32.7px;
+    font-weight: 510;
 }
 
 .p {
     font-size: 18.75px;
+    font-weight: 300;
 }
 
 .colorlight {
@@ -86,13 +88,15 @@
 }
 
 .backgroundImage {
+    height: 165px;
+
     background: url(../../images/background.png);
     background-repeat: no-repeat;
     background-color: #1c1e22;
     background-position: top;
     background-size: contain;
 
-    padding: 4rem 2rem;
+    padding: 48px 32px;
     border: 1px solid rgba(0, 0, 0, .6);
 }
 
@@ -148,8 +152,12 @@
     color: #fff;
 }
 
+.ml1 {
+    margin-left: calc(1 * 4px);
+}
+
 .ml2 {
-    margin-left: calc(4 * 2px);
+    margin-left: calc(2 * 4px);
 }
 
 .textMuted {
@@ -158,4 +166,12 @@
 
 .mb4 {
     margin-bottom: calc(4 * 4px);
+}
+
+.fontWidthBold {
+    font-weight: bold;
+}
+
+.fontSizeSmall {
+    font-size: 80%;
 }

@@ -2,25 +2,27 @@ import { FC, useMemo } from 'react';
 import styles from './PersonalizedRecommendations.module.css';
 import { useMediaQuery } from "react-responsive";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-import { faRobot, faQuestionCircle, faWindowMaximize } from '@fortawesome/free-solid-svg-icons';
-
-import discoverGames from '../../utils/discoverGames.json';
+import { faRobot, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import { shuffle } from 'lodash';
-
+import { IGame } from '../../services/types';
+import { useAppSelector } from '../../services/hooks/hooks';
 
 const PersonalizedRecommendations: FC = () => {
-    const filteredGames = useMemo(() => discoverGames.filter((game) => game.genre === 'Shooter'), []);
+    const { games } = useAppSelector((store: any) => store.games);
+    const filteredGames = useMemo(() => games.filter((game: IGame) => game.genre === 'Shooter'), [games]);
     const randomGames = useMemo(() => shuffle(filteredGames), [filteredGames]);
     const threeRandomGames = useMemo(() => randomGames.slice(0, 3), [randomGames]);
 
     return (
         <section className={`${styles.section} ${styles.mb6}`}>
             <div className={`${styles.contrainer}`}>
-                <h1 className={`${styles.mb2}`}>
-                    <FontAwesomeIcon icon={faRobot} />
-                    Personalized Recommendations
-                </h1>
+
+                <div className={`${styles.flex} ${styles.flexNoWrap} ${styles.flexAlignBaseline}`}>
+                    <FontAwesomeIcon icon={faRobot} className={`${styles.iconSize} ${styles.mr2}`} />
+                    <h2 className={`${styles.h2} ${styles.mb2}`}>
+                        Personalized Recommendations
+                    </h2>
+                </div>
 
                 <p className={`${styles.mb2} ${styles.link}`}>
                     <FontAwesomeIcon icon={faQuestionCircle} className={`${styles.mr1}`} />

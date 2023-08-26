@@ -1,3 +1,7 @@
+.main {
+    height: 80vh;
+}
+
 .wrapper {
     /* background-image: url("../../images/PageNotFound.png"); */
     background-size: cover;
