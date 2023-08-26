@@ -17,6 +17,16 @@ export interface RootState {
     selectedGame: selectedGameState | any;
 }
 
+export interface ModalProps {
+    children: React.ReactNode;
+    header?: string;
+    onClose: () => void;
+}
+
+export interface ModalOverlayProps {
+    onClose: () => void;
+}
+
 interface gamesState {
     ingredients: IGame[];
     loading: boolean;
