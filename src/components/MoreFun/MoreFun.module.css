@@ -1,6 +1,5 @@
 .section {
     max-width: 1000px;
-    /* max-width: 1140px; */
 }
 
 .container {
@@ -37,10 +36,13 @@
     margin-bottom: calc(4 * 4px);
 }
 
+.mb10 {
+    margin-bottom: calc(10 * 4px);
+}
+
 .mb12 {
     margin-bottom: calc(24 * 4px);
 }
-
 
 .button {
     padding: 0.75rem 1rem;
@@ -52,7 +54,6 @@
     border-radius: 8px;
 
     transition: .15s;
-
 }
 
 .button:hover {

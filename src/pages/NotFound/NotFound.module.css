@@ -3,7 +3,6 @@
 }
 
 .wrapper {
-    /* background-image: url("../../images/PageNotFound.png"); */
     background-size: cover;
     background-repeat: no-repeat;
 
@@ -18,7 +17,7 @@
     padding: calc(4 * 4px);
     display: flex;
     flex-direction: column;
-    height: calc(100vh - calc(4 * 4px) * 2);
+    height: calc(80vh - calc(4 * 4px) * 2);
 }
 
 .content {

@@ -1,0 +1,69 @@
+.modal {
+    max-width: 720px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    height: 100%;
+    z-index: 1056;
+}
+
+.modalContent {
+    position: relative;
+    border-radius: 40px;
+    background: #1C1C21;
+    width: 100%;
+    text-align: center;
+}
+
+.modalHeader {
+    min-width: 640px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modalNoHeader {
+    min-width: 640px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.pt5 {
+    padding-top: calc(5 * 10px);
+}
+
+.pr5 {
+    padding-right: calc(5 * 10px);
+}
+
+.pb5 {
+    padding-bottom: calc(5 * 10px);
+}
+
+.pl5 {
+    padding-left: calc(5 * 10px);
+}
+
+.mt5 {
+    margin-top: calc(5 * 4px);
+}
+
+.mb5 {
+    margin-bottom: calc(5 * 4px);
+}
+
+.textCenter {
+    text-align: center;
+}
+
+.flex {
+    display: flex;
+}
+
+.mlAuto {
+    margin-left: auto;
+}

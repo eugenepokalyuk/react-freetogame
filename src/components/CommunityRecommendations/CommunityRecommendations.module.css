@@ -20,7 +20,6 @@
 
 .cardItem {
     display: flex;
-    height: 255px;
 }
 
 .gameItem {
@@ -84,25 +83,24 @@
     border-radius: 5px;
 }
 
-/* .flexWidth1n1 {
-    display: flex;
-    flex: 0 0 100%;
-    max-width: 100%;
-} */
-
-.flexWidth1n2 {
-    width: 50%;
-    /* display: flex; */
-    /* flex: 0 0 50%; */
-    /* max-width: 50%; */
-}
-
 .ml5 {
     margin-left: calc(5 * 4px);
 }
 
+.p2 {
+    padding: calc(2 * 4px);
+}
+
+.p3 {
+    padding: calc(3 * 4px);
+}
+
 .p4 {
-    padding: calc(4 * 6px);
+    padding: calc(4 * 4px);
+}
+
+.p4n2 {
+    padding: calc(4 * 4px) calc(2 * 4px);
 }
 
 .mt4 {
@@ -123,4 +121,85 @@
 
 .text {
     text-align: justify;
+}
+
+.gameContainer {
+    height: 100px;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.flexWidth1n1 {
+    display: flex;
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+.flexWidth1n2 {
+    display: flex;
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+.deepDark {
+    background-color: #1c1e22;
+    border: 0 solid rgba(0, 0, 0, .6);
+    border-radius: 5px;
+}
+
+.p1 {
+    padding: 4px;
+}
+
+.mr2 {
+    margin-right: calc(2 * 4px);
+}
+
+.mr4 {
+    margin-right: calc(4 * 4px);
+}
+
+.grid {
+    display: grid;
+    grid-auto-flow: column;
+}
+
+.g3 {
+    gap: calc(3 * 4px);
+}
+
+.mAutoN3 {
+    margin: auto calc(3 * 4px);
+}
+
+.p3n1 {
+    padding: 12px 4px
+}
+
+.flexRowCenter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.p0n10 {
+    padding: 0 10px;
+}
+
+.fontSizeSmall {
+    font-size: 90%;
+}
+
+.iconSize {
+    width: 32px;
+    height: 32px;
+}
+.mb2 {
+    margin-bottom: 8px;
+}
+
+.textMuted {
+    color: #7a8288;
 }

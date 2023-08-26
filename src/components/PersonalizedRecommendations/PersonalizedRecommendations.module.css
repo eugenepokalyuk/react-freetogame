@@ -28,12 +28,8 @@
 
 .cardItem {
     flex-direction: column;
-    /* width: 20%; */
     background: #32383e;
-
-    /* margin: 0px 10px; */
     border-radius: .25rem;
-
     transition: .15s;
 }
 
@@ -100,7 +96,6 @@
 
 .section {
     max-width: 1000px;
-    /* max-width: 1140px; */
 }
 
 .h2 {

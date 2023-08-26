@@ -4,7 +4,6 @@
 
     box-shadow: 1px 1px 1px rgba(0, 0, 0, .3);
 
-    /* display: flex; */
     position: fixed;
     z-index: 1030;
 
@@ -36,13 +35,19 @@
 
 .flex ul>li {
     display: flex;
-    /* background: hotpink; */
     align-items: center;
+}
+
+.linkColorBlue {
+    color: #4799eb;
 }
 
 .nav_link {
     color: rgba(255, 255, 255, .5);
-    /* padding: 0 0.5rem; */
+}
+
+.nav_link_active {
+    color: #4799eb;
 }
 
 .mr1 {
@@ -67,10 +72,6 @@
 
 .p3 {
     padding: calc(3 * 4px);
-}
-
-.nav_link_active {
-    color: #4799eb;
 }
 
 .nav_button {
@@ -124,8 +125,6 @@
 .logo img {
     height: 45px;
 }
-
-/*  */
 
 .contextMenu {
     position: absolute;

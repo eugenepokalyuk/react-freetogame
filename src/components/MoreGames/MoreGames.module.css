@@ -73,11 +73,6 @@
     transition: .15s;
 }
 
-/* .flexItem div {
-    flex: 0 0 33%;
-    max-width: 33%;
-} */
-
 .flexItem:hover {
     cursor: pointer;
     transform: scale(1.02);
@@ -121,13 +116,16 @@
     margin-bottom: 1.5rem;
 }
 
+.mb12 {
+    margin-bottom: calc(12 * 4px);
+}
+
 .ml5 {
     margin-left: calc(4 * 5px);
 }
 
 .section {
     max-width: 1000px;
-    /* max-width: 1140px; */
 }
 
 
