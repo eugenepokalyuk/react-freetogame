@@ -1,10 +1,10 @@
-import React, { FC, useMemo } from 'react'; // Добавил импорт React
+import React, { FC } from 'react'; // Добавил импорт React
 import styles from './MoreFun.module.css';
 import ftgImage from '../../images/ftg-img.jpg';
 
 const MoreFun: FC = () => {
     return (
-        <section className={`${styles.section} ${styles.flex} ${styles.mb12}`}>
+        <section className={`${styles.section} ${styles.flex} ${styles.mb10}`}>
 
             <div className={`${styles.container} ${styles.flex} ${styles.padding6n12}`}>
 
