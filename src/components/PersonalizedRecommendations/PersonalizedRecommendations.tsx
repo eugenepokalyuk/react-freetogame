@@ -6,6 +6,7 @@ import { faRobot, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import { shuffle } from 'lodash';
 import { IGame } from '../../services/types';
 import { useAppSelector } from '../../services/hooks/hooks';
+import { NavLink } from 'react-router-dom';
 
 const PersonalizedRecommendations: FC = () => {
     const { games } = useAppSelector((store: any) => store.games);
@@ -30,13 +31,15 @@ const PersonalizedRecommendations: FC = () => {
                 </p>
 
                 <ul className={`${styles.flex} ${styles.card}`}>
-                    {threeRandomGames.map((item: any) => (
+                    {threeRandomGames.map((item: IGame) => (
                         <li className={`${styles.flex} ${styles.cardItem} ${styles.mr4} ${styles.maxWidth3}`} key={item.id}>
-                            <img src={item.thumbnail} alt={`${item.short_description}`} className={styles.w100} />
-                            <div>
-                                <h2>{item.title}</h2>
-                                <button className={`${styles.cardButton}`}>Free</button>
-                            </div>
+                            <NavLink to={`/${item.game_url.split("/").slice(-2).join("/")}`}>
+                                <img src={item.thumbnail} alt={`${item.short_description}`} className={styles.w100} />
+                                <div>
+                                    <h2>{item.title}</h2>
+                                    <button className={`${styles.cardButton}`}>Free</button>
+                                </div>
+                            </NavLink>
                         </li>
                     )
                     )}
