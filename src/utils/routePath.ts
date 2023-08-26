@@ -1,4 +1,3 @@
 export const DEFAULT_PATH = "/";
-export const GAME_PATH = "/game";
-// export const GAME_PATH = "/:title";
+export const GAME_PATH = "/open/:title";
 export const ERROR_PATH = "*";
