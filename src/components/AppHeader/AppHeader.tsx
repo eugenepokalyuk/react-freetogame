@@ -2,9 +2,9 @@ import { FC, useState, useEffect, useRef } from 'react';
 import styles from './AppHeader.module.css';
 import { useMediaQuery } from "react-responsive";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch, faGift, faClone, faEllipsisH, faCaretDown, faCaretUp } from '@fortawesome/free-solid-svg-icons'
+import { faSearch, faGift, faClone, faEllipsisH, faCaretDown, faCaretUp, faBars } from '@fortawesome/free-solid-svg-icons'
 import { NavLink } from 'react-router-dom';
-import logo from '../../images/freetogame-logo.png'
+import logoUrl from '../../images/freetogame-logo.png'
 import { useAppSelector } from '../../services/hooks/hooks';
 import { IGame } from '../../services/types';
 import { v4 as uuidv4 } from 'uuid';
@@ -64,131 +64,202 @@ const AppHeader: FC = () => {
         setIsBrowserMenuOpen(!isBrowserMenuOpen);
     };
 
-    const isDesktop = useMediaQuery({
-        query: "(min-width: 1224px)"
-    });
 
     const link = ({ isActive }: { isActive: boolean }) =>
         isActive ? `${styles.nav_link} ${styles.nav_link_active}` : `${styles.nav_link}`;
 
+    const isDesktop = useMediaQuery({
+        query: "(min-width: 1224px)"
+    });
+
     const DesktopView: FC = () => {
         return (
-            <nav className={`${styles.container} ${styles.flex} ${styles.shadows}`}>
-                <NavLink to='/' className={`${styles.flex} ${styles.link} ${styles.p01}`}>
-                    <img src={logo} alt="Логотип компании FreeToGame" />
-                </NavLink>
+            <header className={`${styles.header}`}>
+                <nav className={`${styles.container} ${styles.flex} ${styles.shadows}`}>
+                    <NavLink to='/' className={`${styles.flex} ${styles.link} ${styles.p01}`}>
+                        <img src={logoUrl} alt="Логотип компании FreeToGame" />
+                    </NavLink>
 
-                <div className={`${styles.flex} ${styles.navbarCollapse}`}>
-                    <ul className={`${styles.flex}`}>
-                        <li className={`${styles.p02} ${styles.fontSizeDefault}`} onClick={toggleGenreMenu}>
-                            <NavLink to="/" className={`${styles.link}`} onClick={(e) => e.preventDefault()}>
-                                Free Games
-                                {isGenreMenuOpen
-                                    ? <FontAwesomeIcon icon={faCaretUp} className={`${styles.smallFont} ${styles.ml1}`} />
-                                    : <FontAwesomeIcon icon={faCaretDown} className={`${styles.smallFont} ${styles.ml1}`} />
-                                }
-                            </NavLink>
-                            {isGenreMenuOpen && (
-                                <ul ref={menuRef} className={`${styles.contextMenu}`} onClick={(e) => e.stopPropagation()}>
-                                    {pcGenres.map((item) =>
+                    <div className={`${styles.flex} ${styles.navbarCollapse}`}>
+                        <ul className={`${styles.flex}`}>
+                            <li className={`${styles.p02} ${styles.fontSizeDefault}`} onClick={toggleGenreMenu}>
+                                <NavLink to="/" className={`${styles.link}`} onClick={(e) => e.preventDefault()}>
+                                    Free Games
+                                    {isGenreMenuOpen
+                                        ? <FontAwesomeIcon icon={faCaretUp} className={`${styles.smallFont} ${styles.ml1}`} />
+                                        : <FontAwesomeIcon icon={faCaretDown} className={`${styles.smallFont} ${styles.ml1}`} />
+                                    }
+                                </NavLink>
+                                {isGenreMenuOpen && (
+                                    <ul ref={menuRef} className={`${styles.contextMenu}`} onClick={(e) => e.stopPropagation()}>
+                                        {pcGenres.map((item) =>
+                                            <li key={uuidv4()} className={`${styles.contextMenuItem}`}>
+                                                <NavLink to={`/${item}`}>
+                                                    {item}
+                                                </NavLink>
+                                            </li>
+                                        )}
+                                        <div className={`${styles.dropdownDivider}`}></div>
                                         <li key={uuidv4()} className={`${styles.contextMenuItem}`}>
-                                            <NavLink to={`/${item}`}>
-                                                {item}
+                                            <NavLink to='/link-5' className={styles.linkColorBlue}>
+                                                Free-To-Play Games
                                             </NavLink>
                                         </li>
-                                    )}
-                                    <div className={`${styles.dropdownDivider}`}></div>
-                                    <li key={uuidv4()} className={`${styles.contextMenuItem}`}>
-                                        <NavLink to='/link-5' className={styles.linkColorBlue}>
-                                            Free-To-Play Games
-                                        </NavLink>
-                                    </li>
-                                </ul>
-                            )}
-                        </li>
-                        <li className={`${styles.p02} ${styles.fontSizeDefault}`} onClick={toggleBrowserMenu}>
-                            <NavLink to="/" className={`${styles.link}`} onClick={(e) => e.preventDefault()}>
-                                Browser Games
-                                {isBrowserMenuOpen
-                                    ? <FontAwesomeIcon icon={faCaretUp} className={`${styles.smallFont} ${styles.ml1}`} />
-                                    : <FontAwesomeIcon icon={faCaretDown} className={`${styles.smallFont} ${styles.ml1}`} />
-                                }
-                            </NavLink>
-                            {isBrowserMenuOpen && (
-                                <ul ref={menuRef} className={`${styles.contextMenu}`} onClick={(e) => e.stopPropagation()}>
-                                    {browserGenres.map((item) =>
+                                    </ul>
+                                )}
+                            </li>
+                            <li className={`${styles.p02} ${styles.fontSizeDefault}`} onClick={toggleBrowserMenu}>
+                                <NavLink to="/" className={`${styles.link}`} onClick={(e) => e.preventDefault()}>
+                                    Browser Games
+                                    {isBrowserMenuOpen
+                                        ? <FontAwesomeIcon icon={faCaretUp} className={`${styles.smallFont} ${styles.ml1}`} />
+                                        : <FontAwesomeIcon icon={faCaretDown} className={`${styles.smallFont} ${styles.ml1}`} />
+                                    }
+                                </NavLink>
+                                {isBrowserMenuOpen && (
+                                    <ul ref={menuRef} className={`${styles.contextMenu}`} onClick={(e) => e.stopPropagation()}>
+                                        {browserGenres.map((item) =>
+                                            <li key={uuidv4()} className={`${styles.contextMenuItem}`}>
+                                                <NavLink to={`/${item}`}>
+                                                    Browser {item}
+                                                </NavLink>
+                                            </li>
+                                        )}
+                                        <div className={`${styles.dropdownDivider}`}></div>
                                         <li key={uuidv4()} className={`${styles.contextMenuItem}`}>
-                                            <NavLink to={`/${item}`}>
-                                                Browser {item}
+                                            <NavLink to='/link-5' className={styles.linkColorBlue}>
+                                                Browser Games
                                             </NavLink>
                                         </li>
-                                    )}
-                                    <div className={`${styles.dropdownDivider}`}></div>
-                                    <li key={uuidv4()} className={`${styles.contextMenuItem}`}>
-                                        <NavLink to='/link-5' className={styles.linkColorBlue}>
-                                            Browser Games
-                                        </NavLink>
-                                    </li>
-                                </ul>
-                            )}
-                        </li>
-                        <li className={`${styles.p02} ${styles.fontSizeDefault}`}>
-                            <NavLink to='/giveaways' className={`${styles.link} ${styles.mr1}`}>
-                                Special Offers
-                            </NavLink>
-                            <span className={`${styles.badge} ${styles.badgePill}`}>1</span>
-                        </li>
-                        <li className={`${styles.p02} ${styles.fontSizeDefault}`}>
-                            <NavLink to='/link-4' className={`${styles.link}`}>
-                                Top 2023
-                            </NavLink>
-                        </li>
-                        <li className={`${styles.p02} ${styles.fontSizeDefault}`}>
-                            <NavLink to='/link-5' className={`${styles.link} ${styles.p01}`}>
-                                <FontAwesomeIcon icon={faEllipsisH} />
-                            </NavLink>
-                        </li>
-                    </ul>
+                                    </ul>
+                                )}
+                            </li>
+                            <li className={`${styles.p02} ${styles.fontSizeDefault}`}>
+                                <NavLink to='/giveaways' className={`${styles.link} ${styles.mr1}`}>
+                                    Special Offers
+                                </NavLink>
+                                <span className={`${styles.badge} ${styles.badgePill}`}>1</span>
+                            </li>
+                            <li className={`${styles.p02} ${styles.fontSizeDefault}`}>
+                                <NavLink to='/link-4' className={`${styles.link}`}>
+                                    Top 2023
+                                </NavLink>
+                            </li>
+                            <li className={`${styles.p02} ${styles.fontSizeDefault}`}>
+                                <NavLink to='/link-5' className={`${styles.link} ${styles.p01}`}>
+                                    <FontAwesomeIcon icon={faEllipsisH} />
+                                </NavLink>
+                            </li>
+                        </ul>
 
-                    <ul className={`${styles.flex}`}>
-                        <li className={`${styles.p02} ${styles.fontSizeDefault}`}>
-                            <NavLink to='/link-6' className={`${styles.link}`}>
-                                <FontAwesomeIcon icon={faSearch} />
-                            </NavLink>
-                        </li>
-                        <li className={`${styles.p02} ${styles.fontSizeDefault}`}>
-                            <NavLink to='/link-7' className={`${styles.link}`}>
-                                <FontAwesomeIcon icon={faGift} />
-                            </NavLink>
-                        </li>
-                        <li className={`${styles.p02} ${styles.fontSizeDefault}`}>
-                            <NavLink to='/library' className={`${styles.link}`}>
-                                <FontAwesomeIcon icon={faClone} />
-                            </NavLink>
-                        </li>
-                        <li className={`${styles.p02} ${styles.fontSizeDefault} ${styles.fontStyleCapitalize}`}>
-                            <NavLink to='/login' className={`${styles.link}`}>
-                                Log in
-                            </NavLink>
-                        </li>
-                        <li className={`${styles.ml4} ${styles.fontSizeDefault}`}>
-                            <NavLink to='/register' className={`${link} ${styles.nav_button}`}>
-                                Join Free
-                            </NavLink>
-                        </li>
-                    </ul>
-                </div>
+                        <ul className={`${styles.flex}`}>
+                            <li className={`${styles.p02} ${styles.fontSizeDefault}`}>
+                                <NavLink to='/link-6' className={`${styles.link}`}>
+                                    <FontAwesomeIcon icon={faSearch} />
+                                </NavLink>
+                            </li>
+                            <li className={`${styles.p02} ${styles.fontSizeDefault}`}>
+                                <NavLink to='/link-7' className={`${styles.link}`}>
+                                    <FontAwesomeIcon icon={faGift} />
+                                </NavLink>
+                            </li>
+                            <li className={`${styles.p02} ${styles.fontSizeDefault}`}>
+                                <NavLink to='/library' className={`${styles.link}`}>
+                                    <FontAwesomeIcon icon={faClone} />
+                                </NavLink>
+                            </li>
+                            <li className={`${styles.p02} ${styles.fontSizeDefault} ${styles.fontStyleCapitalize}`}>
+                                <NavLink to='/login' className={`${styles.link}`}>
+                                    Log in
+                                </NavLink>
+                            </li>
+                            <li className={`${styles.ml4} ${styles.fontSizeDefault}`}>
+                                <NavLink to='/register' className={`${link} ${styles.nav_button}`}>
+                                    Join Free
+                                </NavLink>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+        )
+    }
 
-            </nav >
+    const MobileView: FC = () => {
+        const [isMenuOpen, setIsMenuOpen] = useState(false);
+        const handleMenuClick = () => {
+            setIsMenuOpen(!isMenuOpen);
+        };
+        return (
+            <header>
+                <nav className={`${styles.nav}`}>
+                    <img src={logoUrl} alt="Logo" />
+                    <FontAwesomeIcon icon={faBars} size="3x" onClick={handleMenuClick} className={styles.menuIcon} />
+                    {isMenuOpen && (
+                        <ul className={`${styles.menu}`} >
+
+                            <NavLink to='/'>
+                                <li className={`${styles.menuItem}`}>Free Games</li>
+                            </NavLink>
+
+                            <NavLink to='/Browser-Games'>
+                                <li className={`${styles.menuItem}`}>Browser Games</li>
+                            </NavLink>
+
+                            <NavLink to='/Special-Offers'>
+                                <li className={`${styles.menuItem}`}>Special Offers<span className={`${styles.badge} ${styles.badgePill}`}>1</span></li>
+                            </NavLink>
+
+                            <NavLink to='/Top-2023'>
+                                <li className={`${styles.menuItem}`}>Top 2023</li>
+                            </NavLink>
+
+                            <NavLink to='/link'>
+                                <li className={`${styles.menuItem}`}>
+                                    <FontAwesomeIcon icon={faEllipsisH} />
+                                </li>
+                            </NavLink>
+
+                            <NavLink to='/Search'>
+                                <li className={`${styles.menuItem}`}>
+                                    <FontAwesomeIcon icon={faSearch} /> Search
+                                </li>
+                            </NavLink>
+
+                            <NavLink to='/My-Inventory'>
+                                <li className={`${styles.menuItem}`}>
+                                    <FontAwesomeIcon icon={faGift} /> My Inventory
+                                </li>
+                            </NavLink>
+
+                            <NavLink to='/My-Games'>
+                                <li className={`${styles.menuItem}`}>
+                                    <FontAwesomeIcon icon={faClone} /> My Games
+                                </li>
+                            </NavLink>
+
+                            <NavLink to='/Log-In'>
+                                <li className={`${styles.menuItem}`}>Log In</li>
+                            </NavLink>
+
+                            <NavLink to='/Join-Free'>
+                                <li className={`${styles.menuItem}`}>Join Free</li>
+                            </NavLink>
+                        </ul>
+                    )}
+                </nav>
+            </header>
         )
     }
 
     return (
-        <header className={`${styles.header}`}>
+        <>
             {
-                <DesktopView />
+                isDesktop
+                    ? <DesktopView />
+                    : <MobileView />
             }
-        </header>
+        </>
     );
 };
 

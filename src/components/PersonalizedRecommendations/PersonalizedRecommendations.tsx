@@ -14,38 +14,56 @@ const PersonalizedRecommendations: FC = () => {
     const randomGames = useMemo(() => shuffle(filteredGames), [filteredGames]);
     const threeRandomGames = useMemo(() => randomGames.slice(0, 3), [randomGames]);
 
-    return (
-        <section className={`${styles.section} ${styles.mb6}`}>
-            <div className={`${styles.contrainer}`}>
+    const isDesktop = useMediaQuery({
+        query: "(min-width: 1224px)"
+    });
 
-                <div className={`${styles.flex} ${styles.flexNoWrap} ${styles.flexAlignBaseline}`}>
-                    <FontAwesomeIcon icon={faRobot} className={`${styles.iconSize} ${styles.mr2}`} />
-                    <h2 className={`${styles.h2} ${styles.mb2}`}>
-                        Personalized Recommendations
-                    </h2>
+    const DesktopView: FC = () => {
+        return (
+            <section className={`${styles.section} ${styles.mb6}`}>
+                <div className={`${styles.contrainer}`}>
+
+                    <div className={`${styles.flex} ${styles.flexNoWrap} ${styles.flexAlignBaseline}`}>
+                        <FontAwesomeIcon icon={faRobot} className={`${styles.iconSize} ${styles.mr2}`} />
+                        <h2 className={`${styles.h2} ${styles.mb2}`}>
+                            Personalized Recommendations
+                        </h2>
+                    </div>
+
+                    <p className={`${styles.mb2} ${styles.link}`}>
+                        <FontAwesomeIcon icon={faQuestionCircle} className={`${styles.mr1}`} />
+                        Log In to view your personalized recommendations! Discover games you'll love.
+                    </p>
+
+                    <ul className={`${styles.flex} ${styles.card}`}>
+                        {threeRandomGames.map((item: IGame) => (
+                            <li className={`${styles.flex} ${styles.cardItem} ${styles.mr4} ${styles.maxWidth3}`} key={item.id}>
+                                <NavLink to={`/open/${item.title}`}>
+                                    <img src={item.thumbnail} alt={`${item.short_description}`} className={styles.w100} />
+                                    <div>
+                                        <h2>{item.title}</h2>
+                                        <button className={`${styles.cardButton}`}>Free</button>
+                                    </div>
+                                </NavLink>
+                            </li>
+                        )
+                        )}
+                    </ul>
                 </div>
+            </section>
+        )
+    }
 
-                <p className={`${styles.mb2} ${styles.link}`}>
-                    <FontAwesomeIcon icon={faQuestionCircle} className={`${styles.mr1}`} />
-                    Log In to view your personalized recommendations! Discover games you'll love.
-                </p>
+    const MobileView: FC = () => {
+        return (
+            <></>
+        )
+    }
 
-                <ul className={`${styles.flex} ${styles.card}`}>
-                    {threeRandomGames.map((item: IGame) => (
-                        <li className={`${styles.flex} ${styles.cardItem} ${styles.mr4} ${styles.maxWidth3}`} key={item.id}>
-                            <NavLink to={`/open/${item.title}`}>
-                                <img src={item.thumbnail} alt={`${item.short_description}`} className={styles.w100} />
-                                <div>
-                                    <h2>{item.title}</h2>
-                                    <button className={`${styles.cardButton}`}>Free</button>
-                                </div>
-                            </NavLink>
-                        </li>
-                    )
-                    )}
-                </ul>
-            </div>
-        </section>
+    return (
+        isDesktop
+            ? <DesktopView />
+            : <MobileView />
     )
 }
 export default PersonalizedRecommendations;

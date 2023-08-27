@@ -189,3 +189,8 @@
 .alignRight {
     text-align: right;
 }
+
+.w1n3 {
+    max-width: 33%;
+    flex: 0 0 33%;
+}

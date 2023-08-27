@@ -21,6 +21,10 @@ const RecentlyAdded: FC = () => {
 
     const buttonTitle = 'More Games >';
 
+    const isDesktop = useMediaQuery({
+        query: "(min-width: 1224px)"
+    });
+
     return (
         <div className={`${styles.container}`}>
             <h1 className={`${styles.mb1}`}>Recently Added</h1>
@@ -75,8 +79,13 @@ const MostPlayedToday: FC = () => {
     const filteredGames = useMemo(() => games.filter((game: IGame) => game.genre === 'Shooter'), [games]);
     const randomGames = useMemo(() => shuffle(filteredGames), [filteredGames]);
     const fourRandomGames = useMemo(() => randomGames.slice(0, 4), [randomGames]);
+
+    const isDesktop = useMediaQuery({
+        query: "(min-width: 1224px)"
+    });
+
     return (
-        <div className={`${styles.ml5}`}>
+        <div className={`${styles.ml5} ${styles.w1n3}`}>
             <h1 className={`${styles.mb1}`}>Most Played Today</h1>
             <ul className={`${styles.flex} ${styles.flexColumn}`}>
                 {fourRandomGames.map((item: any) => (
@@ -104,20 +113,23 @@ const MoreGames: FC = () => {
 
     const DesktopView: FC = () => {
         return (
-            <>
+            <section className={`${styles.section} ${styles.mb12} ${styles.flex} ${styles.test}`}>
                 <RecentlyAdded />
                 <MostPlayedToday />
-            </>
+            </section >
+        )
+    }
+
+    const MobileView: FC = () => {
+        return (
+            <></>
         )
     }
 
     return (
-        <section className={`${styles.section} ${styles.mb12} ${styles.flex} ${styles.test}`}>
-            {
-                <DesktopView />
-            }
-        </section>
-    );
-};
-
+        isDesktop
+            ? <DesktopView />
+            : <MobileView />
+    )
+}
 export default MoreGames;

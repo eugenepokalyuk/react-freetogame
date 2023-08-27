@@ -170,3 +170,46 @@
 .fontStyleCapitalize {
     text-transform: capitalize;
 }
+
+/* // mobile */
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #272b30;
+    color: white;
+}
+
+.menuIcon {
+    cursor: pointer;
+}
+
+.menu {
+    display: block;
+    background-color: #272b30;
+    color: black;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    left: 0;
+
+    border-radius: 5px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
+
+    width: 100%;
+    flex: 0 0 100%;
+
+    z-index: 1000;
+}
+
+.menu li {
+    width: 100%;
+}
+
+.menuItem {
+    padding: 16px;
+    color: rgba(255, 255, 255, 0.5);
+}

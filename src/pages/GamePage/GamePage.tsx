@@ -42,7 +42,7 @@ const GamePage: FC = () => {
         'backgroundRepeat': 'no-repeat',
         backgroundAttachment: 'fixed',
 
-        'height': '50vh',
+        'height': '100vh',
         'position': 'absolute' as 'absolute',
         'left': 0,
         'right': 0,

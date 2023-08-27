@@ -3,6 +3,7 @@ import styles from './Modal.module.css';
 import ReactDOM from 'react-dom';
 import ModalOverlay from '../ModalOverlay/ModalOverlay';
 import { ModalProps } from '../../services/types'
+import { useMediaQuery } from 'react-responsive';
 
 const Modal: FC<ModalProps> = ({ children, header, onClose }) => {
     const onCloseCallback = useCallback(onClose, [onClose]);
@@ -26,6 +27,10 @@ const Modal: FC<ModalProps> = ({ children, header, onClose }) => {
             document.removeEventListener('keydown', handleKeyDown);
         };
     }, [onCloseCallback]);
+
+    const isDesktop = useMediaQuery({
+        query: "(min-width: 1224px)"
+    });
 
     return ReactDOM.createPortal(
         <>

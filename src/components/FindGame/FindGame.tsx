@@ -46,133 +46,276 @@ const FindGame: FC = () => {
         setCurrentPage(page);
     };
 
-    return (
-        <section className={`${styles.section} ${styles.mb12}`}>
-            <div className={styles.container}>
+    const isDesktop = useMediaQuery({
+        query: "(min-width: 1224px)"
+    });
 
-                <div className={styles.filters}>
-                    <input
-                        type="text"
-                        placeholder="Finding the Game..."
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                    />
+    const DesktopView: FC = () => {
+        return (
+            <section className={`${styles.section} ${styles.mb12}`}>
+                <div className={styles.container}>
 
-                    <select
-                        value={selectedGenre}
-                        onChange={(e) => setSelectedGenre(e.target.value)}
-                    >
-                        <option value="">Choose a genre</option>
-                        {uniqueGenres.map((genre: any) => (
-                            <option
-                                key={uuidv4()}
-                                value={genre}
-                            >
-                                {genre}
-                            </option>
-                        ))}
-                    </select>
+                    <div className={styles.filters}>
+                        <input
+                            type="text"
+                            placeholder="Finding the Game..."
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
 
-                    <select
-                        value={selectedPlatform}
-                        onChange={(e) => setSelectedPlatform(e.target.value)}
-                    >
-                        <option value="">Select a platform</option>
-                        {uniquePlatforms.map((genre: any) => (
-                            <option
-                                key={uuidv4()}
-                                value={genre}
-                            >
-                                {genre}
-                            </option>
-                        ))}
-                    </select>
-                </div>
+                        <select
+                            value={selectedGenre}
+                            onChange={(e) => setSelectedGenre(e.target.value)}
+                        >
+                            <option value="">Choose a genre</option>
+                            {uniqueGenres.map((genre: any) => (
+                                <option
+                                    key={uuidv4()}
+                                    value={genre}
+                                >
+                                    {genre}
+                                </option>
+                            ))}
+                        </select>
 
-                <div className={styles.gameGrid}>
-                    {noResultsFound ? (
-                        <p className={styles.noResults}>No results found for '{searchTerm}'.</p>
-                    ) : (
-                        filteredGames.slice(startIndex, endIndex).map((item: IGame) => (
-                            <div
-                                key={item.title}
-                                className={styles.gameCard}
-                            >
-                                <img src={item.thumbnail} alt="" />
-                                <h2>{item.title}</h2>
-                                <p className={`${styles.mb2} ${styles.textMuted}`}>{item.short_description}</p>
+                        <select
+                            value={selectedPlatform}
+                            onChange={(e) => setSelectedPlatform(e.target.value)}
+                        >
+                            <option value="">Select a platform</option>
+                            {uniquePlatforms.map((genre: any) => (
+                                <option
+                                    key={uuidv4()}
+                                    value={genre}
+                                >
+                                    {genre}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
 
-                                <div className={`${styles.flex} ${styles.mb4}`}>
-                                    <p className={`${styles.mrAuto}`}>
-                                        <span className={`${styles.badge}`}>{item.genre}</span>
-                                    </p>
+                    <div className={styles.gameGrid}>
+                        {noResultsFound ? (
+                            <p className={styles.noResults}>No results found for '{searchTerm}'.</p>
+                        ) : (
+                            filteredGames.slice(startIndex, endIndex).map((item: IGame) => (
+                                <div
+                                    key={item.title}
+                                    className={styles.gameCard}
+                                >
+                                    <img src={item.thumbnail} alt="" />
+                                    <h2>{item.title}</h2>
+                                    <p className={`${styles.mb2} ${styles.textMuted}`}>{item.short_description}</p>
 
-                                    <p className={styles.mlAuto}>
-                                        {item.platform === 'PC (Windows)'
-                                            ? <FontAwesomeIcon icon={faWindows} />
-                                            : item.platform === 'Web Browser'
-                                                ? <FontAwesomeIcon icon={faWindowMaximize} />
-                                                :
-                                                <>
-                                                    <FontAwesomeIcon icon={faWindows} className={`${styles.mr2}`} />
-                                                    <FontAwesomeIcon icon={faWindowMaximize} />
-                                                </>
-                                        }
-                                    </p>
+                                    <div className={`${styles.flex} ${styles.mb4}`}>
+                                        <p className={`${styles.mrAuto}`}>
+                                            <span className={`${styles.badge}`}>{item.genre}</span>
+                                        </p>
+
+                                        <p className={styles.mlAuto}>
+                                            {item.platform === 'PC (Windows)'
+                                                ? <FontAwesomeIcon icon={faWindows} />
+                                                : item.platform === 'Web Browser'
+                                                    ? <FontAwesomeIcon icon={faWindowMaximize} />
+                                                    :
+                                                    <>
+                                                        <FontAwesomeIcon icon={faWindows} className={`${styles.mr2}`} />
+                                                        <FontAwesomeIcon icon={faWindowMaximize} />
+                                                    </>
+                                            }
+                                        </p>
+                                    </div>
+
+                                    <div>
+                                        <NavLink to={`/open/${item.title}`} className={`${styles.button} ${styles.light}`}>
+                                            See more
+                                        </NavLink>
+                                    </div>
+
                                 </div>
-
-                                <div>
-                                    <NavLink to={`/open/${item.title}`} className={`${styles.button} ${styles.light}`}>
-                                        See more
-                                    </NavLink>
-                                </div>
-
-                            </div>
-                        ))
-                    )}
-                </div>
-
-                <div className={styles.pagination}>
-                    <div className={styles.paginationCard}>
-                        {startPage > 1 && (
-                            <button
-                                className={styles.paginationButton}
-                                onClick={() => handlePageChange(1)}
-                            >
-                                1
-                            </button>
-                        )}
-
-                        {startPage > 2 && (
-                            <span className={styles.ellipsis}>...</span>
-                        )}
-
-                        {Array.from({ length: endPage - startPage + 1 }, (_, index) => (
-                            <button
-                                key={startPage + index}
-                                className={`${styles.paginationButton} ${currentPage === startPage + index ? styles.active : ''}`}
-                                onClick={() => handlePageChange(startPage + index)}
-                            >
-                                {startPage + index}
-                            </button>
-                        ))}
-
-                        {endPage < totalPages - 1 && (
-                            <span className={styles.ellipsis}>...</span>
-                        )}
-
-                        {endPage < totalPages && (
-                            <button
-                                className={styles.paginationButton}
-                                onClick={() => handlePageChange(totalPages)}
-                            >
-                                {totalPages}
-                            </button>
+                            ))
                         )}
                     </div>
+
+                    <div className={styles.pagination}>
+                        <div className={styles.paginationCard}>
+                            {startPage > 1 && (
+                                <button
+                                    className={styles.paginationButton}
+                                    onClick={() => handlePageChange(1)}
+                                >
+                                    1
+                                </button>
+                            )}
+
+                            {startPage > 2 && (
+                                <span className={styles.ellipsis}>...</span>
+                            )}
+
+                            {Array.from({ length: endPage - startPage + 1 }, (_, index) => (
+                                <button
+                                    key={startPage + index}
+                                    className={`${styles.paginationButton} ${currentPage === startPage + index ? styles.active : ''}`}
+                                    onClick={() => handlePageChange(startPage + index)}
+                                >
+                                    {startPage + index}
+                                </button>
+                            ))}
+
+                            {endPage < totalPages - 1 && (
+                                <span className={styles.ellipsis}>...</span>
+                            )}
+
+                            {endPage < totalPages && (
+                                <button
+                                    className={styles.paginationButton}
+                                    onClick={() => handlePageChange(totalPages)}
+                                >
+                                    {totalPages}
+                                </button>
+                            )}
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        )
+    }
+
+    const MobileView: FC = () => {
+        return (
+            <section className={`${styles.section} ${styles.mb12}`}>
+                <div className={styles.container}>
+
+                    <div className={styles.filters}>
+                        <input
+                            type="text"
+                            placeholder="Finding the Game..."
+                            value={searchTerm}
+                            onChange={(e) => setSearchTerm(e.target.value)}
+                        />
+
+                        <select
+                            value={selectedGenre}
+                            onChange={(e) => setSelectedGenre(e.target.value)}
+                        >
+                            <option value="">Choose a genre</option>
+                            {uniqueGenres.map((genre: any) => (
+                                <option
+                                    key={uuidv4()}
+                                    value={genre}
+                                >
+                                    {genre}
+                                </option>
+                            ))}
+                        </select>
+
+                        <select
+                            value={selectedPlatform}
+                            onChange={(e) => setSelectedPlatform(e.target.value)}
+                        >
+                            <option value="">Select a platform</option>
+                            {uniquePlatforms.map((genre: any) => (
+                                <option
+                                    key={uuidv4()}
+                                    value={genre}
+                                >
+                                    {genre}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+
+                    <div className={styles.gameGrid}>
+                        {noResultsFound ? (
+                            <p className={styles.noResults}>No results found for '{searchTerm}'.</p>
+                        ) : (
+                            filteredGames.slice(startIndex, endIndex).map((item: IGame) => (
+                                <div
+                                    key={item.title}
+                                    className={styles.gameCard}
+                                >
+                                    <img src={item.thumbnail} alt="" />
+                                    <h2>{item.title}</h2>
+                                    <p className={`${styles.mb2} ${styles.textMuted}`}>{item.short_description}</p>
+
+                                    <div className={`${styles.flex} ${styles.mb4}`}>
+                                        <p className={`${styles.mrAuto}`}>
+                                            <span className={`${styles.badge}`}>{item.genre}</span>
+                                        </p>
+
+                                        <p className={styles.mlAuto}>
+                                            {item.platform === 'PC (Windows)'
+                                                ? <FontAwesomeIcon icon={faWindows} />
+                                                : item.platform === 'Web Browser'
+                                                    ? <FontAwesomeIcon icon={faWindowMaximize} />
+                                                    :
+                                                    <>
+                                                        <FontAwesomeIcon icon={faWindows} className={`${styles.mr2}`} />
+                                                        <FontAwesomeIcon icon={faWindowMaximize} />
+                                                    </>
+                                            }
+                                        </p>
+                                    </div>
+
+                                    <div>
+                                        <NavLink to={`/open/${item.title}`} className={`${styles.button} ${styles.light}`}>
+                                            See more
+                                        </NavLink>
+                                    </div>
+
+                                </div>
+                            ))
+                        )}
+                    </div>
+
+                    <div className={styles.pagination}>
+                        <div className={styles.paginationCard}>
+                            {startPage > 1 && (
+                                <button
+                                    className={styles.paginationButton}
+                                    onClick={() => handlePageChange(1)}
+                                >
+                                    1
+                                </button>
+                            )}
+
+                            {startPage > 2 && (
+                                <span className={styles.ellipsis}>...</span>
+                            )}
+
+                            {Array.from({ length: endPage - startPage + 1 }, (_, index) => (
+                                <button
+                                    key={startPage + index}
+                                    className={`${styles.paginationButton} ${currentPage === startPage + index ? styles.active : ''}`}
+                                    onClick={() => handlePageChange(startPage + index)}
+                                >
+                                    {startPage + index}
+                                </button>
+                            ))}
+
+                            {endPage < totalPages - 1 && (
+                                <span className={styles.ellipsis}>...</span>
+                            )}
+
+                            {endPage < totalPages && (
+                                <button
+                                    className={styles.paginationButton}
+                                    onClick={() => handlePageChange(totalPages)}
+                                >
+                                    {totalPages}
+                                </button>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            </section>
+        )
+    }
+
+    return (
+        isDesktop
+            ? <DesktopView />
+            : <MobileView />
     )
 }
 export default FindGame;

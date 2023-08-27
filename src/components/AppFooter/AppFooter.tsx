@@ -17,7 +17,7 @@ const AppFooter: FC = () => {
 
     const DesktopView: FC = () => {
         return (
-            <>
+            <footer className={`${styles.footer}`}>
                 <nav>
                     <div className={`${styles.container} ${styles.flex} ${styles.mb5}`}>
                         <div className={`${styles.width1n4}`}>
@@ -93,16 +93,20 @@ const AppFooter: FC = () => {
                         </div>
                     </div>
                 </nav >
-            </>
+            </footer>
+        )
+    }
+
+    const MobileView: FC = () => {
+        return (
+            <></>
         )
     }
 
     return (
-        <footer className={`${styles.footer}`}>
-            {
-                <DesktopView />
-            }
-        </footer>
-    );
+        isDesktop
+            ? <DesktopView />
+            : <MobileView />
+    )
 };
 export default AppFooter;

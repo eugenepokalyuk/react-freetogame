@@ -16,23 +16,31 @@ const HomePage: FC = () => {
 
     const DesktopView: FC = () => {
         return (
-            <>
+            <main className={`${styles.main}`}>
                 <GetStarted />
                 <PersonalizedRecommendations />
                 <MoreGames />
                 <CommunityRecommendations />
                 <MoreFun />
                 <FindGame />
+            </main>
+        )
+    }
+
+    const MobileView: FC = () => {
+        return (
+            <>
+                <FindGame />
             </>
         )
     }
 
     return (
-        <main className={`${styles.main}`}>
-            {
-                <DesktopView />
-            }
-        </main>
+        <>
+            {isDesktop
+                ? <DesktopView />
+                : <MobileView />}
+        </>
     );
 };
 
