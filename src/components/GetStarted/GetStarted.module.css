@@ -175,3 +175,9 @@
 .fontSizeSmall {
     font-size: 80%;
 }
+
+@media screen and (min-width: 300px) {
+    .h100 {
+        height: 100%;
+    }
+}

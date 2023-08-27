@@ -234,7 +234,7 @@ const FindGame: FC = () => {
                                     key={item.title}
                                     className={styles.gameCard}
                                 >
-                                    <img src={item.thumbnail} alt="" />
+                                    <img className={`${styles.imageSize}`} src={item.thumbnail} alt={`${item.title}`} />
                                     <h2>{item.title}</h2>
                                     <p className={`${styles.mb2} ${styles.textMuted}`}>{item.short_description}</p>
 

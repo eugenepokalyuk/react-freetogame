@@ -113,7 +113,7 @@ const MoreGames: FC = () => {
 
     const DesktopView: FC = () => {
         return (
-            <section className={`${styles.section} ${styles.mb12} ${styles.flex} ${styles.test}`}>
+            <section className={`${styles.section} ${styles.mb12} ${styles.flex}`}>
                 <RecentlyAdded />
                 <MostPlayedToday />
             </section >
@@ -122,7 +122,12 @@ const MoreGames: FC = () => {
 
     const MobileView: FC = () => {
         return (
-            <></>
+            <>
+                {/* <section className={`${styles.section} ${styles.mb12} ${styles.flex}`}> */}
+                    {/* <RecentlyAdded /> */}
+                    {/* <MostPlayedToday /> */}
+                {/* </section > */}
+            </>
         )
     }
 

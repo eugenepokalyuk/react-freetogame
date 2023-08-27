@@ -56,7 +56,41 @@ const PersonalizedRecommendations: FC = () => {
 
     const MobileView: FC = () => {
         return (
-            <></>
+            <>
+                <section className={`${styles.section} ${styles.mb6}`}>
+                    <div className={`${styles.contrainer}`}>
+
+                        <div className={`${styles.headerFlex}`}>
+                            <div className={`${styles.flex}`}>
+                                <h2 className={`${styles.h2} ${styles.mb2}`}>
+                                    <FontAwesomeIcon icon={faRobot} className={`${styles.iconSize} ${styles.mr2}`} /> Personalized Recommendations
+                                </h2>
+                            </div>
+
+                            <p className={`${styles.mb2} ${styles.link}`}>
+                                <FontAwesomeIcon icon={faQuestionCircle} className={`${styles.mr1}`} />
+                                Log In to view your personalized recommendations! Discover games you'll love.
+                            </p>
+                        </div>
+
+
+                        <ul className={`${styles.flex} ${styles.card}`}>
+                            {threeRandomGames.map((item: IGame) => (
+                                <li className={`${styles.flex} ${styles.cardItem} ${styles.mr4}`} key={item.id}>
+                                    <NavLink className={`${styles.linkImage}`} to={`/open/${item.title}`}>
+                                        <img src={item.thumbnail} alt={`${item.short_description}`} className={styles.w100} />
+                                        <div>
+                                            <h2>{item.title}</h2>
+                                            <button className={`${styles.cardButton}`}>Free</button>
+                                        </div>
+                                    </NavLink>
+                                </li>
+                            )
+                            )}
+                        </ul>
+                    </div>
+                </section>
+            </>
         )
     }
 
