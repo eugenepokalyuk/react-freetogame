@@ -33,7 +33,7 @@ const PersonalizedRecommendations: FC = () => {
                 <ul className={`${styles.flex} ${styles.card}`}>
                     {threeRandomGames.map((item: IGame) => (
                         <li className={`${styles.flex} ${styles.cardItem} ${styles.mr4} ${styles.maxWidth3}`} key={item.id}>
-                            <NavLink to={`/${item.game_url.split("/").slice(-2).join("/")}`}>
+                            <NavLink to={`/open/${item.title}`}>
                                 <img src={item.thumbnail} alt={`${item.short_description}`} className={styles.w100} />
                                 <div>
                                     <h2>{item.title}</h2>

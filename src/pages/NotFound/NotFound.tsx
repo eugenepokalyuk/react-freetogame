@@ -16,7 +16,7 @@ const NotFound: FC = () => {
                     <div className={styles.content}>
                         <h1 className='text text_type_main-large mb-5 mt-10'>Oops! 404 Error</h1>
                         {params
-                            ? <p className='text text_type_main-medium mb-4'>The page {`${params['*']}`} you requested does not exist</p>
+                            ? <p className='text text_type_main-medium mb-4'>The page <span className={`${styles.marked}`}>{`${params['*']}`}</span> you requested does not exist</p>
                             : <p className='text text_type_main-medium mb-4'>The page you requested does not exist</p>
                         }
                         <p className='text text_type_main-medium'>check the address or try <Link to='/' className={`${styles.link} ml-2`}>homepage</Link></p>

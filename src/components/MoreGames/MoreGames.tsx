@@ -11,6 +11,7 @@ import { NavLink } from 'react-router-dom';
 import { IGame } from '../../services/types';
 
 import { useAppSelector } from '../../services/hooks/hooks';
+import { v4 as uuidv4 } from 'uuid';
 
 const RecentlyAdded: FC = () => {
     const { games } = useAppSelector((store: any) => store.games);
@@ -25,32 +26,37 @@ const RecentlyAdded: FC = () => {
             <h1 className={`${styles.mb1}`}>Recently Added</h1>
             <ul className={`${styles.card}`}>
                 {sevenRandomGames.map((item: any) => (
-                    <li key={item.id} className={`${styles.cardItem} ${styles.mb3}`}>
-                        <div>
-                            <img src={item.thumbnail} alt={`${item.short_description}`} />
-                        </div>
-
-                        <div>
-                            <h2>{item.title}</h2>
-                            <p className={`${styles.textTruncate} ${styles.textMuted} ${styles.mb1} ${styles.w100}`}>{item.short_description}</p>
+                    <NavLink to={`/open/${item.title}`} key={uuidv4()}>
+                        <li key={item.id} className={`${styles.cardItem} ${styles.mb3}`}>
                             <div>
-                                <span className={`${styles.badge}`}>{item.genre}</span>
+                                <img src={item.thumbnail} alt={`${item.short_description}`} />
                             </div>
-                        </div>
+
+                            <div>
+                                <h2>{item.title}</h2>
+                                <p className={`${styles.textTruncate} ${styles.textMuted} ${styles.mb1} ${styles.w100}`}>{item.short_description}</p>
+                                <div>
+                                    <span className={`${styles.badge}`}>{item.genre}</span>
+                                </div>
+                            </div>
 
 
-                        <div>
-                            {item.platform === 'PC (Windows)'
-                                ? <FontAwesomeIcon icon={faWindows} />
-                                : item.platform === 'Web Browser'
-                                    ? <FontAwesomeIcon icon={faWindowMaximize} />
-                                    : 'undefined OS'}
-                        </div>
+                            <div>
+                                {item.platform === 'PC (Windows)'
+                                    ? <FontAwesomeIcon icon={faWindows} />
+                                    : item.platform === 'Web Browser'
+                                        ? <FontAwesomeIcon icon={faWindowMaximize} />
+                                        : <>
+                                            <FontAwesomeIcon icon={faWindows} className={`${styles.mr2}`} />
+                                            <FontAwesomeIcon icon={faWindowMaximize} />
+                                        </>}
+                            </div>
 
-                        <div>
-                            <button className={`${styles.cardButton}`}>Free</button>
-                        </div>
-                    </li>
+                            <div>
+                                <button className={`${styles.cardButton}`}>Free</button>
+                            </div>
+                        </li>
+                    </NavLink>
                 )
                 )}
             </ul>
@@ -68,21 +74,22 @@ const MostPlayedToday: FC = () => {
     const { games } = useAppSelector((store: any) => store.games);
     const filteredGames = useMemo(() => games.filter((game: IGame) => game.genre === 'Shooter'), [games]);
     const randomGames = useMemo(() => shuffle(filteredGames), [filteredGames]);
-    const tenRandomGames = useMemo(() => randomGames.slice(0, 4), [randomGames]);
+    const fourRandomGames = useMemo(() => randomGames.slice(0, 4), [randomGames]);
     return (
         <div className={`${styles.ml5}`}>
             <h1 className={`${styles.mb1}`}>Most Played Today</h1>
             <ul className={`${styles.flex} ${styles.flexColumn}`}>
-                {tenRandomGames.map((item: any) => (
+                {fourRandomGames.map((item: any) => (
                     <li key={item.id} className={`${styles.overlayBlock} ${styles.flexItem} ${styles.mb4}`}>
+                        <NavLink to={`/open/${item.title}`}>
+                            <div>
+                                <img src={item.thumbnail} alt={`${item.short_description}`} className={`${styles.flex} ${styles.w100}`} />
+                            </div>
 
-                        <div>
-                            <img src={item.thumbnail} alt={`${item.short_description}`} className={`${styles.flex} ${styles.w100}`} />
-                        </div>
-
-                        <div className={`${styles.overlay} ${styles.positionBottom}`}>
-                            <button className={`${styles.cardButton}`}>Free</button>
-                        </div>
+                            <div className={`${styles.overlay} ${styles.positionBottom}`}>
+                                <button className={`${styles.cardButton}`}>Free</button>
+                            </div>
+                        </NavLink>
                     </li>
                 ))}
             </ul>

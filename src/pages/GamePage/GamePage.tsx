@@ -5,8 +5,8 @@ import { useAppSelector } from '../../services/hooks/hooks';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { faThumbsDown, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
-import { faTelegram } from '@fortawesome/free-brands-svg-icons'
+import { faThumbsDown, faInfoCircle, faThumbsUp, faCrown, faStar, faSmile, faFrown, faMeh, faWindowMaximize } from '@fortawesome/free-solid-svg-icons';
+import { faTelegram, faWindows } from '@fortawesome/free-brands-svg-icons'
 import profileImage from '../../images/profile_image_1.png';
 
 const GamePage: FC = () => {
@@ -14,102 +14,166 @@ const GamePage: FC = () => {
     const randomIndex = Math.floor(Math.random() * games.length);
     const randGame = games[randomIndex];
 
+    const randomMember = Math.floor(Math.random() * 100);
+    const randomPositive = Math.floor(Math.random() * 3);
+    const randomGameLibrary = Math.floor(Math.random() * 1000);
+    const randomPopularity = Math.floor(Math.random() * 100);
+    const randomReviews = Math.floor(Math.random() * 100);
+
     const isDesktop = useMediaQuery({
         query: "(min-width: 1224px)"
     });
 
+    const backgroundImageStyle = {
+        // backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.3), #272b30), url(${randGame.thumbnail})`,
+        // backgroundImage: `linear-gradient(#ffffff00, #272b3000), url(${randGame.thumbnail})`,
+        // backgroundSize: 'cover',
+        // backgroundPosition: 'center',
+        // backgroundAttachment: 'fixed',
+        // position: 'absolute' as 'absolute',
+        // top: 0,
+        // left: 0,
+        // width: '100%',
+        // height: '50vh', // Задаем высоту 50vh
+        // filter: 'brightness(0.5)',
+        backgroundImage: `url(${randGame.thumbnail})`,
+        'backgroundSize': 'cover',
+        'backgroundPosition': 'top',
+        'backgroundRepeat': 'no-repeat',
+        backgroundAttachment: 'fixed',
+
+        'height': '50vh',
+        'position': 'absolute' as 'absolute',
+        'left': 0,
+        'right': 0,
+        'top': '0rem',
+        'z-index': '-1',
+        'opacity': '.2',
+    };
     const DesktopView: FC = () => {
         return (
-            <section className={`${styles.section}`}>
+            <div className={`${styles.pageContainer}`}>
+                <div className={`${styles.backgroundImage}`} style={backgroundImageStyle}></div>
                 {randGame && (
-                    <>
-                        <h1>{randGame.title}</h1>
-                        <p><FontAwesomeIcon icon={faThumbsDown} /> Negative</p>
-                        <p>12 Member Ratings</p>
-                        <p>305 Members have this game in their library!</p>
-                        <p>3 Reviews</p>
-                        <p>14% Popularity</p>
-                        <p>What do you think about Drakensang Online?</p>
-                        <img src={profileImage} alt="user profile" />
-                        <textarea></textarea>
-                        <button>
-                            <FontAwesomeIcon icon={faTelegram} />
-                        </button>
+                    <section className={`${styles.section} `}>
+                        <>
+                            {/* <img src={`${randGame.thumbnail}`} className={`${styles.backgroundImage}`} alt="" /> */}
+                            <article>
+                                <h1 className={`${styles.h1} ${styles.mb1}`}>{randGame.title}</h1>
 
-                        <h1>About Drakensang Online</h1>
-                        <p>ОПИСАНИЕ</p>
-                        <p>Aккордион + Read More</p>
-                        <p className={`${styles.fontSizeSmall} ${styles.textMuted}`}>Disclosure: FreeToGame works closely with publishers and developers to offer a free and rewarding experience. In order to keep everything free to use we may sometimes earn a small commission from some partners. Find more info in our FAQ page.</p>
+                                <div className={`${styles.p0n4}`}>
+                                    {randomPositive === 0
+                                        ? <p><FontAwesomeIcon icon={faThumbsUp} /> Positive</p>
+                                        : randomPositive === 1
+                                            ? <p><FontAwesomeIcon icon={faCrown} /> Very Positive</p>
+                                            : randomPositive === 2
+                                                ? <p><FontAwesomeIcon icon={faStar} /> Massively Positive</p>
+                                                : <p><FontAwesomeIcon icon={faThumbsDown} /> Negative</p>
+                                    }
 
-                        <h1>Additional Information</h1>
-                        <p><FontAwesomeIcon icon={faInfoCircle} /> Please note this free-to-play game may or may not offer optional in-game purchases.</p>
+                                    <p>{randomMember} Member Ratings</p>
+                                    <p>{randomGameLibrary} Members have this game in their library!</p>
 
-                        Title
-                        Drakensang Online
+                                    <div className={`${styles.flex}`}>
+                                        <p>{randomReviews} Reviews</p>
+                                        <p>{randomPopularity}% Popularity</p>
+                                    </div>
 
-                        Developer
-                        Bigpoint
+                                    <div className={`${styles.flex}`}>
+                                        <h2>What do you think about Trove?</h2>
 
-                        Publisher
-                        Bigpoint
+                                        <p><FontAwesomeIcon icon={faSmile} size="1x" /> 3</p>
+                                        <p><FontAwesomeIcon icon={faMeh} size="1x" /> 2</p>
+                                        <p><FontAwesomeIcon icon={faFrown} size="1x" /> 1</p>
+                                    </div>
+                                </div>
 
-                        Release Date
-                        August 08, 2011
+                                <div className={`${styles.flex}`}>
+                                    <img src={profileImage} alt="user profile" />
+                                    <textarea></textarea>
+                                    <button>
+                                        <FontAwesomeIcon icon={faTelegram} />
+                                    </button>
+                                </div>
+                            </article>
 
-                        Genre
-                        MMORPG
+                            <article>
+                                <h2 className={`${styles.h2}`}>About {randGame.title}</h2>
+                                <p>{randGame.short_description} Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam cum dolor repellendus ab culpa recusandae hic ratione totam distinctio. Itaque perferendis enim harum quae, non ipsam quo similique repellat! Voluptas commodi sapiente odit eos quo omnis expedita, facilis fugit dolores doloremque, quas ea ipsam aut illo exercitationem. Quod eum saepe aliquam natus, rem a quasi amet totam rerum reprehenderit, fugiat autem vitae ullam numquam in quis. Saepe cumque soluta omnis eaque magnam nesciunt, quod quibusdam tempore voluptates, illum fugiat qui nulla, corporis error cum facere eos accusantium! Fugiat sit ad maxime voluptas consequatur, suscipit, expedita sed, ratione totam quam at!</p>
 
-                        Platform
-                        Web Browser
+                                <p className={`${styles.textMuted}`}>Disclosure: FreeToGame works closely with publishers and developers to offer a free and rewarding experience. In order to keep everything free to use we may sometimes earn a small commission from some partners. Find more info in our <a href="/faq" className={`${styles.link}`}>FAQ</a> page.</p>
+                            </article>
 
-                        <h1>Drakensang Online Screenshots</h1>
-                        <img src={randGame.thumbnail} alt="game screenshots" />
-                        <img src={randGame.thumbnail} alt="game screenshots" />
-                        <img src={randGame.thumbnail} alt="game screenshots" />
+                            <article>
+                                <h2 className={`${styles.h2}`}>Additional Information</h2>
+                                <p className={`${styles.textMuted}`}><FontAwesomeIcon icon={faInfoCircle} /> Please note this free-to-play game may or may not offer optional in-game purchases.</p>
 
-                        <h1>Minimum System Requirements (Browser)</h1>
-                        <p>Drakensang Online is a browser based game and should run smoothly on practically any PC with a updated web-browser.</p>
-                        <p>If you have old hardware or software, you may still be able to play Drakensang Online, but your game experience may suffer. For the best gameplay experience, we recommend the latest versions of Firefox, Chrome, or Internet Explorer.</p>
-                        <p className={`${styles.fontSizeSmall} ${styles.textMuted}`}>All material on this page is copyrighted by ©Bigpoint and their respective licensors. All other trademarks are the property of their respective owners.</p>
+                                <div>
 
-                        <h1>User Reviews</h1>
-                        <div>
-                            <img src={profileImage} alt="user profile" />
-                            monkusfunk
-                            11 months ago
-                            Once a wonderful ARPG game, superior to Diablo 3 in many ways, but the radical update 'Dark Legacy' absolutely destroyed so many features... One of the worst technical butcherings of a previously great experience.
-                        </div>
+                                    <ul>
+                                        <li>
+                                            Title
+                                            {randGame.title}
+                                        </li>
+                                        <li>
+                                            Release Date
+                                            {randGame.release_date}
+                                        </li>
+                                    </ul>
 
-                        <div>
-                            <img src={profileImage} alt="user profile" />
-                            monkusfunk
-                            11 months ago
-                            Once a wonderful ARPG game, superior to Diablo 3 in many ways, but the radical update 'Dark Legacy' absolutely destroyed so many features... One of the worst technical butcherings of a previously great experience.
-                        </div>
+                                    <ul>
+                                        <li>
+                                            Developer
+                                            {randGame.developer}
+                                        </li>
+                                        <li>
+                                            Genre
+                                            {randGame.genre}
+                                        </li>
+                                    </ul>
 
-                        <div>
-                            <img src={profileImage} alt="user profile" />
-                            monkusfunk
-                            11 months ago
-                            Once a wonderful ARPG game, superior to Diablo 3 in many ways, but the radical update 'Dark Legacy' absolutely destroyed so many features... One of the worst technical butcherings of a previously great experience.
-                        </div>
+                                    <ul>
+                                        <li>
+                                            Publisher
+                                            {randGame.publisher}
+                                        </li>
 
-                        <div>
-                            <p>Play this game and post your review!</p>
-                            <button>Submit Reviews</button>
-                        </div>
+                                        <li>
+                                            Platform
+                                            {randGame.platform === 'PC (Windows)'
+                                                ?
+                                                <>
+                                                    <FontAwesomeIcon icon={faWindows} /> Windows (Client)
+                                                </>
+                                                : randGame.platform === 'Web Browser'
+                                                    ?
+                                                    <>
+                                                        <FontAwesomeIcon icon={faWindowMaximize} /> Web Browser
+                                                    </>
+                                                    :
+                                                    <>
+                                                        <FontAwesomeIcon icon={faWindows} className={`${styles.mr2}`} />
+                                                        <FontAwesomeIcon icon={faWindowMaximize} /> Windows (Client) & Web Browser
+                                                    </>}
+                                        </li>
+                                    </ul>
 
-                        <div>
-                            <h1>Games like Drakensang Online</h1>
-                            <button>See all</button>
-                        </div>
+                                </div>
+                            </article>
 
-                        <img src={randGame.thumbnail} alt="game screenshots" />
-                        <img src={randGame.thumbnail} alt="game screenshots" />
-                        <img src={randGame.thumbnail} alt="game screenshots" />
-                    </>
+                            <article>
+                                <h2 className={`${styles.h2}`}>Trove Screenshots</h2>
+                                <div className={`${styles.flex} `}>
+                                    <img className={`${styles.imageSize}`} src={randGame.thumbnail} alt="" />
+                                    <img className={`${styles.imageSize}`} src={randGame.thumbnail} alt="" />
+                                    <img className={`${styles.imageSize}`} src={randGame.thumbnail} alt="" />
+                                    <img className={`${styles.imageSize}`} src={randGame.thumbnail} alt="" />
+                                </div>
+                            </article>
+                        </>
+                    </section>
                 )}
-            </section>
+            </div>
         )
     }
 
