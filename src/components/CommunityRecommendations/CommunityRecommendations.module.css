@@ -196,10 +196,27 @@
     width: 32px;
     height: 32px;
 }
+
 .mb2 {
     margin-bottom: 8px;
 }
 
 .textMuted {
     color: #7a8288;
+}
+
+
+@media screen and (min-width: 300px) and (max-width: 768px) {
+    .grid {
+        display: grid;
+        grid-auto-flow: dense;
+    }
+
+    .p4 {
+        padding: calc(4 * 4px);
+    }
+
+    .mb4 {
+        margin-bottom: calc(4 * 4px);
+    }
 }

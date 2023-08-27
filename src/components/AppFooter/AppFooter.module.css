@@ -91,3 +91,16 @@
 .w90 {
     width: 90%;
 }
+
+@media screen and (min-width: 300px) and (max-width: 768px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+
+    .container ul li {
+        text-align: center;
+    }
+}

@@ -196,4 +196,11 @@
 }
 
 @media screen and (min-width: 300px) {
+    .p4 {
+        padding: calc(4 * 4px);
+    }
+
+    .br1 {
+        border-radius: 4px;
+    }
 }
