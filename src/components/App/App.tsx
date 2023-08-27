@@ -25,8 +25,8 @@ function App() {
 
   const location = useLocation();
   const background = location.state && location.state.background;
-  const [isLoading, setIsLoading] = useState<boolean>(true); // Добавлено состояние isLoading
-  const [isVPN, setIsVPN] = useState<boolean>(true); // Добавлено состояние isLoading
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isVPN, setIsVPN] = useState<boolean>(true);
 
   useEffect(() => {
     dispatch({ type: FETCH_GAMES_REQUEST });

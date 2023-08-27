@@ -1,4 +1,4 @@
-import React, { FC } from 'react'; // Добавил импорт React
+import React, { FC } from 'react';
 import styles from './MoreFun.module.css';
 import ftgImage from '../../images/ftg-img.jpg';
 import { NavLink } from 'react-router-dom';

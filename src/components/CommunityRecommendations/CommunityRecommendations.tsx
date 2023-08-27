@@ -1,4 +1,4 @@
-import React, { FC } from 'react'; // Добавил импорт React
+import React, { FC } from 'react';
 import styles from './CommunityRecommendations.module.css';
 import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

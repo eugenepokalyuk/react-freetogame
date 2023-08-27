@@ -25,17 +25,6 @@ const GamePage: FC = () => {
     });
 
     const backgroundImageStyle = {
-        // backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.3), #272b30), url(${randGame.thumbnail})`,
-        // backgroundImage: `linear-gradient(#ffffff00, #272b3000), url(${randGame.thumbnail})`,
-        // backgroundSize: 'cover',
-        // backgroundPosition: 'center',
-        // backgroundAttachment: 'fixed',
-        // position: 'absolute' as 'absolute',
-        // top: 0,
-        // left: 0,
-        // width: '100%',
-        // height: '50vh', // Задаем высоту 50vh
-        // filter: 'brightness(0.5)',
         backgroundImage: `url(${randGame.thumbnail})`,
         'backgroundSize': 'cover',
         'backgroundPosition': 'top',
