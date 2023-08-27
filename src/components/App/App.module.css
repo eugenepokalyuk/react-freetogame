@@ -17,6 +17,10 @@
     display: flex;
 }
 
+.link {
+    color: #4799eb;
+}
+
 .mb4 {
     margin-bottom: calc(4 * 4px);
 }

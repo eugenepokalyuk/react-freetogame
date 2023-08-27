@@ -26,21 +26,20 @@ function App() {
   const location = useLocation();
   const background = location.state && location.state.background;
   const [isLoading, setIsLoading] = useState<boolean>(true); // Добавлено состояние isLoading
+  const [isVPN, setIsVPN] = useState<boolean>(true); // Добавлено состояние isLoading
 
   useEffect(() => {
     dispatch({ type: FETCH_GAMES_REQUEST });
     fetchGamesData()
-      .then(res => {
-        dispatch({ type: FETCH_GAMES_SUCCESS, payload: res.data });
-
-        // Пауза
-        setTimeout(() => {
-          setIsLoading(false);
-        }, 500)
-
+      .then(data => {
+        dispatch({ type: FETCH_GAMES_SUCCESS, payload: data });
+        setIsVPN(false)
       })
       .catch(error => {
         dispatch({ type: FETCH_GAMES_FAILURE });
+        setIsVPN(true)
+      })
+      .finally(() => {
         setIsLoading(false);
       });
   }, [dispatch]);
@@ -72,13 +71,29 @@ function App() {
             <main className={styles.main}></main>
           </>
         )
-        : (
-          <Routes location={background || location}>
-            <Route path={DEFAULT_PATH} element={<HomePage />} />
-            <Route path={GAME_PATH} element={<GamePage />} />
-            <Route path={ERROR_PATH} element={<NotFound />} />
-          </Routes>
-        )
+        : isVPN
+          ? (<>
+            <Modal onClose={closeModal}>
+              <div>
+                <p className={`${styles.mb8} ${styles.fontSizeLarge}`}>Content was blocked in your country use VPN</p>
+              </div>
+
+              <div>
+                <p>
+                  To temporarily unlock access to the demo, click on the following <a href="https://cors-anywhere.herokuapp.com/https://www.freetogame.com/api/games" className={`${styles.link}`}>link</a>
+                </p>
+              </div>
+
+            </Modal>
+            <main className={styles.main}></main>
+          </>)
+          : (
+            <Routes location={background || location}>
+              <Route path={DEFAULT_PATH} element={<HomePage />} />
+              <Route path={GAME_PATH} element={<GamePage />} />
+              <Route path={ERROR_PATH} element={<NotFound />} />
+            </Routes>
+          )
       }
 
       <AppFooter />
