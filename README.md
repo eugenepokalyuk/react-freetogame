@@ -1,5 +1,5 @@
 # Free To Game
-<p>To view react-app please follow the <a href="https://eugenepokalyuk.github.io/react-freetogame/"></a>;</p>
+<p>To view react-app please follow the <a href="https://eugenepokalyuk.github.io/react-freetogame/">link</a>;</p>
 <p>/* App screenshot */</p>
 
 
