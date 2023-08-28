@@ -4,12 +4,14 @@ import { useMediaQuery } from "react-responsive";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWindowMaximize } from '@fortawesome/free-solid-svg-icons';
 import { IGame } from '../../services/types';
-import { useAppSelector } from '../../services/hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../services/hooks/hooks';
 import { NavLink } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { faWindows } from '@fortawesome/free-brands-svg-icons';
+import { ADD_SELECTED_GAME } from '../../services/actions/selectedGame';
 
 const FindGame: FC = () => {
+    const dispatch = useAppDispatch();
     const { games } = useAppSelector((store: any) => store.games);
 
     const gamesPerPage = 6;
@@ -49,6 +51,10 @@ const FindGame: FC = () => {
     const isDesktop = useMediaQuery({
         query: "(min-width: 1224px)"
     });
+
+    const handleDispatch = (item: IGame) => {
+        dispatch({ type: ADD_SELECTED_GAME, payload: item })
+    }
 
     const DesktopView: FC = () => {
         return (
@@ -127,7 +133,7 @@ const FindGame: FC = () => {
                                     </div>
 
                                     <div>
-                                        <NavLink to={`/open/${item.title}`} className={`${styles.button} ${styles.light}`}>
+                                        <NavLink to={`/open/${item.title}`} className={`${styles.button} ${styles.light}`} onClick={() => { handleDispatch(item) }}>
                                             See more
                                         </NavLink>
                                     </div>
@@ -258,7 +264,7 @@ const FindGame: FC = () => {
                                     </div>
 
                                     <div>
-                                        <NavLink to={`/open/${item.title}`} className={`${styles.button} ${styles.light}`}>
+                                        <NavLink to={`/open/${item.title}`} className={`${styles.button} ${styles.light}`} onClick={() => { handleDispatch(item) }}>
                                             See more
                                         </NavLink>
                                     </div>
