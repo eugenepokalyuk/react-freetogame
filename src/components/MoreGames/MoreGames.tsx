@@ -10,10 +10,13 @@ import { shuffle } from 'lodash';
 import { NavLink } from 'react-router-dom';
 import { IGame } from '../../services/types';
 
-import { useAppSelector } from '../../services/hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../services/hooks/hooks';
 import { v4 as uuidv4 } from 'uuid';
+import { ADD_SELECTED_GAME } from '../../services/actions/selectedGame';
 
 const RecentlyAdded: FC = () => {
+    const dispatch = useAppDispatch();
+
     const { games } = useAppSelector((store: any) => store.games);
     const filteredGames = useMemo(() => games.filter((game: IGame) => game.genre === 'Shooter'), [games]);
     const randomGames = useMemo(() => shuffle(filteredGames), [filteredGames]);
@@ -25,13 +28,17 @@ const RecentlyAdded: FC = () => {
         query: "(min-width: 1224px)"
     });
 
+    const handleDispatch = (item: IGame) => {
+        dispatch({ type: ADD_SELECTED_GAME, payload: item })
+    }
+
     const DesktopView: FC = () => {
         return (
             <div className={`${styles.container}`}>
                 <h1 className={`${styles.mb1}`}>Recently Added</h1>
                 <ul className={`${styles.card}`}>
                     {sevenRandomGames.map((item: any) => (
-                        <NavLink to={`/open/${item.title}`} key={uuidv4()}>
+                        <NavLink to={`/open/${item.title}`} key={uuidv4()} onClick={() => { handleDispatch(item) }}>
                             <li key={item.id} className={`${styles.cardItem} ${styles.mb3}`}>
                                 <div>
                                     <img src={item.thumbnail} alt={`${item.short_description}`} />
@@ -83,7 +90,7 @@ const RecentlyAdded: FC = () => {
                     <ul className={`${styles.card}`}>
                         {sevenRandomGames.map((item: any) => (
                             <li key={uuidv4()} >
-                                <NavLink to={`/open/${item.title}`} className={`${styles.cardItem} ${styles.mb3}`}>
+                                <NavLink to={`/open/${item.title}`} className={`${styles.cardItem} ${styles.mb3}`} onClick={() => { handleDispatch(item) }}>
                                     <div>
                                         <img src={item.thumbnail} alt={`${item.short_description}`} />
                                     </div>
@@ -135,6 +142,8 @@ const RecentlyAdded: FC = () => {
 }
 
 const MostPlayedToday: FC = () => {
+    const dispatch = useAppDispatch();
+
     const { games } = useAppSelector((store: any) => store.games);
     const filteredGames = useMemo(() => games.filter((game: IGame) => game.genre === 'Shooter'), [games]);
     const randomGames = useMemo(() => shuffle(filteredGames), [filteredGames]);
@@ -144,6 +153,10 @@ const MostPlayedToday: FC = () => {
         query: "(min-width: 1224px)"
     });
 
+    const handleDispatch = (item: IGame) => {
+        dispatch({ type: ADD_SELECTED_GAME, payload: item })
+    }
+
     const DesktopView: FC = () => {
         return (
             <>
@@ -151,7 +164,7 @@ const MostPlayedToday: FC = () => {
                     <h1 className={`${styles.mb1}`}>Most Played Today</h1>
                     <ul className={`${styles.flex} ${styles.flexColumn}`}>
                         {fourRandomGames.map((item: any) => (
-                            <li key={item.id} className={`${styles.overlayBlock} ${styles.flexItem} ${styles.mb4}`}>
+                            <li key={item.id} className={`${styles.overlayBlock} ${styles.flexItem} ${styles.mb4}`} onClick={() => { handleDispatch(item) }}>
                                 <NavLink to={`/open/${item.title}`}>
                                     <div>
                                         <img src={item.thumbnail} alt={`${item.short_description}`} className={`${styles.flex} ${styles.w100}`} />
@@ -176,7 +189,7 @@ const MostPlayedToday: FC = () => {
                     <h1 className={`${styles.mb1}`}>Most Played Today</h1>
                     <ul className={`${styles.flex} ${styles.flexColumn}`}>
                         {fourRandomGames.map((item: any) => (
-                            <li key={item.id} className={`${styles.overlayBlock} ${styles.flexItem} ${styles.mb4}`}>
+                            <li key={item.id} className={`${styles.overlayBlock} ${styles.flexItem} ${styles.mb4}`} onClick={() => { handleDispatch(item) }}>
                                 <NavLink to={`/open/${item.title}`}>
                                     <div>
                                         <img src={item.thumbnail} alt={`${item.short_description}`} className={`${styles.flex} ${styles.w100} ${styles.br1}`} />
@@ -232,4 +245,5 @@ const MoreGames: FC = () => {
             : <MobileView />
     )
 }
+
 export default MoreGames;
