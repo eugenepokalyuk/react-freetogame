@@ -32,7 +32,7 @@ const GetStarted: FC = () => {
                     <h1 className={`${styles.h1}`}>Discover the best <span className={`${styles.colorlight}`}>free-to-play</span> games!</h1>
                     <p className={`${styles.p} ${styles.textMuted} ${styles.mb4}`}>Track what you've played and search for what to play next! Plus get free premium loot!</p>
                     <div>
-                        <button className={`${styles.button} ${styles.light}`}>
+                        <button className={`${styles.button} ${styles.light} ${styles.mb4}`}>
                             <span className={`${styles.fontWidthBold}`}>GET STARTED</span>
                             <span className={`${styles.ml1} ${styles.fontSizeSmall}`}>It's free</span>
                         </button>

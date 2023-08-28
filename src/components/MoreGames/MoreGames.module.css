@@ -195,7 +195,12 @@
     flex: 0 0 33%;
 }
 
-@media screen and (min-width: 300px) {
+@media screen and (min-width: 300px) and (max-width: 768px) {
+    .container {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
     .p4 {
         padding: calc(4 * 4px);
     }

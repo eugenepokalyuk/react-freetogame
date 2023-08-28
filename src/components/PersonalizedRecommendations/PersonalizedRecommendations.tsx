@@ -7,6 +7,7 @@ import { shuffle } from 'lodash';
 import { IGame } from '../../services/types';
 import { useAppSelector } from '../../services/hooks/hooks';
 import { NavLink } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 
 const PersonalizedRecommendations: FC = () => {
     const { games } = useAppSelector((store: any) => store.games);
@@ -73,8 +74,23 @@ const PersonalizedRecommendations: FC = () => {
                             </p>
                         </div>
 
+                        <div className={`${styles.grid} ${styles.p4} ${styles.g3} ${styles.flex} ${styles.flexWidth1n1}`}>
+                            {threeRandomGames.map((item: IGame) => (
+                                <NavLink to={`/open/${item.title}`} key={uuidv4()} className={`${styles.w100}`}>
+                                    <div className={`${styles.deepDark} ${styles.grid}`}>
+                                        <div className={`${styles.flex} ${styles.w100} ${styles.mb4} ${styles.gameItem} ${styles.mr2}`} key={item.id}>
+                                            <img src={item.thumbnail} alt={item.short_description} className={styles.w100} />
+                                            <div>
+                                                <h4>{item.title}</h4>
+                                                <button className={`${styles.cardButton}`}>Free</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </NavLink>
+                            ))}
+                        </div>
 
-                        <ul className={`${styles.flex} ${styles.card}`}>
+                        {/* <ul className={`${styles.flex} ${styles.card}`}>
                             {threeRandomGames.map((item: IGame) => (
                                 <li className={`${styles.flex} ${styles.cardItem} ${styles.mr4}`} key={item.id}>
                                     <NavLink className={`${styles.linkImage}`} to={`/open/${item.title}`}>
@@ -87,7 +103,7 @@ const PersonalizedRecommendations: FC = () => {
                                 </li>
                             )
                             )}
-                        </ul>
+                        </ul> */}
                     </div>
                 </section>
             </>

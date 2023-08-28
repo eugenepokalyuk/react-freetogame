@@ -219,4 +219,8 @@
     .mb4 {
         margin-bottom: calc(4 * 4px);
     }
+
+    .text {
+        font-size: 16px;
+    }
 }

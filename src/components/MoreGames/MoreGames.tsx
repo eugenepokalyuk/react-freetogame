@@ -77,7 +77,63 @@ const RecentlyAdded: FC = () => {
 
     const MobileView: FC = () => {
         return (
-            <></>
+            <>
+                {/* <div className={`${styles.container}`}>
+                    <h1 className={`${styles.mb1}`}>Recently Added</h1>
+                    <ul className={`${styles.card}`}>
+                        {sevenRandomGames.map((item: any) => (
+                            <NavLink to={`/open/${item.title}`} key={uuidv4()}>
+                                {item.title}
+                            </NavLink>
+                        ))}
+                    </ul>
+                </div> */}
+                <div className={`${styles.container}`}>
+                    <h1 className={`${styles.mb1}`}>Recently Added</h1>
+                    <ul className={`${styles.card}`}>
+                        {sevenRandomGames.map((item: any) => (
+                            <NavLink to={`/open/${item.title}`} key={uuidv4()}>
+                                <li key={item.id} className={`${styles.cardItem} ${styles.mb3}`}>
+                                    <div>
+                                        <img src={item.thumbnail} alt={`${item.short_description}`} />
+                                    </div>
+
+                                    <div>
+                                        <h2>{item.title}</h2>
+                                        <p className={`${styles.textTruncate} ${styles.textMuted} ${styles.mb1} ${styles.w100}`}>{item.short_description}</p>
+                                        <div>
+                                            <span className={`${styles.badge}`}>{item.genre}</span>
+                                        </div>
+                                    </div>
+
+
+                                    <div>
+                                        {item.platform === 'PC (Windows)'
+                                            ? <FontAwesomeIcon icon={faWindows} />
+                                            : item.platform === 'Web Browser'
+                                                ? <FontAwesomeIcon icon={faWindowMaximize} />
+                                                : <>
+                                                    <FontAwesomeIcon icon={faWindows} className={`${styles.mr2}`} />
+                                                    <FontAwesomeIcon icon={faWindowMaximize} />
+                                                </>}
+                                    </div>
+
+                                    <div>
+                                        <button className={`${styles.cardButton}`}>Free</button>
+                                    </div>
+                                </li>
+                            </NavLink>
+                        )
+                        )}
+                    </ul>
+
+                    <div className={`${styles.w100} ${styles.alignRight}`}>
+                        <NavLink to='/link-7' className={`${styles.button} ${styles.secondary}`}>
+                            {buttonTitle}
+                        </NavLink>
+                    </div>
+                </div>
+            </>
         )
     }
 
@@ -172,7 +228,7 @@ const MoreGames: FC = () => {
     const MobileView: FC = () => {
         return (
             <>
-                <section className={`${styles.section} ${styles.mb12} ${styles.flex}`}>
+                <section className={`${styles.section} ${styles.mb12}`}>
                     <RecentlyAdded />
                     <MostPlayedToday />
                 </section >
