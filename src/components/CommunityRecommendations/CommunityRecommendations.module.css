@@ -207,6 +207,10 @@
 
 
 @media screen and (min-width: 300px) and (max-width: 768px) {
+    .section {
+        padding: 16px;
+    }
+
     .grid {
         display: grid;
         grid-auto-flow: dense;

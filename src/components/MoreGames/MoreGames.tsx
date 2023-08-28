@@ -172,7 +172,7 @@ const MostPlayedToday: FC = () => {
     const MobileView: FC = () => {
         return (
             <>
-                <div className={`${styles.w100} ${styles.p4}`}>
+                <div className={`${styles.w100}`}>
                     <h1 className={`${styles.mb1}`}>Most Played Today</h1>
                     <ul className={`${styles.flex} ${styles.flexColumn}`}>
                         {fourRandomGames.map((item: any) => (
@@ -218,7 +218,7 @@ const MoreGames: FC = () => {
     const MobileView: FC = () => {
         return (
             <>
-                <section className={`${styles.section} ${styles.mb12}`}>
+                <section className={`${styles.section}`}>
                     <RecentlyAdded />
                     <MostPlayedToday />
                 </section >
