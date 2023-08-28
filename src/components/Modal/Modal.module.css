@@ -32,20 +32,38 @@
     justify-content: flex-end;
 }
 
+.pt8 {
+    padding-top: calc(8 * 4px);
+}
+
+.pr10 {
+    padding-right: calc(10 * 4px);
+}
+
+.pb8 {
+    padding-bottom: calc(8 * 4px);
+}
+
+.pl10 {
+    padding-left: calc(10 * 4px);
+}
+
+/*  */
+
 .pt5 {
-    padding-top: calc(5 * 10px);
+    padding-top: calc(4 * 5px);
 }
 
 .pr5 {
-    padding-right: calc(5 * 10px);
+    padding-right: calc(4 * 5px);
 }
 
 .pb5 {
-    padding-bottom: calc(5 * 10px);
+    padding-bottom: calc(4 * 5px);
 }
 
 .pl5 {
-    padding-left: calc(5 * 10px);
+    padding-left: calc(4 * 5px);
 }
 
 .mt5 {
@@ -66,4 +84,10 @@
 
 .mlAuto {
     margin-left: auto;
+}
+
+@media screen and (min-width: 300px) and (max-width: 768px) {
+    .modalContent {
+        max-width: 200px;
+    }
 }

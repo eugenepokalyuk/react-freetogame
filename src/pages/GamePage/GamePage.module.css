@@ -1,18 +1,25 @@
 .main {
     margin-top: 55.5px;
     min-height: 100vh;
+    /* padding-top: 16px; */
 }
 
 .section {
     max-width: 1000px;
+    margin-top: 16px;
 }
 
 .flex {
     display: flex;
 }
 
-.imageSize {
+.imageSmallSize {
     width: 180px;
+    height: 100%;
+}
+
+.imageDefaultSize {
+    width: 356px;
     height: 100%;
 }
 
@@ -49,4 +56,24 @@
     background-position: center;
     background-attachment: fixed;
     z-index: -1;
+}
+
+.grid {
+    display: grid;
+    grid-auto-flow: column;
+    gap: 16px;
+}
+
+.posFixed img {
+    /* position: fixed; */
+}
+
+.colLeft {
+    /* flex: 0 0 33%; */
+    /* max-width: 33%; */
+}
+
+.colRight {
+    /* flex: 0 0 66%; */
+    /* max-width: 66%; */
 }

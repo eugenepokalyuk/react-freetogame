@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import { NavLink, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import styles from './App.module.css';
 
 import AppHeader from "../AppHeader/AppHeader"
@@ -16,7 +16,7 @@ import { fetchGamesData } from '../../utils/api';
 import { FETCH_GAMES_FAILURE, FETCH_GAMES_REQUEST, FETCH_GAMES_SUCCESS } from '../../services/actions/games';
 import Modal from '../Modal/Modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faGear, faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 function App() {
   const navigate = useNavigate();
@@ -61,9 +61,7 @@ function App() {
                 <p className={`${styles.mb8} ${styles.fontSizeLarge}`}>Please wait, the data for the application is being loaded</p>
 
                 <p className={`${styles.mb8}`}>
-                  <FontAwesomeIcon icon={faHeart} fade size="3x" className={`${styles.mr2}`} />
-                  <FontAwesomeIcon icon={faHeart} fade size="3x" className={`${styles.mr2}`} />
-                  <FontAwesomeIcon icon={faHeart} fade size="3x" />
+                  <FontAwesomeIcon icon={faSpinner} spin size="5x" className={`${styles.mr2}`} />
                 </p>
               </div>
 
@@ -75,18 +73,26 @@ function App() {
           ? (<>
             <Modal onClose={closeModal}>
               <div>
-                <p className={`${styles.mb8} ${styles.fontSizeLarge}`}>Content was blocked in your country use VPN</p>
+                {/* This demo of CORS Anywhere should only be used for development purposes, see https://github.com/Rob--W/cors-anywhere/issues/301. */}
+                {/* To temporarily unlock access to the demo, click on the following button: */}
+                <p className={`${styles.mb8} ${styles.fontSizeLarge}`}><FontAwesomeIcon icon={faGear} fade size="1x" /> This demo of CORS Anywhere should only be used for development purposes</p>
+              </div>
+
+              <div className={`${styles.mb4}`}>
+                <p>To temporarily unlock access to the demo, click on the following button:</p>
               </div>
 
               <div>
-                <p>
-                  To temporarily unlock access to the demo, click on the following <a href="https://cors-anywhere.herokuapp.com/https://www.freetogame.com/api/games" className={`${styles.link}`}>link</a>
-                </p>
+                <NavLink to="https://cors-anywhere.herokuapp.com/https://www.freetogame.com/api/games">
+                  <button className={`${styles.button} ${styles.light}`}>
+                    Request temporary access to the demo server
+                  </button>
+                </NavLink>
               </div>
-
             </Modal>
             <main className={styles.main}></main>
-          </>)
+          </>
+          )
           : (
             <Routes location={background || location}>
               <Route path={DEFAULT_PATH} element={<HomePage />} />

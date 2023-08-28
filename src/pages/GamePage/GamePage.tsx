@@ -29,14 +29,15 @@ const GamePage: FC = () => {
         'backgroundSize': 'cover',
         'backgroundPosition': 'top',
         'backgroundRepeat': 'no-repeat',
-        backgroundAttachment: 'fixed',
+        'backgroundAttachment': 'fixed',
 
-        'height': '100vh',
+        'height': '40vh',
         'position': 'absolute' as 'absolute',
         'left': 0,
         'right': 0,
-        'top': '0rem',
-        'z-index': '-1',
+        'top': 0,
+        'bottom': 0,
+        'zIndex': '-1',
         'opacity': '.2',
     };
     const DesktopView: FC = () => {
@@ -44,10 +45,14 @@ const GamePage: FC = () => {
             <div className={`${styles.pageContainer}`}>
                 <div className={`${styles.backgroundImage}`} style={backgroundImageStyle}></div>
                 {randGame && (
-                    <section className={`${styles.section} `}>
-                        <>
-                            {/* <img src={`${randGame.thumbnail}`} className={`${styles.backgroundImage}`} alt="" /> */}
-                            <article>
+                    <section className={`${styles.section} ${`${styles.grid}`}`}>
+                        <article className={`${styles.colLeft}`}>
+                            <div className={`${styles.posFixed}`}>
+                                <img className={`${styles.imageDefaultSize}`} src={randGame.thumbnail} alt="" />
+                            </div>
+                        </article>
+                        <article className={`${styles.colRight}`}>
+                            <div>
                                 <h1 className={`${styles.h1} ${styles.mb1}`}>{randGame.title}</h1>
 
                                 <div className={`${styles.p0n4}`}>
@@ -84,16 +89,16 @@ const GamePage: FC = () => {
                                         <FontAwesomeIcon icon={faTelegram} />
                                     </button>
                                 </div>
-                            </article>
+                            </div>
 
-                            <article>
+                            <div>
                                 <h2 className={`${styles.h2}`}>About {randGame.title}</h2>
                                 <p>{randGame.short_description} Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam cum dolor repellendus ab culpa recusandae hic ratione totam distinctio. Itaque perferendis enim harum quae, non ipsam quo similique repellat! Voluptas commodi sapiente odit eos quo omnis expedita, facilis fugit dolores doloremque, quas ea ipsam aut illo exercitationem. Quod eum saepe aliquam natus, rem a quasi amet totam rerum reprehenderit, fugiat autem vitae ullam numquam in quis. Saepe cumque soluta omnis eaque magnam nesciunt, quod quibusdam tempore voluptates, illum fugiat qui nulla, corporis error cum facere eos accusantium! Fugiat sit ad maxime voluptas consequatur, suscipit, expedita sed, ratione totam quam at!</p>
 
                                 <p className={`${styles.textMuted}`}>Disclosure: FreeToGame works closely with publishers and developers to offer a free and rewarding experience. In order to keep everything free to use we may sometimes earn a small commission from some partners. Find more info in our <a href="/faq" className={`${styles.link}`}>FAQ</a> page.</p>
-                            </article>
+                            </div>
 
-                            <article>
+                            <div>
                                 <h2 className={`${styles.h2}`}>Additional Information</h2>
                                 <p className={`${styles.textMuted}`}><FontAwesomeIcon icon={faInfoCircle} /> Please note this free-to-play game may or may not offer optional in-game purchases.</p>
 
@@ -148,18 +153,18 @@ const GamePage: FC = () => {
                                     </ul>
 
                                 </div>
-                            </article>
+                            </div>
 
-                            <article>
+                            <div>
                                 <h2 className={`${styles.h2}`}>Trove Screenshots</h2>
                                 <div className={`${styles.flex} `}>
-                                    <img className={`${styles.imageSize}`} src={randGame.thumbnail} alt="" />
-                                    <img className={`${styles.imageSize}`} src={randGame.thumbnail} alt="" />
-                                    <img className={`${styles.imageSize}`} src={randGame.thumbnail} alt="" />
-                                    <img className={`${styles.imageSize}`} src={randGame.thumbnail} alt="" />
+                                    <img className={`${styles.imageSmallSize}`} src={randGame.thumbnail} alt="" />
+                                    <img className={`${styles.imageSmallSize}`} src={randGame.thumbnail} alt="" />
+                                    <img className={`${styles.imageSmallSize}`} src={randGame.thumbnail} alt="" />
+                                    <img className={`${styles.imageSmallSize}`} src={randGame.thumbnail} alt="" />
                                 </div>
-                            </article>
-                        </>
+                            </div>
+                        </article>
                     </section>
                 )}
             </div>

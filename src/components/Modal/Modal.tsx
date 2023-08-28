@@ -32,18 +32,47 @@ const Modal: FC<ModalProps> = ({ children, header, onClose }) => {
         query: "(min-width: 1224px)"
     });
 
+    const DesktopView: FC = () => {
+        return (
+            <>
+                <div className={styles.modal}>
+                    <div className={`${styles.modalContent} ${styles.pt5} ${styles.pr5} ${styles.pb5} ${styles.pl5} ${styles.textCenter}`} onKeyDown={onKeyDown}>
+                        <div className={`${header ? styles.modalHeader : `${styles.modalNoHeader} ${styles.mt5} ${styles.mb5}`} ${styles.flex}`}>
+                            {header && <span>{header}</span>}
+                        </div>
+
+                        {children}
+                    </div>
+                </div>
+                <ModalOverlay onClose={onClose} />
+            </>
+        )
+    }
+
+    const MobileView: FC = () => {
+        return (
+            <>
+                <div className={styles.modal}>
+                    <div className={`${styles.modalContent} ${styles.pt8} ${styles.pr10} ${styles.pb8} ${styles.pl10} ${styles.textCenter}`} onKeyDown={onKeyDown}>
+                        <div className={`${header ? styles.modalHeader : `${styles.modalNoHeader} ${styles.mt5} ${styles.mb5}`} ${styles.flex}`}>
+                            {header && <span>{header}</span>}
+                        </div>
+
+                        {children}
+                    </div>
+                </div>
+                <ModalOverlay onClose={onClose} />
+            </>
+        )
+    }
+
     return ReactDOM.createPortal(
         <>
-            <div className={styles.modal}>
-                <div className={`${styles.modalContent} ${styles.pt5} ${styles.pr5} ${styles.pb5} ${styles.pl5} ${styles.textCenter}`} onKeyDown={onKeyDown}>
-                    <div className={`${header ? styles.modalHeader : `${styles.modalNoHeader} ${styles.mt5} ${styles.mb5}`} ${styles.flex}`}>
-                        {header && <span>{header}</span>}
-                    </div>
-
-                    {children}
-                </div>
-            </div>
-            <ModalOverlay onClose={onClose} />
+            {
+                isDesktop
+                    ? <DesktopView />
+                    : <MobileView />
+            }
         </>,
         document.getElementById('root') as HTMLElement
     );
