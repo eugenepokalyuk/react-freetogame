@@ -9,11 +9,11 @@ import { faThumbsDown, faInfoCircle, faThumbsUp, faCrown, faStar, faSmile, faFro
 import { faTelegram, faWindows } from '@fortawesome/free-brands-svg-icons'
 import profileImage from '../../images/profile_image_1.png';
 import { NavLink } from 'react-router-dom';
+import NotFound from '../NotFound/NotFound';
 
 const GamePage: FC = () => {
     const { games } = useAppSelector((store: any) => store.games);
-    const randomIndex = Math.floor(Math.random() * games.length);
-    const randGame = games[randomIndex];
+    const { selectedGame } = useAppSelector((store: any) => store.selectedGame);
 
     const randomMember = Math.floor(Math.random() * 100);
     const randomPositive = Math.floor(Math.random() * 3);
@@ -25,36 +25,19 @@ const GamePage: FC = () => {
         query: "(min-width: 1224px)"
     });
 
-    const backgroundImageStyle = {
-        backgroundImage: `url(${randGame.thumbnail})`,
-        'backgroundSize': 'cover',
-        'backgroundPosition': 'top',
-        'backgroundRepeat': 'no-repeat',
-        'backgroundAttachment': 'fixed',
-
-        'height': '40vh',
-        'position': 'absolute' as 'absolute',
-        'left': 0,
-        'right': 0,
-        'top': 0,
-        'bottom': 0,
-        'zIndex': '-1',
-        'opacity': '.2',
-    };
     const DesktopView: FC = () => {
         return (
-            <div className={`${styles.pageContainer}`}>
-                <div className={`${styles.backgroundImage}`} style={backgroundImageStyle}></div>
-                {randGame && (
+            <>
+                <div className={`${styles.pageContainer}`}>
                     <section className={`${styles.section} ${`${styles.grid}`}`}>
                         <article className={`${styles.colLeft}`}>
                             <div className={`${styles.posFixed}`}>
-                                <img className={`${styles.imageDefaultSize}`} src={randGame.thumbnail} alt="" />
+                                <img className={`${styles.imageDefaultSize}`} src={selectedGame.thumbnail} alt="" />
                             </div>
                         </article>
                         <article className={`${styles.colRight}`}>
                             <div>
-                                <h1 className={`${styles.h1} ${styles.mb1}`}>{randGame.title}</h1>
+                                <h1 className={`${styles.h1} ${styles.mb1}`}>{selectedGame.title}</h1>
 
                                 <div className={`${styles.p0n4}`}>
                                     {randomPositive === 0
@@ -93,8 +76,8 @@ const GamePage: FC = () => {
                             </div>
 
                             <div>
-                                <h2 className={`${styles.h2}`}>About {randGame.title}</h2>
-                                <p>{randGame.short_description} Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam cum dolor repellendus ab culpa recusandae hic ratione totam distinctio. Itaque perferendis enim harum quae, non ipsam quo similique repellat! Voluptas commodi sapiente odit eos quo omnis expedita, facilis fugit dolores doloremque, quas ea ipsam aut illo exercitationem. Quod eum saepe aliquam natus, rem a quasi amet totam rerum reprehenderit, fugiat autem vitae ullam numquam in quis. Saepe cumque soluta omnis eaque magnam nesciunt, quod quibusdam tempore voluptates, illum fugiat qui nulla, corporis error cum facere eos accusantium! Fugiat sit ad maxime voluptas consequatur, suscipit, expedita sed, ratione totam quam at!</p>
+                                <h2 className={`${styles.h2}`}>About {selectedGame.title}</h2>
+                                <p>{selectedGame.short_description} Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam cum dolor repellendus ab culpa recusandae hic ratione totam distinctio. Itaque perferendis enim harum quae, non ipsam quo similique repellat! Voluptas commodi sapiente odit eos quo omnis expedita, facilis fugit dolores doloremque, quas ea ipsam aut illo exercitationem. Quod eum saepe aliquam natus, rem a quasi amet totam rerum reprehenderit, fugiat autem vitae ullam numquam in quis. Saepe cumque soluta omnis eaque magnam nesciunt, quod quibusdam tempore voluptates, illum fugiat qui nulla, corporis error cum facere eos accusantium! Fugiat sit ad maxime voluptas consequatur, suscipit, expedita sed, ratione totam quam at!</p>
 
                                 <p className={`${styles.textMuted}`}>Disclosure: FreeToGame works closely with publishers and developers to offer a free and rewarding experience. In order to keep everything free to use we may sometimes earn a small commission from some partners. Find more info in our <a href="/faq" className={`${styles.link}`}>FAQ</a> page.</p>
                             </div>
@@ -108,39 +91,39 @@ const GamePage: FC = () => {
                                     <ul>
                                         <li>
                                             Title
-                                            {randGame.title}
+                                            {selectedGame.title}
                                         </li>
                                         <li>
                                             Release Date
-                                            {randGame.release_date}
+                                            {selectedGame.release_date}
                                         </li>
                                     </ul>
 
                                     <ul>
                                         <li>
                                             Developer
-                                            {randGame.developer}
+                                            {selectedGame.developer}
                                         </li>
                                         <li>
                                             Genre
-                                            {randGame.genre}
+                                            {selectedGame.genre}
                                         </li>
                                     </ul>
 
                                     <ul>
                                         <li>
                                             Publisher
-                                            {randGame.publisher}
+                                            {selectedGame.publisher}
                                         </li>
 
                                         <li>
                                             Platform
-                                            {randGame.platform === 'PC (Windows)'
+                                            {selectedGame.platform === 'PC (Windows)'
                                                 ?
                                                 <>
                                                     <FontAwesomeIcon icon={faWindows} /> Windows (Client)
                                                 </>
-                                                : randGame.platform === 'Web Browser'
+                                                : selectedGame.platform === 'Web Browser'
                                                     ?
                                                     <>
                                                         <FontAwesomeIcon icon={faWindowMaximize} /> Web Browser
@@ -159,37 +142,47 @@ const GamePage: FC = () => {
                             <div>
                                 <h2 className={`${styles.h2}`}>Trove Screenshots</h2>
                                 <div className={`${styles.flex} `}>
-                                    <img className={`${styles.imageSmallSize}`} src={randGame.thumbnail} alt="" />
-                                    <img className={`${styles.imageSmallSize}`} src={randGame.thumbnail} alt="" />
-                                    <img className={`${styles.imageSmallSize}`} src={randGame.thumbnail} alt="" />
-                                    <img className={`${styles.imageSmallSize}`} src={randGame.thumbnail} alt="" />
+                                    <img className={`${styles.imageSmallSize}`} src={selectedGame.thumbnail} alt="" />
+                                    <img className={`${styles.imageSmallSize}`} src={selectedGame.thumbnail} alt="" />
+                                    <img className={`${styles.imageSmallSize}`} src={selectedGame.thumbnail} alt="" />
+                                    <img className={`${styles.imageSmallSize}`} src={selectedGame.thumbnail} alt="" />
                                 </div>
                             </div>
                         </article>
                     </section>
-                )}
-            </div>
+                </div>
+            </>
         )
     }
 
     const MobileView: FC = () => {
         return (
-            <div>
-                <h1 className={`${styles.mb4}`}>Страница еще в разработке</h1>
-                <NavLink to="/">
-                    <button className={`${styles.button} ${styles.light}`}>
-                        Перейти на главную
-                    </button>
-                </NavLink>
-            </div>
+            <>
+                <div>
+                    <h1 className={`${styles.mb4}`}>Страница еще в разработке</h1>
+                    <NavLink to="/">
+                        <button className={`${styles.button} ${styles.light}`}>
+                            Перейти на главную
+                        </button>
+                    </NavLink>
+                </div>
+            </>
         )
     }
 
     return (
         <main className={`${styles.main} ${styles.textCenter}`}>
-            {isDesktop
-                ? <DesktopView />
-                : <MobileView />}
+            {selectedGame
+                ? (
+                    <>
+                        {isDesktop
+                            ? <DesktopView />
+                            : <MobileView />}
+                    </>
+                ) : (
+                    <NotFound />
+                )
+            }
         </main>
     );
 };
