@@ -1,15 +1,17 @@
-import { FC, useMemo } from 'react';
+import { FC, MouseEventHandler, useMemo } from 'react';
 import styles from './PersonalizedRecommendations.module.css';
 import { useMediaQuery } from "react-responsive";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRobot, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import { shuffle } from 'lodash';
 import { IGame } from '../../services/types';
-import { useAppSelector } from '../../services/hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../services/hooks/hooks';
 import { NavLink } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
+import { ADD_SELECTED_GAME } from '../../services/actions/selectedGame';
 
 const PersonalizedRecommendations: FC = () => {
+    const dispatch = useAppDispatch();
     const { games } = useAppSelector((store: any) => store.games);
     const filteredGames = useMemo(() => games.filter((game: IGame) => game.genre === 'Shooter'), [games]);
     const randomGames = useMemo(() => shuffle(filteredGames), [filteredGames]);
@@ -17,7 +19,11 @@ const PersonalizedRecommendations: FC = () => {
 
     const isDesktop = useMediaQuery({
         query: "(min-width: 1224px)"
-    });
+    })
+
+    const handleDispatch = (item: IGame) => {
+        dispatch({ type: ADD_SELECTED_GAME, payload: item })
+    }
 
     const DesktopView: FC = () => {
         return (
@@ -38,8 +44,8 @@ const PersonalizedRecommendations: FC = () => {
 
                     <ul className={`${styles.flex} ${styles.card}`}>
                         {threeRandomGames.map((item: IGame) => (
-                            <li className={`${styles.flex} ${styles.cardItem} ${styles.mr4} ${styles.maxWidth3}`} key={item.id}>
-                                <NavLink to={`/open/${item.title}`}>
+                            <li className={`${styles.flex} ${styles.cardItem} ${styles.mr4} ${styles.maxWidth3}`} key={item.id} onClick={() => { handleDispatch(item) }}>
+                                <NavLink to={`/open/${item.title}`} >
                                     <img src={item.thumbnail} alt={`${item.short_description}`} className={styles.w100} />
                                     <div>
                                         <h2>{item.title}</h2>
@@ -109,6 +115,7 @@ const PersonalizedRecommendations: FC = () => {
             </>
         )
     }
+
 
     return (
         isDesktop
