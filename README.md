@@ -10,7 +10,7 @@
 </ol>
 
 <p>Если сработало модальное окно, значит нет подлючения к CORS-Proxy. Пожалуйста, нажмите на ссылку, которая подсвечивается синим цветом</p>
-<img src="https://github.com/eugenepokalyuk/react-freetogame/blob/main/src/images/screenshots/2023-08-28_01-01-09.png?raw=true" />
+<img src="https://github.com/eugenepokalyuk/react-freetogame/blob/main/src/images/screenshots/corsError.png?raw=true" />
 
 <div>
   <p>Шаг 1: Нажмите на кнопку "Request temporary access to the demo server"</p>
@@ -40,9 +40,10 @@
 ## Полная страница сайта:
 ### Desktop version:
 <div>
-  <img src="https://github.com/eugenepokalyuk/react-freetogame/blob/main/src/images/screenshots/2023-08-28_00-59-52.png?raw=true" />
+  <img src="https://github.com/eugenepokalyuk/react-freetogame/blob/main/src/images/screenshots/desktopView.png?raw=true" />
 </div>
+
 ### Modile version:
 <div>
-  <img src="https://github.com/eugenepokalyuk/react-freetogame/blob/main/src/images/screenshots/2023-08-28_01-00-18.png?raw=true" />
+  <img src="https://github.com/eugenepokalyuk/react-freetogame/blob/main/src/images/screenshots/mobileView.png?raw=true" />
 </div>
