@@ -78,22 +78,12 @@ const RecentlyAdded: FC = () => {
     const MobileView: FC = () => {
         return (
             <>
-                {/* <div className={`${styles.container}`}>
-                    <h1 className={`${styles.mb1}`}>Recently Added</h1>
-                    <ul className={`${styles.card}`}>
-                        {sevenRandomGames.map((item: any) => (
-                            <NavLink to={`/open/${item.title}`} key={uuidv4()}>
-                                {item.title}
-                            </NavLink>
-                        ))}
-                    </ul>
-                </div> */}
                 <div className={`${styles.container}`}>
                     <h1 className={`${styles.mb1}`}>Recently Added</h1>
                     <ul className={`${styles.card}`}>
                         {sevenRandomGames.map((item: any) => (
-                            <NavLink to={`/open/${item.title}`} key={uuidv4()}>
-                                <li key={item.id} className={`${styles.cardItem} ${styles.mb3}`}>
+                            <li key={uuidv4()} >
+                                <NavLink to={`/open/${item.title}`} className={`${styles.cardItem} ${styles.mb3}`}>
                                     <div>
                                         <img src={item.thumbnail} alt={`${item.short_description}`} />
                                     </div>
@@ -121,8 +111,8 @@ const RecentlyAdded: FC = () => {
                                     <div>
                                         <button className={`${styles.cardButton}`}>Free</button>
                                     </div>
-                                </li>
-                            </NavLink>
+                                </NavLink>
+                            </li>
                         )
                         )}
                     </ul>
