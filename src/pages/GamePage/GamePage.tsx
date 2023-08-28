@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsDown, faInfoCircle, faThumbsUp, faCrown, faStar, faSmile, faFrown, faMeh, faWindowMaximize } from '@fortawesome/free-solid-svg-icons';
 import { faTelegram, faWindows } from '@fortawesome/free-brands-svg-icons'
 import profileImage from '../../images/profile_image_1.png';
+import { NavLink } from 'react-router-dom';
 
 const GamePage: FC = () => {
     const { games } = useAppSelector((store: any) => store.games);
@@ -171,11 +172,24 @@ const GamePage: FC = () => {
         )
     }
 
+    const MobileView: FC = () => {
+        return (
+            <div>
+                <h1 className={`${styles.mb4}`}>Страница еще в разработке</h1>
+                <NavLink to="/">
+                    <button className={`${styles.button} ${styles.light}`}>
+                        Перейти на главную
+                    </button>
+                </NavLink>
+            </div>
+        )
+    }
+
     return (
-        <main className={`${styles.main}`}>
-            {
-                <DesktopView />
-            }
+        <main className={`${styles.main} ${styles.textCenter}`}>
+            {isDesktop
+                ? <DesktopView />
+                : <MobileView />}
         </main>
     );
 };
