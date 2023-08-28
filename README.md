@@ -1,5 +1,14 @@
 # Free To Game
 
+<p>To view react-app please follow the <a href="https://eugenepokalyuk.github.io/react-freetogame/">link</a>;</p>
+
+## Authorize permissions to the API
+<p>This demo of CORS Anywhere should only be used for development purposes, see <a href="https://github.com/Rob--W/cors-anywhere/issues/301">cors-anywhere</a>. The api to be used may be able to block the CORS policy requests</p>
+<ol>
+  <li>To temporarily unlock access to the demo, click on the following <a href="https://cors-anywhere.herokuapp.com/https://www.freetogame.com/api/games">link</a>;</li>
+  <li>This API enables cross-origin requests to anywhere. Press the following button.</li>
+</ol>
+
 <p>Если сработало модальное окно, значит нет подлючения к CORS-Proxy. Пожалуйста, нажмите на ссылку, которая подсвечивается синим цветом</p>
 <img src="https://github.com/eugenepokalyuk/react-freetogame/blob/main/src/images/screenshots/2023-08-28_01-01-09.png?raw=true" />
 
@@ -17,19 +26,23 @@
   <p>Шаг 3: Вернитесь на сайт, CORS-Proxy активированы</p>
 </div>
 
-***
+## Разработан интерфейс для сайта Free-To-Play Games, состоящий из двух страниц.
+### Главная страница: 
+<div>
+  <img src="https://github.com/eugenepokalyuk/react-freetogame/blob/main/src/images/screenshots/2023-08-28_10-49-11.png?raw=true" />
+</div>
 
-<p>To view react-app please follow the <a href="https://eugenepokalyuk.github.io/react-freetogame/">link</a>;</p>
+### Страница игры:
+<div>
+  /* Страница игры */
+</div>
 
-## Authorize permissions to the API
-<p>This demo of CORS Anywhere should only be used for development purposes, see <a href="https://github.com/Rob--W/cors-anywhere/issues/301">cors-anywhere</a>. The api to be used may be able to block the CORS policy requests</p>
-<ol>
-  <li>To temporarily unlock access to the demo, click on the following <a href="https://cors-anywhere.herokuapp.com/https://www.freetogame.com/api/games">link</a>;</li>
-  <li>This API enables cross-origin requests to anywhere. Press the following button.</li>
-</ol>
-
-## Screenshots
+## Полная страница сайта:
 ### Desktop version:
-<img src="https://github.com/eugenepokalyuk/react-freetogame/blob/main/src/images/screenshots/2023-08-28_00-59-52.png?raw=true" />
+<div>
+  <img src="https://github.com/eugenepokalyuk/react-freetogame/blob/main/src/images/screenshots/2023-08-28_00-59-52.png?raw=true" />
+</div>
 ### Modile version:
-<img src="https://github.com/eugenepokalyuk/react-freetogame/blob/main/src/images/screenshots/2023-08-28_01-00-18.png?raw=true" />
+<div>
+  <img src="https://github.com/eugenepokalyuk/react-freetogame/blob/main/src/images/screenshots/2023-08-28_01-00-18.png?raw=true" />
+</div>
