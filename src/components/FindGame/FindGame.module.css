@@ -67,7 +67,7 @@
 }
 
 .gameCard:hover {
-    cursor: pointer;
+    /* cursor: pointer; */
     transform: scale(1.02);
     box-shadow: 0 .9rem 1rem rgba(0, 0, 0, .199);
 }
