@@ -3,7 +3,7 @@ import { NavLink, Route, Routes, useLocation, useNavigate } from 'react-router-d
 import styles from './App.module.css';
 
 import AppHeader from "../AppHeader/AppHeader"
-import { DEFAULT_PATH, ERROR_PATH, GAME_PATH } from '../../utils/routePath';
+import { DEFAULT_PATH, ERROR_PATH, GAME_PATH, INTERFACE_PATH } from '../../utils/routePath';
 
 import HomePage from '../../pages/HomePage/HomePage';
 import GamePage from '../../pages/GamePage/GamePage';
@@ -13,31 +13,34 @@ import AppFooter from '../AppFooter/AppFooter';
 import { useAppDispatch } from '../../services/hooks/hooks';
 
 import { fetchGamesData } from '../../utils/api';
+
 import { FETCH_GAMES_FAILURE, FETCH_GAMES_REQUEST, FETCH_GAMES_SUCCESS } from '../../services/actions/games';
 import Modal from '../Modal/Modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faGear, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import InterfacePage from '../../pages/InterfacePage/InterfacePage';
 
 function App() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const location = useLocation();
   const background = location.state && location.state.background;
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [isVPN, setIsVPN] = useState<boolean>(true);
+  const [isCORS, setIsCORS] = useState<boolean>(true);
 
   useEffect(() => {
     dispatch({ type: FETCH_GAMES_REQUEST });
     fetchGamesData()
       .then(data => {
         dispatch({ type: FETCH_GAMES_SUCCESS, payload: data });
-        setIsVPN(false)
+        setIsCORS(false)
       })
       .catch(error => {
         dispatch({ type: FETCH_GAMES_FAILURE });
-        setIsVPN(true)
+        setIsCORS(true)
       })
       .finally(() => {
         setIsLoading(false);
@@ -69,7 +72,7 @@ function App() {
             <main className={styles.main}></main>
           </>
         )
-        : isVPN
+        : isCORS
           ? (<>
             <Modal onClose={closeModal}>
               <div>
@@ -96,6 +99,7 @@ function App() {
           : (
             <Routes location={background || location}>
               <Route path={DEFAULT_PATH} element={<HomePage />} />
+              <Route path={INTERFACE_PATH} element={<InterfacePage />} />
               <Route path={GAME_PATH} element={<GamePage />} />
               <Route path={ERROR_PATH} element={<NotFound />} />
             </Routes>

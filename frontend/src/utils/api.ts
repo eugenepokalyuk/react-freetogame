@@ -11,7 +11,6 @@ export const fetchGameData = (id: number) => {
 }
 
 export const fetchGamesData = async (maxRetries = 3) => {
-
     const endpoint = '/games';
     let retries = 0;
 
@@ -52,8 +51,5 @@ export const fetchGamesData = async (maxRetries = 3) => {
             retries++;
         }
     }
-
-
-
     throw new Error(`Failed to fetch games data after ${maxRetries} retries.`);
 }

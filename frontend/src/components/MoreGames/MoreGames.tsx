@@ -84,53 +84,51 @@ const RecentlyAdded: FC = () => {
 
     const MobileView: FC = () => {
         return (
-            <>
-                <div className={`${styles.container}`}>
-                    <h1 className={`${styles.mb1}`}>Recently Added</h1>
-                    <ul className={`${styles.card}`}>
-                        {sevenRandomGames.map((item: any) => (
-                            <li key={uuidv4()} >
-                                <NavLink to={`/open/${item.title}`} className={`${styles.cardItem} ${styles.mb3}`} onClick={() => { handleDispatch(item) }}>
+            <div className={`${styles.container}`}>
+                <h1 className={`${styles.mb1}`}>Recently Added</h1>
+                <ul className={`${styles.card}`}>
+                    {sevenRandomGames.map((item: any) => (
+                        <li key={uuidv4()} >
+                            <NavLink to={`/open/${item.title}`} className={`${styles.cardItem} ${styles.mb3}`} onClick={() => { handleDispatch(item) }}>
+                                <div>
+                                    <img src={item.thumbnail} alt={`${item.short_description}`} />
+                                </div>
+
+                                <div>
+                                    <h2>{item.title}</h2>
+                                    <p className={`${styles.textTruncate} ${styles.textMuted} ${styles.mb1} ${styles.w100}`}>{item.short_description}</p>
                                     <div>
-                                        <img src={item.thumbnail} alt={`${item.short_description}`} />
+                                        <span className={`${styles.badge}`}>{item.genre}</span>
                                     </div>
-
-                                    <div>
-                                        <h2>{item.title}</h2>
-                                        <p className={`${styles.textTruncate} ${styles.textMuted} ${styles.mb1} ${styles.w100}`}>{item.short_description}</p>
-                                        <div>
-                                            <span className={`${styles.badge}`}>{item.genre}</span>
-                                        </div>
-                                    </div>
+                                </div>
 
 
-                                    <div>
-                                        {item.platform === 'PC (Windows)'
-                                            ? <FontAwesomeIcon icon={faWindows} />
-                                            : item.platform === 'Web Browser'
-                                                ? <FontAwesomeIcon icon={faWindowMaximize} />
-                                                : <>
-                                                    <FontAwesomeIcon icon={faWindows} className={`${styles.mr2}`} />
-                                                    <FontAwesomeIcon icon={faWindowMaximize} />
-                                                </>}
-                                    </div>
+                                <div>
+                                    {item.platform === 'PC (Windows)'
+                                        ? <FontAwesomeIcon icon={faWindows} />
+                                        : item.platform === 'Web Browser'
+                                            ? <FontAwesomeIcon icon={faWindowMaximize} />
+                                            : <>
+                                                <FontAwesomeIcon icon={faWindows} className={`${styles.mr2}`} />
+                                                <FontAwesomeIcon icon={faWindowMaximize} />
+                                            </>}
+                                </div>
 
-                                    <div>
-                                        <button className={`${styles.cardButton}`}>Free</button>
-                                    </div>
-                                </NavLink>
-                            </li>
-                        )
-                        )}
-                    </ul>
+                                <div>
+                                    <button className={`${styles.cardButton}`}>Free</button>
+                                </div>
+                            </NavLink>
+                        </li>
+                    )
+                    )}
+                </ul>
 
-                    <div className={`${styles.w100} ${styles.alignRight}`}>
-                        <NavLink to='/link-7' className={`${styles.button} ${styles.secondary}`}>
-                            {buttonTitle}
-                        </NavLink>
-                    </div>
+                <div className={`${styles.w100} ${styles.alignRight}`}>
+                    <NavLink to='/link-7' className={`${styles.button} ${styles.secondary}`}>
+                        {buttonTitle}
+                    </NavLink>
                 </div>
-            </>
+            </div>
         )
     }
 
@@ -159,51 +157,47 @@ const MostPlayedToday: FC = () => {
 
     const DesktopView: FC = () => {
         return (
-            <>
-                <div className={`${styles.ml5} ${styles.w1n3}`}>
-                    <h1 className={`${styles.mb1}`}>Most Played Today</h1>
-                    <ul className={`${styles.flex} ${styles.flexColumn}`}>
-                        {fourRandomGames.map((item: any) => (
-                            <li key={item.id} className={`${styles.overlayBlock} ${styles.flexItem} ${styles.mb4}`} onClick={() => { handleDispatch(item) }}>
-                                <NavLink to={`/open/${item.title}`}>
-                                    <div>
-                                        <img src={item.thumbnail} alt={`${item.short_description}`} className={`${styles.flex} ${styles.w100}`} />
-                                    </div>
+            <div className={`${styles.ml5} ${styles.w1n3}`}>
+                <h1 className={`${styles.mb1}`}>Most Played Today</h1>
+                <ul className={`${styles.flex} ${styles.flexColumn}`}>
+                    {fourRandomGames.map((item: any) => (
+                        <li key={item.id} className={`${styles.overlayBlock} ${styles.flexItem} ${styles.mb4}`} onClick={() => { handleDispatch(item) }}>
+                            <NavLink to={`/open/${item.title}`}>
+                                <div>
+                                    <img src={item.thumbnail} alt={`${item.short_description}`} className={`${styles.flex} ${styles.w100}`} />
+                                </div>
 
-                                    <div className={`${styles.overlay} ${styles.positionBottom}`}>
-                                        <button className={`${styles.cardButton}`}>Free</button>
-                                    </div>
-                                </NavLink>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            </>
+                                <div className={`${styles.overlay} ${styles.positionBottom}`}>
+                                    <button className={`${styles.cardButton}`}>Free</button>
+                                </div>
+                            </NavLink>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         )
     }
 
     const MobileView: FC = () => {
         return (
-            <>
-                <div className={`${styles.w100}`}>
-                    <h1 className={`${styles.mb1}`}>Most Played Today</h1>
-                    <ul className={`${styles.flex} ${styles.flexColumn}`}>
-                        {fourRandomGames.map((item: any) => (
-                            <li key={item.id} className={`${styles.overlayBlock} ${styles.flexItem} ${styles.mb4}`} onClick={() => { handleDispatch(item) }}>
-                                <NavLink to={`/open/${item.title}`}>
-                                    <div>
-                                        <img src={item.thumbnail} alt={`${item.short_description}`} className={`${styles.flex} ${styles.w100} ${styles.br1}`} />
-                                    </div>
+            <div className={`${styles.w100}`}>
+                <h1 className={`${styles.mb1}`}>Most Played Today</h1>
+                <ul className={`${styles.flex} ${styles.flexColumn}`}>
+                    {fourRandomGames.map((item: any) => (
+                        <li key={item.id} className={`${styles.overlayBlock} ${styles.flexItem} ${styles.mb4}`} onClick={() => { handleDispatch(item) }}>
+                            <NavLink to={`/open/${item.title}`}>
+                                <div>
+                                    <img src={item.thumbnail} alt={`${item.short_description}`} className={`${styles.flex} ${styles.w100} ${styles.br1}`} />
+                                </div>
 
-                                    <div className={`${styles.overlay} ${styles.positionBottom}`}>
-                                        <button className={`${styles.cardButton}`}>Free</button>
-                                    </div>
-                                </NavLink>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            </>
+                                <div className={`${styles.overlay} ${styles.positionBottom}`}>
+                                    <button className={`${styles.cardButton}`}>Free</button>
+                                </div>
+                            </NavLink>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         )
     }
 

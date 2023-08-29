@@ -195,7 +195,7 @@
     flex: 0 0 33%;
 }
 
-@media screen and (min-width: 300px) and (max-width: 768px) {
+@media screen and (min-width: 300px) and (max-width: 880px) {
     .section {
         padding: 16px;
     }

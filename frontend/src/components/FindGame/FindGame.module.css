@@ -80,6 +80,8 @@
 }
 
 .pagination {
+    display: flex;
+    justify-content: space-between;
     margin-top: 20px;
     width: 100%;
     padding: 10px 0;
@@ -87,10 +89,17 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.paginationCard {
+.paginationCardLeft {
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    align-items: center;
+
+    padding: 0px 16px 0px 16px;
+}
+
+.paginationCardRight {
+    display: flex;
+    flex-direction: row;
     align-items: flex-end;
 
     padding: 0px 16px 0px 16px;

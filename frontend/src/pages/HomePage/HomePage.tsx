@@ -14,37 +14,14 @@ const HomePage: FC = () => {
         query: "(min-width: 1224px)"
     });
 
-    const DesktopView: FC = () => {
-        return (
-            <>
-                <GetStarted />
-                <PersonalizedRecommendations />
-                <MoreGames />
-                <CommunityRecommendations />
-                <MoreFun />
-                <FindGame />
-            </>
-        )
-    }
-
-    const MobileView: FC = () => {
-        return (
-            <>
-                <GetStarted />
-                <PersonalizedRecommendations />
-                <MoreGames />
-                <CommunityRecommendations />
-                <MoreFun />
-                <FindGame />
-            </>
-        )
-    }
-
     return (
         <main className={`${styles.main}`}>
-            {isDesktop
-                ? <DesktopView />
-                : <MobileView />}
+            <GetStarted />
+            <PersonalizedRecommendations />
+            <MoreGames />
+            <CommunityRecommendations />
+            <MoreFun />
+            <FindGame />
         </main>
     );
 };
