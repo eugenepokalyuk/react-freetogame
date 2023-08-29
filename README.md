@@ -2,6 +2,30 @@
 
 <p>To view react-app please follow the <a href="https://eugenepokalyuk.github.io/react-freetogame/">link</a>;</p>
 
+## About
+Разработан интерфейс для сайта Free-To-Play Games вместе с полной версткой Главной страницы сайта.
+
+<ul>Stack is
+  <ul>Frontend:
+    <li>React</li>
+    <li>TypeScript</li>
+    <li>Redux</li>
+  </ul>
+    <ul>Backend:
+    <li>NodeJS</li>
+    <li>Express</li>
+  </ul>
+</ul> 
+
+## Scripts
+Frontend:
+- `dev`/`start` - start dev server on port 3001 and open browser
+- `build` - build for production
+
+Frontend:
+- `dev`/`start` - start dev server on port 3002
+- `build` - build for production
+
 ## Authorize permissions to the API
 <p>This demo of CORS Anywhere should only be used for development purposes, see <a href="https://github.com/Rob--W/cors-anywhere/issues/301">cors-anywhere</a>. The api to be used may be able to block the CORS policy requests</p>
 <ol>
