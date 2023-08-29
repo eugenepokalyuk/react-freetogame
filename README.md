@@ -5,14 +5,16 @@
 ## About
 Developed the interface for the Free-To-Play Games website complete with a full layout of the Main Page of the website.
 
-Stack is
-<h3>Frontend:</h3>  
+## Stack is
+### Frontend
 <ul>
   <li>React</li>
   <li>TypeScript</li>
   <li>Redux</li>
 </ul>
-<h3>Backend:</h3>  
+
+### Backend
+<ul>
   <li>NodeJS</li>
   <li>Express</li>
 </ul>
@@ -27,6 +29,8 @@ Frontend:
 - `build` - build for production
 
 ## Authorize permissions to the API
+<p>The site will send 3 requests to the backend, if not successful will send 3 requests to CORS Anywhere</p>
+
 <p>This demo of CORS Anywhere should only be used for development purposes, see <a href="https://github.com/Rob--W/cors-anywhere/issues/301">cors-anywhere</a>. The api to be used may be able to block the CORS policy requests</p>
 <ol>
   <li>To temporarily unlock access to the demo, click on the following <a href="https://cors-anywhere.herokuapp.com/https://www.freetogame.com/api/games">link</a>;</li>
