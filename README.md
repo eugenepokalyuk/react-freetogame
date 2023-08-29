@@ -6,13 +6,13 @@
 Developed the interface for the Free-To-Play Games website complete with a full layout of the Main Page of the website.
 
 Stack is
-<h2>Frontend:</h2>  
+<h3>Frontend:</h3>  
 <ul>
   <li>React</li>
   <li>TypeScript</li>
   <li>Redux</li>
 </ul>
-<h2>Backend:</h2>  
+<h3>Backend:</h3>  
   <li>NodeJS</li>
   <li>Express</li>
 </ul>
