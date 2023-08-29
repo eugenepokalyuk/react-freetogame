@@ -3,19 +3,19 @@
 <p>To view react-app please follow the <a href="https://eugenepokalyuk.github.io/react-freetogame/">link</a>;</p>
 
 ## About
-Разработан интерфейс для сайта Free-To-Play Games вместе с полной версткой Главной страницы сайта.
+Developed the interface for the Free-To-Play Games website complete with a full layout of the Main Page of the website.
 
-<ul>Stack is
-  <ul>Frontend:
-    <li>React</li>
-    <li>TypeScript</li>
-    <li>Redux</li>
-  </ul>
-    <ul>Backend:
-    <li>NodeJS</li>
-    <li>Express</li>
-  </ul>
-</ul> 
+Stack is
+<h2>Frontend:</h2>  
+<ul>
+  <li>React</li>
+  <li>TypeScript</li>
+  <li>Redux</li>
+</ul>
+<h2>Backend:</h2>  
+  <li>NodeJS</li>
+  <li>Express</li>
+</ul>
 
 ## Scripts
 Frontend:
@@ -33,35 +33,35 @@ Frontend:
   <li>This API enables cross-origin requests to anywhere. Press the following button.</li>
 </ol>
 
-<p>Если сработало модальное окно, значит нет подлючения к CORS-Proxy. Пожалуйста, нажмите на ссылку, которая подсвечивается синим цветом</p>
+<p>If the modal window is triggered, there is no connection to CORS-Proxy. Please click on the link which is highlighted in blue color</p>
 <img src="https://github.com/eugenepokalyuk/react-freetogame/blob/main/src/images/screenshots/corsError.png?raw=true" />
 
 <div>
-  <p>Шаг 1: Нажмите на кнопку "Request temporary access to the demo server"</p>
+  <p>Step 1: Click on the "Request temporary access to the demo server" button</p>
   <img src="https://github.com/eugenepokalyuk/react-freetogame/blob/main/src/images/screenshots/Screenshot%202023-08-28%20at%2001.01.32.png?raw=true" />
 </div>
 
 <div>
-  <p>Шаг 2: Если вы видите данное сообщение, значит все прошло успешно</p>
+  <p>Step 2: If you see this message, then everything was successful</p>
   <img src="https://github.com/eugenepokalyuk/react-freetogame/blob/main/src/images/screenshots/Screenshot%202023-08-28%20at%2001.01.38.png?raw=true" />
 </div>
 
 <div>
-  <p>Шаг 3: Вернитесь на сайт, CORS-Proxy активированы</p>
+  <p>Step 3: Return to the site, CORS-Proxy activated</p>
 </div>
 
-## Разработан интерфейс для сайта Free-To-Play Games, состоящий из двух страниц.
-### Главная страница: 
+## Developed a two-page interface for the Free-To-Play Games website.
+### Main Page: 
 <div>
   <img src="https://github.com/eugenepokalyuk/react-freetogame/blob/main/src/images/screenshots/2023-08-28_10-49-11.png?raw=true" />
 </div>
 
-### Страница игры:
+### Game Page:
 <div>
   /* Страница игры */
 </div>
 
-## Полная страница сайта:
+## Full site page:
 ### Desktop version:
 <div>
   <img src="https://github.com/eugenepokalyuk/react-freetogame/blob/main/src/images/screenshots/desktopView.png?raw=true" />
