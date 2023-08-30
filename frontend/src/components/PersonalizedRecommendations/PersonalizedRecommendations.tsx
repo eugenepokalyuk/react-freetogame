@@ -45,7 +45,7 @@ const PersonalizedRecommendations: FC = () => {
                     <ul className={`${styles.flex} ${styles.card}`}>
                         {threeRandomGames.map((item: IGame) => (
                             <li className={`${styles.flex} ${styles.cardItem} ${styles.mr4} ${styles.maxWidth3}`} key={item.id} onClick={() => { handleDispatch(item) }}>
-                                <NavLink to={`/open/${item.title}`} >
+                                <NavLink to={`/open/${item.game_url.split('/').pop()}`} >
                                     <img src={item.thumbnail} alt={`${item.short_description}`} className={styles.w100} />
                                     <div>
                                         <h2>{item.title}</h2>
@@ -82,7 +82,7 @@ const PersonalizedRecommendations: FC = () => {
 
                         <div className={`${styles.grid} ${styles.p4} ${styles.g3} ${styles.flex} ${styles.flexWidth1n1}`}>
                             {threeRandomGames.map((item: IGame) => (
-                                <NavLink to={`/open/${item.title}`} key={uuidv4()} className={`${styles.w100}`}>
+                                <NavLink to={`/open/${item.game_url.split('/').pop()}`} key={uuidv4()} className={`${styles.w100}`}>
                                     <div className={`${styles.deepDark} ${styles.grid}`}>
                                         <div className={`${styles.flex} ${styles.w100} ${styles.mb4} ${styles.gameItem} ${styles.mr2}`} key={item.id}>
                                             <img src={item.thumbnail} alt={item.short_description} className={styles.w100} />
@@ -95,21 +95,6 @@ const PersonalizedRecommendations: FC = () => {
                                 </NavLink>
                             ))}
                         </div>
-
-                        {/* <ul className={`${styles.flex} ${styles.card}`}>
-                            {threeRandomGames.map((item: IGame) => (
-                                <li className={`${styles.flex} ${styles.cardItem} ${styles.mr4}`} key={item.id}>
-                                    <NavLink className={`${styles.linkImage}`} to={`/open/${item.title}`}>
-                                        <img src={item.thumbnail} alt={`${item.short_description}`} className={styles.w100} />
-                                        <div>
-                                            <h2>{item.title}</h2>
-                                            <button className={`${styles.cardButton}`}>Free</button>
-                                        </div>
-                                    </NavLink>
-                                </li>
-                            )
-                            )}
-                        </ul> */}
                     </div>
                 </section>
             </>

@@ -16,11 +16,18 @@
 .imageSmallSize {
     width: 180px;
     height: 100%;
+    border-radius: 8px;
+
+}
+
+.defaultWidth {
+    width: 356px;
 }
 
 .imageDefaultSize {
     width: 356px;
     height: 100%;
+    border-radius: 8px;
 }
 
 .h1 {
@@ -35,8 +42,17 @@
     margin-bottom: calc(1 * 4px);
 }
 
+.p0n2 {
+    padding: calc(2 * 4px) 0;
+}
+
+
 .p0n4 {
     padding: calc(4 * 4px) 0;
+}
+
+.mb4 {
+    margin-bottom: calc(4 * 4px);
 }
 
 .pageContainer {
@@ -64,8 +80,8 @@
     gap: 16px;
 }
 
-.posFixed img {
-    /* position: fixed; */
+.posFixed {
+    position: fixed;
 }
 
 .colLeft {
@@ -112,8 +128,27 @@
     background-repeat: no-repeat;
 }
 
+.secondary {
+    background: transparent;
+    border: 1px solid #7a8288;
+    color: #7a8288;
+}
+
+.secondary:hover {
+    border-color: #fff;
+    color: #fff;
+}
+
 .textCenter {
     text-align: center;
+}
+
+.textLeft {
+    text-align: left;
+}
+
+.mb2 {
+    margin-bottom: calc(2 * 4px);
 }
 
 .mb4 {
@@ -122,4 +157,232 @@
 
 .mb8 {
     margin-bottom: calc(8 * 4px);
+}
+
+.cardContainer {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.flexSpaceBetween {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cardItem {
+    /* background: hotpink; */
+    margin: 8px 0px;
+    font-size: 1.0rem;
+}
+
+.w60 {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 60%;
+    max-width: 60%;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+}
+
+.g2 {
+    gap: calc(2 * 4px);
+}
+
+.m0n2 {
+    margin: 0 calc(2 * 4px);
+}
+
+.w100 {
+    width: 100%;
+}
+
+.w100 textarea {
+    width: 100%;
+    padding: 10px;
+}
+
+.chatH {
+    height: 110px;
+}
+
+.chatFlex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.chatFlex img {
+    max-width: 70%;
+}
+
+.chatButton {
+    width: 50px;
+    height: 50px;
+    height: 110px;
+}
+
+.deepDark {
+    background-color: #1c1e22;
+    border: 0 solid rgba(0, 0, 0, .6);
+    border-radius: 5px;
+    color: #ccc;
+}
+
+.additionalContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 4fr);
+}
+
+.additionalItem {
+    /* background: teal; */
+
+    margin: 8px;
+    /* padding: 8px; */
+    gap: 10px;
+}
+
+.mr2 {
+    margin-right: calc(2 * 4px);
+}
+
+/* Carousel.module.css */
+
+.carouselContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.carousel {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
+}
+
+.carouselImage {
+    flex: 0 0 100%;
+    transition: opacity 0.3s ease-in-out;
+    object-fit: cover;
+    height: 100%;
+}
+
+.active {
+    opacity: 1;
+}
+
+.carouselButton {
+    margin-top: 10px;
+    padding: 8px 16px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.carouselButton:focus {
+    outline: none;
+}
+
+
+.carousel {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    height: 400px;
+}
+
+.carouselImage {
+    flex: 0 0 33.33%;
+    /* Для трех видимых слайдов */
+    transition: opacity 0.3s ease-in-out;
+    object-fit: cover;
+    height: 100%;
+}
+
+.visible {
+    opacity: 1;
+}
+
+.container {
+    padding: 40px;
+    background: #419be0;
+}
+
+.slick-slide img {
+    margin: auto;
+}
+
+.imageSmall {
+    width: 200px;
+    gap: 10px;
+    margin: 16px;
+    padding: 16px;
+}
+
+.toggleButton {
+    background-color: transparent;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    padding: 0;
+    font-size: 16px;
+    transition: color 0.3s ease;
+    /* Анимация изменения цвета */
+}
+
+/* GameDescription.module.css */
+.descriptionContainer {
+    overflow: hidden;
+    max-height: 500px;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    opacity: 1;
+}
+
+.descriptionContainer.expanded {
+    max-height: 1000px;
+    opacity: 1;
+}
+
+.descriptionContainer.collapsed {
+    max-height: 100px;
+    opacity: 0.8;
+}
+
+.toggleButton:hover {
+    color: #0056b3;
+}
+
+.mt4 {
+    margin-top: calc(4 * 4px);
+}
+
+.fontSizeSmall {
+    font-size: 80%;
+}
+
+
+
+@media screen and (min-width: 300px) and (max-width: 880px) {
+    .additionalContainer {
+        display: grid;
+        grid-template-columns: repeat(2, 4fr);
+        max-width: 80%;
+    }
+
+    .main {
+        margin-top: 0px;
+        padding: 8px;
+    }
 }

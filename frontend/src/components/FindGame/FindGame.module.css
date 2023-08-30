@@ -9,7 +9,8 @@
 }
 
 .filters {
-    padding: 24px 16px 0px 16px;
+    /* padding: 24px 16px 0px 16px; */
+    padding: 20px 20px 0px 20px;
 
     display: flex;
     justify-content: space-between;
@@ -19,7 +20,9 @@
 
 .filters input[type="text"],
 .filters select {
-    padding: 10px;
+    height: 40px;
+    padding: 0px 8px;
+    /* padding: 0 10px; */
     font-size: 14px;
 
     background: #32383e;
@@ -30,14 +33,14 @@
 }
 
 .filters input[type="text"] {
-    flex: 0 0 50%;
-    max-width: 50%;
+    flex: 0 0 23.5%;
+    max-width: 23.5%;
 }
 
 .filters select {
-    flex: 0 0 20%;
-    max-width: 20%;
-    margin-left: 10px;
+    flex: 0 0 23.5%;
+    max-width: 23.5%;
+    /* margin-left: 10px; */
 }
 
 .filters label {
@@ -46,6 +49,7 @@
 }
 
 .gameGrid {
+    min-height: 900px;
     padding: 8px 16px;
 
     display: grid;
@@ -64,10 +68,20 @@
     transition: .15s;
 
     justify-content: space-between;
+
+    height: 400px;
+}
+
+.notFoundBackground {
+    height: 400px;
+}
+
+.notFoundBackground p {
+    display: flex;
+    justify-content: center;
 }
 
 .gameCard:hover {
-    /* cursor: pointer; */
     transform: scale(1.02);
     box-shadow: 0 .9rem 1rem rgba(0, 0, 0, .199);
 }
@@ -77,6 +91,10 @@
     height: auto;
     margin-bottom: 10px;
     border-radius: 4px;
+}
+
+.gameCard .h2 {
+    margin-right: auto;
 }
 
 .pagination {
@@ -103,6 +121,10 @@
     align-items: flex-end;
 
     padding: 0px 16px 0px 16px;
+}
+
+.followButtonHeight {
+    height: 32px;
 }
 
 .paginationButton {
@@ -195,6 +217,22 @@
     cursor: pointer;
 }
 
+.buttonSmall {
+    padding: 0rem 1rem;
+    font-size: .9375rem;
+    font-weight: bold;
+    line-height: 1.5;
+
+    border: none;
+    border-radius: 8px;
+
+    transition: .15s;
+}
+
+.buttonSmall:hover {
+    cursor: pointer;
+}
+
 .light {
     background-image: -webkit-gradient(linear, left top, left bottom, from(#4799eb), color-stop(60%, #4799eb), to(#49acff));
     background-image: linear-gradient(#4799eb, #4799eb 60%, #49acff);
@@ -222,6 +260,22 @@
 .secondary:hover {
     border-color: #fff;
     color: #fff;
+}
+
+.w20 {
+    display: flex;
+    max-width: 20%;
+    flex: 0 0 20%;
+}
+
+.w80 {
+    display: flex;
+    max-width: 80%;
+    flex: 0 0 80%;
+}
+
+.w100 {
+    width: 100%;
 }
 
 @media screen and (min-width: 300px) and (max-width: 768px) {
@@ -265,9 +319,7 @@
     .filters input[type="text"] {
         flex: 0 0 100%;
         max-width: 100%;
-
-        /* margin: auto; */
-        width: 92%
+        width: 100%
     }
 
     .filters select {
@@ -282,4 +334,101 @@
     .imageSize {
         width: 100%;
     }
+
+    .pagination {
+        display: block;
+        width: 100%;
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+    }
+
+    .pagination .paginationCardLeft {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .pagination .paginationCardRight {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 16px;
+    }
+}
+
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.cardTitle {
+    margin: 0;
+}
+
+.icons {
+    display: flex;
+    gap: 8px;
+}
+
+.description {
+    margin-bottom: 8px;
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.iconContainer {
+    position: relative;
+    display: inline-block;
+}
+
+.iconContainer:hover::before {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #1c1e22;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    opacity: 0.8;
+    white-space: nowrap;
+    z-index: 1;
+    pointer-events: none;
+}
+
+select {
+    font: inherit;
+    letter-spacing: inherit;
+    word-spacing: inherit;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+select:not([multiple]) {
+    padding-right: 1.2em;
+    background-repeat: no-repeat;
+    background-position: calc(100% - 0.5em) 1em;
+    background-size: 0.85em auto;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cpath d='M70.3 13.8L40 66.3 9.7 13.8z' fill='%23ccc'%3E%3C/path%3E%3C/svg%3E");
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+.highlighted {
+    background-color: #007bff;
+    color: white;
 }

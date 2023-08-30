@@ -1,7 +1,7 @@
 import {
     ADD_SELECTED_GAME,
     CLEAR_SELECTED_GAME,
-    TCurrentGame
+    TCurrentGame,
 } from '../actions/selectedGame'
 
 const initialState = {

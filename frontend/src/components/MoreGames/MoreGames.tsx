@@ -3,7 +3,7 @@ import styles from './MoreGames.module.css';
 import { useMediaQuery } from "react-responsive";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { faWindowMaximize } from '@fortawesome/free-solid-svg-icons';
+import { faWindowMaximize, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { faWindows } from '@fortawesome/free-brands-svg-icons'
 
 import { shuffle } from 'lodash';
@@ -22,7 +22,7 @@ const RecentlyAdded: FC = () => {
     const randomGames = useMemo(() => shuffle(filteredGames), [filteredGames]);
     const sevenRandomGames = useMemo(() => randomGames.slice(0, 7), [randomGames]);
 
-    const buttonTitle = 'More Games >';
+    const buttonTitle = `More Games`;
 
     const isDesktop = useMediaQuery({
         query: "(min-width: 1224px)"
@@ -38,7 +38,7 @@ const RecentlyAdded: FC = () => {
                 <h1 className={`${styles.mb1}`}>Recently Added</h1>
                 <ul className={`${styles.card}`}>
                     {sevenRandomGames.map((item: any) => (
-                        <NavLink to={`/open/${item.title}`} key={uuidv4()} onClick={() => { handleDispatch(item) }}>
+                        <NavLink to={`/open/${item.game_url.split('/').pop()}`} key={uuidv4()} onClick={() => { handleDispatch(item) }}>
                             <li key={item.id} className={`${styles.cardItem} ${styles.mb3}`}>
                                 <div>
                                     <img src={item.thumbnail} alt={`${item.short_description}`} />
@@ -75,7 +75,7 @@ const RecentlyAdded: FC = () => {
 
                 <div className={`${styles.w100} ${styles.alignRight}`}>
                     <NavLink to='/link-7' className={`${styles.button} ${styles.secondary}`}>
-                        {buttonTitle}
+                        {buttonTitle} <FontAwesomeIcon icon={faArrowRight} />
                     </NavLink>
                 </div>
             </div>
@@ -89,7 +89,7 @@ const RecentlyAdded: FC = () => {
                 <ul className={`${styles.card}`}>
                     {sevenRandomGames.map((item: any) => (
                         <li key={uuidv4()} >
-                            <NavLink to={`/open/${item.title}`} className={`${styles.cardItem} ${styles.mb3}`} onClick={() => { handleDispatch(item) }}>
+                            <NavLink to={`/open/${item.game_url.split('/').pop()}`} className={`${styles.cardItem} ${styles.mb3}`} onClick={() => { handleDispatch(item) }}>
                                 <div>
                                     <img src={item.thumbnail} alt={`${item.short_description}`} />
                                 </div>
@@ -125,7 +125,7 @@ const RecentlyAdded: FC = () => {
 
                 <div className={`${styles.w100} ${styles.alignRight}`}>
                     <NavLink to='/link-7' className={`${styles.button} ${styles.secondary}`}>
-                        {buttonTitle}
+                        {buttonTitle} <FontAwesomeIcon icon={faArrowRight} />
                     </NavLink>
                 </div>
             </div>
@@ -162,7 +162,7 @@ const MostPlayedToday: FC = () => {
                 <ul className={`${styles.flex} ${styles.flexColumn}`}>
                     {fourRandomGames.map((item: any) => (
                         <li key={item.id} className={`${styles.overlayBlock} ${styles.flexItem} ${styles.mb4}`} onClick={() => { handleDispatch(item) }}>
-                            <NavLink to={`/open/${item.title}`}>
+                            <NavLink to={`/open/${item.game_url.split('/').pop()}`}>
                                 <div>
                                     <img src={item.thumbnail} alt={`${item.short_description}`} className={`${styles.flex} ${styles.w100}`} />
                                 </div>
@@ -185,7 +185,7 @@ const MostPlayedToday: FC = () => {
                 <ul className={`${styles.flex} ${styles.flexColumn}`}>
                     {fourRandomGames.map((item: any) => (
                         <li key={item.id} className={`${styles.overlayBlock} ${styles.flexItem} ${styles.mb4}`} onClick={() => { handleDispatch(item) }}>
-                            <NavLink to={`/open/${item.title}`}>
+                            <NavLink to={`/open/${item.game_url.split('/').pop()}`}>
                                 <div>
                                     <img src={item.thumbnail} alt={`${item.short_description}`} className={`${styles.flex} ${styles.w100} ${styles.br1}`} />
                                 </div>

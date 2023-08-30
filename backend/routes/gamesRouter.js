@@ -7,9 +7,27 @@ const ApiUrlPath = process.env.ApiUrlPath;
 router.post('/games');
 
 router.get('/all', async (req, res) => {
-    let temp = await axios.get(ApiUrlPath);
-    console.log('temp', await temp)
-    res.json(temp.data);
+    try {
+        const endpoint = '/games';
+        let temp = await axios.get(ApiUrlPath + endpoint);
+        res.json(temp.data);
+    } catch (error) {
+        console.log(error)
+    }
+});
+
+router.get('/game', async (req, res) => {
+    try {
+        const endpoint = '/game';
+        const id = req.query.id;
+        console.log('id', id)
+        if (id) {
+            let temp = await axios.get(ApiUrlPath + `${endpoint}?id=${id}`);
+            res.json(temp.data);
+        }
+    } catch (error) {
+        console.log(error)
+    }
 });
 
 module.exports = router;

@@ -34,7 +34,7 @@ const CommunityRecommendations: FC = () => {
 
                 <div className={`${styles.grid} ${styles.g3} ${styles.flex} ${styles.flexWidth1n1}`}>
                     {filteredFirstGame && (
-                        <NavLink to={`/open/${filteredFirstGame.title}`} key={uuidv4()} onClick={() => { handleDispatch(filteredFirstGame) }}>
+                        <NavLink to={`/open/${filteredFirstGame.game_url.split('/').pop()}`} key={uuidv4()} onClick={() => { handleDispatch(filteredFirstGame) }}>
                             <div className={`${styles.deepDark} ${styles.grid} ${styles.p3n1}`}>
                                 <div className={`${styles.flex} ${styles.mAutoN3} ${styles.gameItem} ${styles.mr2}`} key={filteredFirstGame.id}>
                                     <img src={filteredFirstGame.thumbnail} alt={filteredFirstGame.short_description} className={styles.w100} />
@@ -60,7 +60,7 @@ const CommunityRecommendations: FC = () => {
                     )}
 
                     {filteredSecondGame && (
-                        <NavLink to={`/open/${filteredSecondGame.title}`} key={uuidv4()} onClick={() => { handleDispatch(filteredSecondGame) }}>
+                        <NavLink to={`/open/${filteredSecondGame.game_url.split('/').pop()}`} key={uuidv4()} onClick={() => { handleDispatch(filteredSecondGame) }}>
                             <div className={`${styles.deepDark} ${styles.grid} ${styles.p3n1}`}>
                                 <div className={`${styles.flex} ${styles.mAutoN3} ${styles.gameItem} ${styles.mr2}`} key={filteredSecondGame.id}>
                                     <img src={filteredSecondGame.thumbnail} alt={filteredSecondGame.short_description} className={styles.w100} />
@@ -98,7 +98,7 @@ const CommunityRecommendations: FC = () => {
 
                 <div className={`${styles.grid} ${styles.g3} ${styles.flex} ${styles.flexWidth1n1}`}>
                     {filteredFirstGame && (
-                        <NavLink to={`/open/${filteredFirstGame.title}`} key={uuidv4()}>
+                        <NavLink to={`/open/${filteredFirstGame.game_url.split('/').pop()}`} key={uuidv4()}>
                             <div className={`${styles.deepDark} ${styles.grid} ${styles.p4} ${styles.p3n1}`}>
                                 <div className={`${styles.flex} ${styles.w100} ${styles.mb4} ${styles.gameItem} ${styles.mr2}`} key={filteredFirstGame.id}>
                                     <img src={filteredFirstGame.thumbnail} alt={filteredFirstGame.short_description} className={styles.w100} />
@@ -124,7 +124,7 @@ const CommunityRecommendations: FC = () => {
                     )}
 
                     {filteredSecondGame && (
-                        <NavLink to={`/open/${filteredSecondGame.title}`} key={uuidv4()}>
+                        <NavLink to={`/open/${filteredSecondGame.game_url.split('/').pop()}`} key={uuidv4()}>
                             <div className={`${styles.deepDark} ${styles.grid} ${styles.p4} ${styles.p3n1}`}>
                                 <div className={`${styles.flex} ${styles.w100} ${styles.mb4} ${styles.gameItem} ${styles.mr2}`} key={filteredSecondGame.id}>
                                     <img src={filteredSecondGame.thumbnail} alt={filteredSecondGame.short_description} className={styles.w100} />
