@@ -244,6 +244,16 @@
     }
 }
 
+@media screen and (max-width: 460px) {
+    .section {
+        padding: 0px;
+    }
+
+    .grid:first-child {
+        display: flex;
+        flex-direction: column;
+    }
+}
 
 @media screen and (max-width: 425px) {
     .grid:first-child {

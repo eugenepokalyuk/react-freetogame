@@ -123,3 +123,24 @@
         padding: 16px;
     }
 }
+
+@media screen and (max-width: 480px) {
+    .section {
+        padding: 0px;
+    }
+
+    .container {
+        display: flex;
+        align-content: center;
+        align-items: center;
+        padding: 0px;
+    }
+
+    .container > div:first-child {
+        padding: 24px 48px;
+    }
+
+    .padding0n12 {
+        padding: 24px 48px;
+    }
+}

@@ -324,6 +324,40 @@
     }
 }
 
+
+@media screen and (max-width: 460px) {
+    .backgroundImage {
+        padding: 0px;
+    }
+    .section {
+        padding: 0px;
+        margin: 0px;
+    }
+    .grid {
+        padding: 0px;
+    }
+    .headerFlex {
+        padding: 0px;
+        margin: 0px;
+    }
+    .card {
+        display: flex;
+        flex: 0 0 350px;
+        max-width: 350px;
+    }
+    .cardItem {
+        padding: 8px;
+    }
+    .flexWidth1n1 {
+        display: flex;
+        flex: 0 0 100%;
+        max-width: 100%;
+
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
 @media screen and (max-width: 425px) {
     .card {
         display: flex;
