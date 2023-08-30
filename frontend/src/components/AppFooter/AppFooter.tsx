@@ -18,7 +18,7 @@ const AppFooter: FC = () => {
     const DesktopView: FC = () => {
         return (
             <footer className={`${styles.footer}`}>
-                <nav>
+                <nav className={`${styles.nav}`}>
                     <div className={`${styles.container} ${styles.flex} ${styles.mb5}`}>
                         <div className={`${styles.width1n4}`}>
 

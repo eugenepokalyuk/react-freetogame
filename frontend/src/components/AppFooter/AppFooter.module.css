@@ -92,6 +92,17 @@
     width: 90%;
 }
 
+.nav {
+    max-width: 1030px;
+    height: 100%;
+    margin: auto;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
 @media screen and (min-width: 300px) and (max-width: 768px) {
     .container {
         display: flex;
