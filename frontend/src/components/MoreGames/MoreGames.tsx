@@ -37,8 +37,8 @@ const RecentlyAdded: FC = () => {
             <div className={`${styles.container}`}>
                 <h1 className={`${styles.mb1}`}>Recently Added</h1>
                 <ul className={`${styles.card}`}>
-                    {sevenRandomGames.map((item: any) => (
-                        <NavLink to={`/open/${item.game_url.split('/').pop()}`} key={uuidv4()} onClick={() => { handleDispatch(item) }}>
+                    {sevenRandomGames.map((item: IGame) => (
+                        <NavLink to={`/game/${item.id}`} key={uuidv4()} onClick={() => { handleDispatch(item) }}>
                             <li key={item.id} className={`${styles.cardItem} ${styles.mb3}`}>
                                 <div>
                                     <img src={item.thumbnail} alt={`${item.short_description}`} />
@@ -87,7 +87,7 @@ const RecentlyAdded: FC = () => {
             <div className={`${styles.container}`}>
                 <h1 className={`${styles.mb1}`}>Recently Added</h1>
                 <ul className={`${styles.card}`}>
-                    {sevenRandomGames.map((item: any) => (
+                    {sevenRandomGames.map((item: IGame) => (
                         <li key={uuidv4()} >
                             <NavLink to={`/open/${item.game_url.split('/').pop()}`} className={`${styles.cardItem} ${styles.mb3}`} onClick={() => { handleDispatch(item) }}>
                                 <div>
@@ -160,7 +160,7 @@ const MostPlayedToday: FC = () => {
             <div className={`${styles.ml5} ${styles.w1n3}`}>
                 <h1 className={`${styles.mb1}`}>Most Played Today</h1>
                 <ul className={`${styles.flex} ${styles.flexColumn}`}>
-                    {fourRandomGames.map((item: any) => (
+                    {fourRandomGames.map((item: IGame) => (
                         <li key={item.id} className={`${styles.overlayBlock} ${styles.flexItem} ${styles.mb4}`} onClick={() => { handleDispatch(item) }}>
                             <NavLink to={`/open/${item.game_url.split('/').pop()}`}>
                                 <div>
@@ -183,7 +183,7 @@ const MostPlayedToday: FC = () => {
             <div className={`${styles.w100}`}>
                 <h1 className={`${styles.mb1}`}>Most Played Today</h1>
                 <ul className={`${styles.flex} ${styles.flexColumn}`}>
-                    {fourRandomGames.map((item: any) => (
+                    {fourRandomGames.map((item: IGame) => (
                         <li key={item.id} className={`${styles.overlayBlock} ${styles.flexItem} ${styles.mb4}`} onClick={() => { handleDispatch(item) }}>
                             <NavLink to={`/open/${item.game_url.split('/').pop()}`}>
                                 <div>

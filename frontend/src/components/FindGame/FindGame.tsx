@@ -162,7 +162,7 @@ const FindGame: FC = () => {
                     ) : (
                         filteredGames.slice(startIndex, endIndex).map((item: IGame) => {
                             return (
-                                <NavLink to={`/open/${item.game_url.split('/').pop()}`} onClick={() => { handleDispatch(item) }} key={uuidv4()}>
+                                <NavLink to={`/game/${item.id}`} onClick={() => { handleDispatch(item) }} key={uuidv4()}>
                                     <div
                                         key={item.title}
                                         className={`${styles.gameCard}`}

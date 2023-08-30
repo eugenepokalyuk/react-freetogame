@@ -76,8 +76,6 @@ function App() {
           ? (<>
             <Modal onClose={closeModal}>
               <div>
-                {/* This demo of CORS Anywhere should only be used for development purposes, see https://github.com/Rob--W/cors-anywhere/issues/301. */}
-                {/* To temporarily unlock access to the demo, click on the following button: */}
                 <p className={`${styles.mb8} ${styles.fontSizeLarge}`}><FontAwesomeIcon icon={faGear} fade size="1x" /> This demo of CORS Anywhere should only be used for development purposes</p>
               </div>
 

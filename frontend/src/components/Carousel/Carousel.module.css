@@ -57,3 +57,24 @@
 .mAuto {
     margin: auto;
 }
+
+.sliderContainer {
+    max-width: 600px;
+}
+
+.p4 {
+    padding: calc(6 * 4px);
+}
+
+.card {
+    width: 100%;
+}
+
+.cardImage {
+    width: 100%;
+}
+
+.slider div {
+    margin: 0 4px;
+    width: 100%;
+}

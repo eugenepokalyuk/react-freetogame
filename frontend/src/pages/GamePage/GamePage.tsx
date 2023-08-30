@@ -4,28 +4,30 @@ import { useMediaQuery } from "react-responsive";
 import { useAppDispatch, useAppSelector } from '../../services/hooks/hooks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsDown, faInfoCircle, faThumbsUp, faCrown, faStar, faSmile, faFrown, faMeh, faWindowMaximize, faUser, faComment, faLongArrowAltUp, faPaperPlane, faSignIn, faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
-import { faTelegram, faWindows } from '@fortawesome/free-brands-svg-icons'
+import { faWindows } from '@fortawesome/free-brands-svg-icons'
 import profileImage from '../../images/profile_image_large.png';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate, useParams } from 'react-router-dom';
 import NotFound from '../NotFound/NotFound';
 import { FETCH_GAME_FAILURE, FETCH_GAME_REQUEST, FETCH_GAME_SUCCESS } from '../../services/actions/game';
 import { fetchGameData } from '../../utils/api';
 import SimpleCarousel from '../../components/Carousel';
-import Modal from '../../components/Modal/Modal';
 
 const GamePage: FC = () => {
     const dispatch = useAppDispatch();
     const { game } = useAppSelector((store: any) => store.game);
+    // Получить список всех игр
+    const { games } = useAppSelector((store: any) => store.games);
     const [isCORS, setIsCORS] = useState<boolean>(true);
     const [isLoading, setIsLoading] = useState<boolean>(true);
-
-    const { games } = useAppSelector((store: any) => store.games);
     const { selectedGame } = useAppSelector((store: any) => store.selectedGame);
 
+    const { id }: any = useParams();
+    const gameIdNumber = parseInt(id, 10);
+
     useEffect(() => {
-        if (selectedGame) {
+        if (gameIdNumber) {
             dispatch({ type: FETCH_GAME_REQUEST });
-            fetchGameData(selectedGame.id)
+            fetchGameData(gameIdNumber)
                 .then(data => {
                     dispatch({ type: FETCH_GAME_SUCCESS, payload: data });
                     setIsCORS(false)
@@ -37,8 +39,6 @@ const GamePage: FC = () => {
                 .finally(() => {
                     setIsLoading(false);
                 });
-        } else {
-            // console.log('loc', location)
         }
     }, [dispatch]);
 
@@ -51,7 +51,6 @@ const GamePage: FC = () => {
     const randomNum1 = Math.floor(Math.random() * 50);
     const randomNum2 = Math.floor(Math.random() * 50);
     const randomNum3 = Math.floor(Math.random() * 50);
-
 
     const isDesktop = useMediaQuery({
         query: "(min-width: 1224px)"
