@@ -245,7 +245,7 @@
 }
 
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 425px) {
     .grid:first-child {
         display: flex;
         flex-direction: column;

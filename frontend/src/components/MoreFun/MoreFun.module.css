@@ -112,7 +112,6 @@
 @media screen and (max-width: 1112px) {
     .container {
         display: flex;
-        padding: 16px;
     }
 }
 
