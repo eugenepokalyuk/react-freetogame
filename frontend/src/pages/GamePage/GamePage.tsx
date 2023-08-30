@@ -3,7 +3,7 @@ import styles from './GamePage.module.css';
 import { useMediaQuery } from "react-responsive";
 import { useAppDispatch, useAppSelector } from '../../services/hooks/hooks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faThumbsDown, faInfoCircle, faThumbsUp, faCrown, faStar, faSmile, faFrown, faMeh, faWindowMaximize, faUser, faComment, faLongArrowAltUp, faPaperPlane, faSignIn, faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
+import { faThumbsDown, faInfoCircle, faThumbsUp, faCrown, faStar, faSmile, faFrown, faMeh, faWindowMaximize, faUser, faComment, faLongArrowAltUp, faPaperPlane, faSignIn, faPlus, faMinus, faSpinner, faGear } from '@fortawesome/free-solid-svg-icons';
 import { faWindows } from '@fortawesome/free-brands-svg-icons'
 import profileImage from '../../images/profile_image_large.png';
 import { NavLink, useLocation, useNavigate, useParams } from 'react-router-dom';
@@ -11,9 +11,14 @@ import NotFound from '../NotFound/NotFound';
 import { FETCH_GAME_FAILURE, FETCH_GAME_REQUEST, FETCH_GAME_SUCCESS } from '../../services/actions/game';
 import { fetchGameData } from '../../utils/api';
 import SimpleCarousel from '../../components/Carousel';
+import Modal from '../../components/Modal/Modal';
 
 const GamePage: FC = () => {
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
+
+    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+
     const { game } = useAppSelector((store: any) => store.game);
     // Получить список всех игр
     const { games } = useAppSelector((store: any) => store.games);
@@ -28,19 +33,21 @@ const GamePage: FC = () => {
         if (gameIdNumber) {
             dispatch({ type: FETCH_GAME_REQUEST });
             fetchGameData(gameIdNumber)
-                .then(data => {
-                    dispatch({ type: FETCH_GAME_SUCCESS, payload: data });
+                .then(res => {
+                    dispatch({ type: FETCH_GAME_SUCCESS, payload: res });
                     setIsCORS(false)
+                    setIsLoading(false);
                 })
                 .catch(error => {
                     dispatch({ type: FETCH_GAME_FAILURE });
+                    setIsLoading(true);
                     setIsCORS(true)
                 })
-                .finally(() => {
-                    setIsLoading(false);
-                });
+            // .finally(() => {
+            // setIsLoading(false);
+            // });
         }
-    }, [dispatch]);
+    }, [dispatch, gameIdNumber]);
 
     const randomMember = Math.floor(Math.random() * 100);
     const randomPositive = Math.floor(Math.random() * 3);
@@ -55,6 +62,11 @@ const GamePage: FC = () => {
     const isDesktop = useMediaQuery({
         query: "(min-width: 1224px)"
     });
+
+    const closeModal = () => {
+        navigate(-1);
+        setIsModalOpen(false);
+    };
 
     const formatDate = (dateString: string) => {
         const options: Object = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -296,7 +308,7 @@ const GamePage: FC = () => {
     const GameSystemRequirements: FC = () => {
         return (
             <div className={`${styles.cardContainer} ${styles.mb4}`}>
-                {game.platform && game.platform === 'Windows, Web Browser'
+                {game && game.platform === 'Windows, Web Browser'
                     ?
                     <>
                         <h2 className={`${styles.h2}`}>Minimum System Requirements</h2>
@@ -518,15 +530,37 @@ const GamePage: FC = () => {
 
     return (
         <>
-            {game
+            {isLoading
                 ? (
                     <>
-                        {isDesktop
-                            ? <DesktopView />
-                            : <MobileView />}
+                        <Modal onClose={closeModal}>
+                            <div>
+                                <p className={`${styles.mb8} ${styles.fontSizeLarge}`}>Please wait, the data for the application is being loaded</p>
+
+                                <p className={`${styles.mb8}`}>
+                                    <FontAwesomeIcon icon={faSpinner} spin size="5x" className={`${styles.mr2}`} />
+                                </p>
+                            </div>
+
+                        </Modal>
+                        <main className={styles.main}></main>
                     </>
-                ) : (
-                    <NotFound />
+                )
+                : (
+                    <>
+                        {gameIdNumber ? (
+                            <>
+                                {isDesktop
+                                    ? <DesktopView />
+                                    : <MobileView />
+                                }
+                            </>
+                        ) : (
+                            <>
+                                <NotFound />
+                            </>
+                        )}
+                    </>
                 )
             }
         </>

@@ -47,13 +47,6 @@ const FindGame: FC = () => {
     const uniqueGenres = Array.from(new Set(games.map((item: IGame) => item.genre)));
     const uniquePlatforms = Array.from(new Set(games.map((item: IGame) => item.platform)));
 
-    // const filteredGames = games.filter((game: IGame) => {
-    //     const searchMatch = game.title.toLowerCase().includes(searchTerm.toLowerCase())
-    //     const genreMatch = (selectedGenre === '' || game.genre === selectedGenre)
-    //     const platformMatch = (selectedPlatform === '' || game.platform === selectedPlatform)
-    //     return searchMatch && genreMatch && platformMatch;
-    // });
-
     const filteredGames = games
         .filter((game: IGame) => {
             const searchMatch = game.title.toLowerCase().includes(searchTerm.toLowerCase());
@@ -65,13 +58,22 @@ const FindGame: FC = () => {
             if (selectedSort === 'release_date') {
                 return new Date(a.release_date).getTime() - new Date(b.release_date).getTime();
             } else if (selectedSort === 'publisher') {
-                return b.publisher - a.publisher;
+                return a.publisher.localeCompare(b.publisher);
             } else if (selectedSort === 'developer') {
-                return b.developer - a.developer;
+                return b.developer.localeCompare(a.developer);
             }
             return 0;
-        });
-
+        })
+    // .sort((a: any, b: any) => {
+    //     if (selectedSort === 'release_date') {
+    //         return new Date(a.release_date).getTime() - new Date(b.release_date).getTime();
+    //     } else if (selectedSort === 'publisher') {
+    //         return b.publisher - a.publisher;
+    //     } else if (selectedSort === 'developer') {
+    //         return b.developer - a.developer;
+    //     }
+    //     return 0;
+    // })
 
     const totalPages = Math.ceil(filteredGames.length / gamesPerPage);
 
@@ -85,6 +87,11 @@ const FindGame: FC = () => {
 
     const handleDispatch = (item: IGame) => {
         dispatch({ type: ADD_SELECTED_GAME, payload: item })
+    }
+
+    const formatDate = (dateString: string) => {
+        const options: Object = { year: 'numeric', month: 'long', day: 'numeric' };
+        return new Date(dateString).toLocaleDateString('en-US', options);
     }
 
     const isDesktop = useMediaQuery({
@@ -188,6 +195,16 @@ const FindGame: FC = () => {
                                                 </div>
                                             </div>
 
+                                            <div className={`${styles.flex} ${styles.mb2}`}>
+                                                <p className={`${styles.mrAuto}`}>
+                                                    {item.publisher}
+                                                </p>
+
+                                                <p className={`${styles.mrAuto}`}>
+                                                    {formatDate(item.release_date)}
+                                                </p>
+                                            </div>
+
                                             <p className={`${styles.textMuted} ${styles.description}`}>{item.short_description}</p>
 
                                             <div className={`${styles.flex} ${styles.mb2}`}>
@@ -195,6 +212,7 @@ const FindGame: FC = () => {
                                                     <span className={`${styles.badge}`}>{item.genre}</span>
                                                 </p>
                                             </div>
+
                                         </div>
 
                                         <div className={styles.w100}>

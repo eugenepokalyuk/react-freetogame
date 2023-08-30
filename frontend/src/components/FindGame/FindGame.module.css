@@ -10,12 +10,13 @@
 
 .filters {
     /* padding: 24px 16px 0px 16px; */
-    padding: 20px 20px 0px 20px;
+    /* padding: 20px 20px 0px 20px; */
+    padding: 16px 16px 8px 16px;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
 }
 
 .filters input[type="text"],
@@ -49,12 +50,18 @@
 }
 
 .gameGrid {
-    min-height: 900px;
+    /* min-height: 900px; */
     padding: 8px 16px;
 
     display: grid;
     grid-template-columns: repeat(3, 4fr);
     grid-gap: 20px;
+}
+
+.gameGrid a {
+    display: flex;
+    /* height: 100%; */
+    /* background: hotpink; */
 }
 
 .gameCard {
@@ -69,7 +76,7 @@
 
     justify-content: space-between;
 
-    height: 400px;
+    height: auto;
 }
 
 .notFoundBackground {
@@ -95,6 +102,13 @@
 
 .gameCard .h2 {
     margin-right: auto;
+}
+
+.cardHeader div h2 {
+    /* overflow: hidden; */
+    /* text-overflow: ellipsis; */
+    /* white-space: nowrap; */
+    /* width: 99%; */
 }
 
 .pagination {
@@ -356,7 +370,7 @@ select::-ms-expand {
 
 @media screen and (min-width: 300px) and (max-width: 768px) {
     .gameGrid {
-        padding: 8px 16px;
+        /* padding: 8px 16px; */
 
         display: grid;
         grid-template-columns: repeat(1, 4fr);
@@ -391,7 +405,8 @@ select::-ms-expand {
         flex: 0 0 100%;
         max-width: 100%;
     }
-/* 
+
+    /* 
     .filters input[type="text"] {
         flex: 0 0 100%;
         max-width: 100%;

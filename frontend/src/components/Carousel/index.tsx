@@ -16,7 +16,7 @@ const SimpleCarousel = (game: any) => {
         autoplay: true,
         speed: 2000,
         autoplaySpeed: 2000,
-        slidesToShow: 3,
+        slidesToShow: 2,
         slidesToScroll: 1,
         initialSlide: 0,
         adaptiveHeight: true,

@@ -89,7 +89,7 @@ const RecentlyAdded: FC = () => {
                 <ul className={`${styles.card}`}>
                     {sevenRandomGames.map((item: IGame) => (
                         <li key={uuidv4()} >
-                            <NavLink to={`/open/${item.game_url.split('/').pop()}`} className={`${styles.cardItem} ${styles.mb3}`} onClick={() => { handleDispatch(item) }}>
+                            <NavLink to={`/game/${item.id}}`} className={`${styles.cardItem} ${styles.mb3}`} onClick={() => { handleDispatch(item) }}>
                                 <div>
                                     <img src={item.thumbnail} alt={`${item.short_description}`} />
                                 </div>
@@ -162,7 +162,7 @@ const MostPlayedToday: FC = () => {
                 <ul className={`${styles.flex} ${styles.flexColumn}`}>
                     {fourRandomGames.map((item: IGame) => (
                         <li key={item.id} className={`${styles.overlayBlock} ${styles.flexItem} ${styles.mb4}`} onClick={() => { handleDispatch(item) }}>
-                            <NavLink to={`/open/${item.game_url.split('/').pop()}`}>
+                            <NavLink to={`/game/${item.id}}`}>
                                 <div>
                                     <img src={item.thumbnail} alt={`${item.short_description}`} className={`${styles.flex} ${styles.w100}`} />
                                 </div>
@@ -185,7 +185,7 @@ const MostPlayedToday: FC = () => {
                 <ul className={`${styles.flex} ${styles.flexColumn}`}>
                     {fourRandomGames.map((item: IGame) => (
                         <li key={item.id} className={`${styles.overlayBlock} ${styles.flexItem} ${styles.mb4}`} onClick={() => { handleDispatch(item) }}>
-                            <NavLink to={`/open/${item.game_url.split('/').pop()}`}>
+                            <NavLink to={`/game/${item.id}}`}>
                                 <div>
                                     <img src={item.thumbnail} alt={`${item.short_description}`} className={`${styles.flex} ${styles.w100} ${styles.br1}`} />
                                 </div>

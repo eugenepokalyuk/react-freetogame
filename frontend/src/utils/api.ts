@@ -9,6 +9,7 @@ export const fetchGameData = async (id: number, maxRetries = 3) => {
     const endpoint = '/games';
     const endpoint1 = '/game';
     const queryParam = `?id=${id}`;
+
     if (id) {
         // запрос с бэкенда
         while (retries < maxRetries) {
@@ -47,7 +48,12 @@ export const fetchGameData = async (id: number, maxRetries = 3) => {
                 retries++;
             }
         }
-        throw new Error(`Failed to fetch games data after ${maxRetries} retries.`);
+        
+        return {
+            message: `Failed to fetch games data after ${maxRetries} retries.`,
+            status: 'error'
+        }
+        // throw new Error(`Failed to fetch games data after ${maxRetries} retries.`);
     }
 }
 

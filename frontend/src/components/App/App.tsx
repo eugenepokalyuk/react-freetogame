@@ -34,8 +34,8 @@ function App() {
   useEffect(() => {
     dispatch({ type: FETCH_GAMES_REQUEST });
     fetchGamesData()
-      .then(data => {
-        dispatch({ type: FETCH_GAMES_SUCCESS, payload: data });
+      .then(res => {
+        dispatch({ type: FETCH_GAMES_SUCCESS, payload: res });
         setIsCORS(false)
       })
       .catch(error => {
