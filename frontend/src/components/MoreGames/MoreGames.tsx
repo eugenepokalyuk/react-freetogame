@@ -74,7 +74,7 @@ const RecentlyAdded: FC = () => {
                 </ul>
 
                 <div className={`${styles.w100} ${styles.alignRight}`}>
-                    <NavLink to='/link-7' className={`${styles.button} ${styles.secondary}`}>
+                    <NavLink to='/interface' className={`${styles.button} ${styles.secondary}`}>
                         {buttonTitle} <FontAwesomeIcon icon={faArrowRight} />
                     </NavLink>
                 </div>
@@ -124,7 +124,7 @@ const RecentlyAdded: FC = () => {
                 </ul>
 
                 <div className={`${styles.w100} ${styles.alignRight}`}>
-                    <NavLink to='/link-7' className={`${styles.button} ${styles.secondary}`}>
+                    <NavLink to='/interface' className={`${styles.button} ${styles.secondary}`}>
                         {buttonTitle} <FontAwesomeIcon icon={faArrowRight} />
                     </NavLink>
                 </div>
