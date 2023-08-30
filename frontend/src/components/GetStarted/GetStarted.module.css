@@ -181,3 +181,9 @@
         height: 100%;
     }
 }
+
+@media screen and (max-width: 962px) {
+    .backgroundImage {
+        padding: 24px 18px;
+    }
+}

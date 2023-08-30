@@ -372,8 +372,6 @@
     font-size: 80%;
 }
 
-
-
 @media screen and (min-width: 300px) and (max-width: 880px) {
     .additionalContainer {
         display: grid;
@@ -384,5 +382,11 @@
     .main {
         margin-top: 0px;
         padding: 8px;
+    }
+}
+
+@media screen and (min-width: 880px) and (max-width: 1080px) {
+    .main {
+        padding: 16px;
     }
 }

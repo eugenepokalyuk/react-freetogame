@@ -278,86 +278,6 @@
     width: 100%;
 }
 
-@media screen and (min-width: 300px) and (max-width: 768px) {
-    .gameGrid {
-        padding: 8px 16px;
-
-        display: grid;
-        grid-template-columns: repeat(1, 4fr);
-        grid-gap: 20px;
-    }
-
-    .filters {
-        padding: 24px 16px 0px 16px;
-
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 20px;
-    }
-
-    .filters input[type="text"],
-    .filters select {
-        font-size: 14px;
-
-        background: #32383e;
-        color: #fff;
-
-        border: none;
-        border-radius: 4px;
-
-        margin: 8px;
-        padding: 16px;
-
-        width: 100%;
-
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
-
-    .filters input[type="text"] {
-        flex: 0 0 100%;
-        max-width: 100%;
-        width: 100%
-    }
-
-    .filters select {
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
-
-    .filters label {
-        font-weight: bold;
-    }
-
-    .imageSize {
-        width: 100%;
-    }
-
-    .pagination {
-        display: block;
-        width: 100%;
-        display: flex;
-        flex-direction: column-reverse;
-        justify-content: center;
-        align-items: center;
-        margin: 0 auto;
-    }
-
-    .pagination .paginationCardLeft {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-    }
-
-    .pagination .paginationCardRight {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        margin-bottom: 16px;
-    }
-}
 
 .cardHeader {
     display: flex;
@@ -431,4 +351,125 @@ select::-ms-expand {
 .highlighted {
     background-color: #007bff;
     color: white;
+}
+
+@media screen and (min-width: 300px) and (max-width: 768px) {
+    .gameGrid {
+        padding: 8px 16px;
+
+        display: grid;
+        grid-template-columns: repeat(1, 4fr);
+        grid-gap: 20px;
+    }
+
+    .filters {
+        padding: 24px 16px 0px 16px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .filters input[type="text"],
+    .filters select {
+        font-size: 14px;
+
+        background: #32383e;
+        color: #fff;
+
+        border: none;
+        border-radius: 4px;
+
+        margin: 8px;
+        padding: 16px;
+
+        width: 100%;
+
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+/* 
+    .filters input[type="text"] {
+        flex: 0 0 100%;
+        max-width: 100%;
+        width: 100%
+    } */
+
+    .filters select {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .filters label {
+        font-weight: bold;
+    }
+
+    .imageSize {
+        width: 100%;
+    }
+
+    .pagination {
+        display: block;
+        width: 100%;
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+    }
+
+    .pagination .paginationCardLeft {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .pagination .paginationCardRight {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 16px;
+    }
+
+    .gameCard {
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 782px) {
+    .gameCard div {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .filters input[type="text"] {
+        width: 95%;
+    }
+}
+
+@media screen and (max-width: 678px) {
+    .gameCard div {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 507px) {
+    .filters input[type="text"] {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .filters input[type="text"] {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 678px) {
+    input[type="text"] {
+        width: 95%;
+    }
 }

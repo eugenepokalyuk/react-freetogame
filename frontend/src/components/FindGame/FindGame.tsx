@@ -38,7 +38,6 @@ const FindGame: FC = () => {
         }
     }, [inputFocus]);
 
-    // const sortOptions = Array.from(new Set(games.map((item: IGame) => item.release_date)));
     const sortOptions = [
         { value: 'release_date', label: 'Release Date' },
         { value: 'publisher', label: 'Publisher' },
@@ -166,10 +165,10 @@ const FindGame: FC = () => {
                                 <NavLink to={`/open/${item.game_url.split('/').pop()}`} onClick={() => { handleDispatch(item) }} key={uuidv4()}>
                                     <div
                                         key={item.title}
-                                        className={styles.gameCard}
+                                        className={`${styles.gameCard}`}
                                     >
-                                        <div className={`${styles.w100}`}>
-                                            <img src={item.thumbnail} alt="" />
+                                        <div>
+                                            <img src={item.thumbnail} alt="" className={`${styles.w100}`} />
 
                                             <div className={styles.cardHeader}>
                                                 <div>

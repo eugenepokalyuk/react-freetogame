@@ -69,7 +69,7 @@ const AppHeader: FC = () => {
         isActive ? `${styles.nav_link} ${styles.nav_link_active}` : `${styles.nav_link}`;
 
     const isDesktop = useMediaQuery({
-        query: "(min-width: 1224px)"
+        query: "(min-width: 768px)"
     });
 
     const DesktopView: FC = () => {

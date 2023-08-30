@@ -215,7 +215,10 @@
     }
 }
 
-@media screen and (min-width: 820px) and (max-width: 1024px) {
+@media screen and (max-width: 962px) {
+    .header {
+        height: 100px;
+    }
     .nav {
         display: flex;
         justify-content: space-between;

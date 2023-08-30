@@ -224,3 +224,40 @@
         margin: 0px 16px;
     }
 }
+
+
+@media screen and (max-width: 1112px) {
+    .container {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .flexColumn {
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+    }
+}
+
+@media screen and (max-width: 962px) {
+    .container {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .flexColumn {
+        flex-direction: row;
+        gap: 16px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .positionBottom {
+        margin: 0px 8px;
+        padding: 8px;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .flexColumn {
+        flex-direction: column;
+    }
+}

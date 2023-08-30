@@ -8,3 +8,17 @@
         overflow: hidden;
     }
 }
+
+@media screen and (max-width: 962px) {
+    .main {
+        margin-top: 100px;
+        margin-bottom: 0px;
+        padding: 8px;
+    }
+}
+
+@media screen and (max-width: 678px) {
+    .main {
+        margin-top: 0;
+    }
+}

@@ -22,8 +22,6 @@ const GamePage: FC = () => {
     const { games } = useAppSelector((store: any) => store.games);
     const { selectedGame } = useAppSelector((store: any) => store.selectedGame);
 
-    console.log(game.description)
-
     useEffect(() => {
         if (selectedGame) {
             dispatch({ type: FETCH_GAME_REQUEST });

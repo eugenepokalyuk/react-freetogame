@@ -18,7 +18,7 @@ const PersonalizedRecommendations: FC = () => {
     const threeRandomGames = useMemo(() => randomGames.slice(0, 3), [randomGames]);
 
     const isDesktop = useMediaQuery({
-        query: "(min-width: 1224px)"
+        query: "(min-width: 800px)"
     })
 
     const handleDispatch = (item: IGame) => {
@@ -82,7 +82,7 @@ const PersonalizedRecommendations: FC = () => {
 
                         <div className={`${styles.grid} ${styles.p4} ${styles.g3} ${styles.flex} ${styles.flexWidth1n1}`}>
                             {threeRandomGames.map((item: IGame) => (
-                                <NavLink to={`/open/${item.game_url.split('/').pop()}`} key={uuidv4()} className={`${styles.w100}`}>
+                                <NavLink to={`/open/${item.game_url.split('/').pop()}`} key={uuidv4()} className={`${styles.w100}`} onClick={() => { handleDispatch(item) }}>
                                     <div className={`${styles.deepDark} ${styles.grid}`}>
                                         <div className={`${styles.flex} ${styles.w100} ${styles.mb4} ${styles.gameItem} ${styles.mr2}`} key={item.id}>
                                             <img src={item.thumbnail} alt={item.short_description} className={styles.w100} />

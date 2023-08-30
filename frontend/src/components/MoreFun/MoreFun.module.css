@@ -97,6 +97,7 @@
     box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
     -webkit-box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
 }
+
 @media screen and (min-width: 300px) and (max-width: 880px) {
     .container {
         display: flex;
@@ -105,5 +106,21 @@
         text-align: center;
         justify-content: center;
         align-items: center;
+    }
+}
+
+@media screen and (max-width: 1112px) {
+    .container {
+        display: flex;
+        padding: 16px;
+    }
+}
+
+@media screen and (max-width: 962px) {
+    .container {
+        display: flex;
+        align-content: center;
+        align-items: center;
+        padding: 16px;
     }
 }
