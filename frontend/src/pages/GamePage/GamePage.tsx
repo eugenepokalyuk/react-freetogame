@@ -3,10 +3,10 @@ import styles from './GamePage.module.css';
 import { useMediaQuery } from "react-responsive";
 import { useAppDispatch, useAppSelector } from '../../services/hooks/hooks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faThumbsDown, faInfoCircle, faThumbsUp, faCrown, faStar, faSmile, faFrown, faMeh, faWindowMaximize, faUser, faComment, faLongArrowAltUp, faPaperPlane, faSignIn, faPlus, faMinus, faSpinner, faGear } from '@fortawesome/free-solid-svg-icons';
+import { faThumbsDown, faInfoCircle, faThumbsUp, faCrown, faStar, faSmile, faFrown, faMeh, faWindowMaximize, faUser, faComment, faLongArrowAltUp, faPaperPlane, faSignIn, faPlus, faMinus, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { faWindows } from '@fortawesome/free-brands-svg-icons'
 import profileImage from '../../images/profile_image_large.png';
-import { NavLink, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import NotFound from '../NotFound/NotFound';
 import { FETCH_GAME_FAILURE, FETCH_GAME_REQUEST, FETCH_GAME_SUCCESS } from '../../services/actions/game';
 import { fetchGameData } from '../../utils/api';
@@ -16,40 +16,11 @@ import Modal from '../../components/Modal/Modal';
 const GamePage: FC = () => {
     const dispatch = useAppDispatch();
     const navigate = useNavigate();
-
-    const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-
+    const [, setIsModalOpen] = useState<boolean>(false);
     const { game } = useAppSelector((store: any) => store.game);
-    // Получить список всех игр
-    const { games } = useAppSelector((store: any) => store.games);
-    const [isCORS, setIsCORS] = useState<boolean>(true);
     const [isLoading, setIsLoading] = useState<boolean>(true);
-    const { selectedGame } = useAppSelector((store: any) => store.selectedGame);
-
-    // const { id }: any = useParams();
-    const id: any = useParams<Readonly<string>>();
+    const { id }: any = useParams<Readonly<string>>();
     const gameIdNumber = parseInt(id, 10);
-
-    useEffect(() => {
-        if (gameIdNumber) {
-            dispatch({ type: FETCH_GAME_REQUEST });
-            fetchGameData(gameIdNumber)
-                .then(res => {
-                    dispatch({ type: FETCH_GAME_SUCCESS, payload: res });
-                    setIsCORS(false)
-                    setIsLoading(false);
-                })
-                .catch(error => {
-                    dispatch({ type: FETCH_GAME_FAILURE });
-                    setIsLoading(true);
-                    setIsCORS(true)
-                })
-            // .finally(() => {
-            // setIsLoading(false);
-            // });
-        }
-    }, [dispatch, gameIdNumber]);
-
     const randomMember = Math.floor(Math.random() * 100);
     const randomPositive = Math.floor(Math.random() * 3);
     const randomGameLibrary = Math.floor(Math.random() * 1000);
@@ -64,6 +35,19 @@ const GamePage: FC = () => {
         query: "(min-width: 1224px)"
     });
 
+    useEffect(() => {
+        dispatch({ type: FETCH_GAME_REQUEST });
+        fetchGameData(gameIdNumber)
+            .then((res) => {
+                dispatch({ type: FETCH_GAME_SUCCESS, payload: res });
+                setIsLoading(false);
+            })
+            .catch(error => {
+                dispatch({ type: FETCH_GAME_FAILURE });
+                setIsLoading(true);
+            })
+    }, [dispatch, gameIdNumber]);
+
     const closeModal = () => {
         navigate(-1);
         setIsModalOpen(false);
@@ -76,7 +60,7 @@ const GamePage: FC = () => {
 
     const ChatBlock: FC = () => {
         const [message, setMessage] = useState('');
-        const [messageDelivered, setMessageDelivered] = useState(false);
+        const [, setMessageDelivered] = useState(false);
 
         const handleSendMessage = () => {
             alert('Your message will appear after verification')
@@ -553,41 +537,28 @@ const GamePage: FC = () => {
     }
 
     return (
-        <>
-            {isLoading
-                ? (
-                    <>
-                        <Modal onClose={closeModal}>
-                            <div>
-                                <p className={`${styles.mb8} ${styles.fontSizeLarge}`}>Please wait, the data for the application is being loaded</p>
+        isLoading
+            ? (
+                <>
+                    <Modal onClose={closeModal}>
+                        <div>
+                            <p className={`${styles.mb8} ${styles.fontSizeLarge}`}>Please wait, the data for the application is being loaded</p>
 
-                                <p className={`${styles.mb8}`}>
-                                    <FontAwesomeIcon icon={faSpinner} spin size="5x" className={`${styles.mr2}`} />
-                                </p>
-                            </div>
+                            <p className={`${styles.mb8}`}>
+                                <FontAwesomeIcon icon={faSpinner} spin size="5x" className={`${styles.mr2}`} />
+                            </p>
+                        </div>
 
-                        </Modal>
-                        <main className={styles.main}></main>
-                    </>
-                )
-                : (
-                    <>
-                        {gameIdNumber ? (
-                            <>
-                                {isDesktop
-                                    ? <DesktopView />
-                                    : <MobileView />
-                                }
-                            </>
-                        ) : (
-                            <>
-                                <NotFound />
-                            </>
-                        )}
-                    </>
-                )
-            }
-        </>
+                    </Modal>
+                    <main className={styles.main}></main>
+                </>
+            ) : (
+                gameIdNumber
+                    ? (isDesktop
+                        ? <DesktopView />
+                        : <MobileView />
+                    ) : (<NotFound />)
+            )
     );
 };
 
