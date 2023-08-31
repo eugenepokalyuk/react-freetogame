@@ -76,11 +76,12 @@ function App() {
           ? (<>
             <Modal onClose={closeModal}>
               <div>
-                <p className={`${styles.mb8} ${styles.fontSizeLarge}`}><FontAwesomeIcon icon={faGear} fade size="1x" /> Sorry, but i can get response, try again please later</p>
+                <p className={`${styles.mb8} ${styles.fontSizeLarge}`}><FontAwesomeIcon icon={faGear} spin size="5x" /></p>
               </div>
 
-              <div className={`${styles.mb4}`}>
-                <p>We are very sorry <FontAwesomeIcon className={styles.smailNegative} icon={faFrown} size="2x" /></p>
+              <div>
+                <p className={`${styles.mb8} ${styles.fontSizeLarge}`}> Sorry, but i can get response</p>
+                <p className={`${styles.mb8} ${styles.fontSizeLarge}`}> Try again please later...</p>
               </div>
 
             </Modal>

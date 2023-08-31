@@ -3,7 +3,7 @@ import styles from './GamePage.module.css';
 import { useMediaQuery } from "react-responsive";
 import { useAppDispatch, useAppSelector } from '../../services/hooks/hooks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faThumbsDown, faInfoCircle, faThumbsUp, faCrown, faStar, faSmile, faFrown, faMeh, faWindowMaximize, faUser, faComment, faLongArrowAltUp, faPaperPlane, faSignIn, faPlus, faMinus, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faThumbsDown, faInfoCircle, faThumbsUp, faCrown, faStar, faSmile, faFrown, faMeh, faWindowMaximize, faUser, faComment, faLongArrowAltUp, faPaperPlane, faSignIn, faPlus, faMinus, faSpinner, faGear } from '@fortawesome/free-solid-svg-icons';
 import { faWindows } from '@fortawesome/free-brands-svg-icons'
 import profileImage from '../../images/profile_image_large.png';
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
@@ -19,6 +19,7 @@ const GamePage: FC = () => {
     const [, setIsModalOpen] = useState<boolean>(false);
     const { game } = useAppSelector((store: any) => store.game);
     const [isLoading, setIsLoading] = useState<boolean>(true);
+    const [isError, setError] = useState<boolean>(true);
     const { id }: any = useParams<Readonly<string>>();
     const gameIdNumber = parseInt(id, 10);
     const randomMember = Math.floor(Math.random() * 100);
@@ -40,12 +41,15 @@ const GamePage: FC = () => {
         fetchGameData(gameIdNumber)
             .then((res) => {
                 dispatch({ type: FETCH_GAME_SUCCESS, payload: res });
-                setIsLoading(false);
+                setError(false);
             })
             .catch(error => {
                 dispatch({ type: FETCH_GAME_FAILURE });
-                setIsLoading(true);
+                setError(true);
             })
+            .finally(() => {
+                setIsLoading(false);
+            });
     }, [dispatch, gameIdNumber]);
 
     const closeModal = () => {
@@ -552,13 +556,29 @@ const GamePage: FC = () => {
                     </Modal>
                     <main className={styles.main}></main>
                 </>
-            ) : (
-                gameIdNumber
-                    ? (isDesktop
-                        ? <DesktopView />
-                        : <MobileView />
-                    ) : (<NotFound />)
-            )
+            ) : isError
+                ? (
+                    <>
+                        <Modal onClose={closeModal}>
+                            <div>
+                                <p className={`${styles.mb8} ${styles.fontSizeLarge}`}><FontAwesomeIcon icon={faGear} spin size="5x" /></p>
+                            </div>
+
+                            <div>
+                                <p className={`${styles.mb8} ${styles.fontSizeLarge}`}> Sorry, but i can get response</p>
+                                <p className={`${styles.mb8} ${styles.fontSizeLarge}`}> Try again please later...</p>
+                            </div>
+
+                        </Modal>
+                        <main className={styles.main}></main>
+                    </>
+                ) : (
+                    gameIdNumber
+                        ? (isDesktop
+                            ? <DesktopView />
+                            : <MobileView />
+                        ) : (<NotFound />)
+                )
     );
 };
 

@@ -13,8 +13,7 @@ export const fetchGameData = async (id: number) => {
 
     while (attempts < 3) {
         try {
-            response = await axios.get(`${ApiUrlPathBackend}${endpoint}${endpoint1}${queryParam}`);
-
+            response = await axios.get(`${ApiUrlPathBackend}${endpoint}1${endpoint1}${queryParam}`);
             if (response.status === 200) {
                 return response.data;
             } else {
@@ -43,7 +42,7 @@ export const fetchGameData = async (id: number) => {
         response = await axios.get(`${ApiUrlPath}${endpoint1}${queryParam}`, option);
 
         if (response.status === 200) {
-            return response;
+            return response.data;
         } else {
             throw new Error('Both sources failed');
         }
@@ -52,54 +51,53 @@ export const fetchGameData = async (id: number) => {
     }
 }
 
-export const fetchGamesData = async (maxRetries = 3) => {
-
-    console.log('env', process.env.REACT_APP_NAME)
-
+export const fetchGamesData = async () => {
     const endpoint = '/games';
     const endpoint1 = '/all';
-    let retries = 0;
+    let attempts = 0;
+    let response;
 
     // запрос с бэкенда
-    while (retries < maxRetries) {
+    while (attempts < 3) {
         try {
-            const response = await axios.get(`${ApiUrlPathBackend}${endpoint}${endpoint1}`);
-            return response.data;
-        } catch (error) {
-            console.error('Error fetching games data:', error);
-            retries++;
-        }
-    }
-
-    retries = 0;
-
-    // запрос с API FreeToGame
-    while (retries < maxRetries) {
-        try {
-            interface iOption extends AxiosRequestConfig {
-                method: string,
-                url: string,
-                headers: {
-                    'X-RapidAPI-Key'?: string
-                    'X-RapidAPI-Host': string
-                }
+            response = await axios.get(`${ApiUrlPathBackend}${endpoint}1${endpoint1}`);
+            if (response.status === 200) {
+                return response.data;
+            } else {
+                attempts++;
             }
-
-            const option: iOption = {
-                method: 'GET',
-                url: 'https://free-to-play-games-database.p.rapidapi.com/api/games',
-                headers: {
-                    'X-RapidAPI-Key': process.env.REACT_APP_NAME,
-                    'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com',
-                },
-            };
-
-            const response = await axios.request(option);
-            return response.data;
         } catch (error) {
-            console.error('Error fetching games data:', error);
-            retries++;
+            attempts++;
         }
     }
-    throw new Error(`Failed to fetch games data after ${maxRetries} retries.`);
+
+    try {
+        interface iOption extends AxiosRequestConfig {
+            method: string,
+            url: string,
+            headers: {
+                'X-RapidAPI-Key'?: string
+                'X-RapidAPI-Host': string
+            }
+        }
+
+        const option: iOption = {
+            method: 'GET',
+            url: 'https://free-to-play-games-database.p.rapidapi.com/api/games',
+            headers: {
+                'X-RapidAPI-Key': process.env.REACT_APP_NAME,
+                'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com',
+            },
+        };
+
+        response = await axios.request(option);
+
+        if (response.status === 200) {
+            return response.data;
+        } else {
+            throw new Error('Both sources failed');
+        }
+    } catch (error) {
+        throw new Error('Both sources failed');
+    }
 }
