@@ -76,7 +76,7 @@ const AppHeader: FC = () => {
         return (
             <header className={`${styles.header}`}>
                 <nav className={`${styles.container} ${styles.flex} ${styles.shadows}`}>
-                    <NavLink to='/' className={`${styles.flex} ${styles.link} ${styles.p01}`}>
+                    <NavLink to="/" className={`${styles.flex} ${styles.link} ${styles.p01}`}>
                         <img src={logoUrl} alt="Логотип компании FreeToGame" />
                     </NavLink>
 
