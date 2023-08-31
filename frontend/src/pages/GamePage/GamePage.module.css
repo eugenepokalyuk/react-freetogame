@@ -12,6 +12,9 @@
 .flex {
     display: flex;
 }
+.flexColumn {
+    flex-direction: column;
+}
 
 .imageSmallSize {
     width: 180px;
@@ -145,6 +148,14 @@
 
 .textLeft {
     text-align: left;
+}
+
+.textAlignJustify {
+    text-align: justify;
+}
+
+.textColorBlue {
+    color: #4799eb;
 }
 
 .mb2 {
@@ -335,15 +346,18 @@
 .toggleButton {
     background-color: transparent;
     border: none;
-    color: #007bff;
+    color: #fff;
     cursor: pointer;
     padding: 0;
     font-size: 16px;
     transition: color 0.3s ease;
-    /* Анимация изменения цвета */
+    margin-top: 24px;
 }
 
-/* GameDescription.module.css */
+.br {
+    border-top: 1px solid rgba(94, 84, 84, .1);
+}
+
 .descriptionContainer {
     overflow: hidden;
     max-height: 500px;
@@ -371,6 +385,26 @@
 
 .fontSizeSmall {
     font-size: 80%;
+}
+
+.fontItalic {
+    font-style: italic;
+}
+
+.link {
+    color: #fff;
+}
+
+.smailPositive {
+    color: rgb(154, 205, 50, 0.8);
+}
+
+.smailNormal {
+    color: rgb(255, 255, 0, 0.8);
+}
+
+.smailNegative {
+    color: rgb(220, 20, 60, 0.8);
 }
 
 @media screen and (min-width: 300px) and (max-width: 880px) {
