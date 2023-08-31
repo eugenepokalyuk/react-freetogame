@@ -1,3 +1,5 @@
+import { Interface } from "readline";
+
 export interface IGame {
     id: number;
     title: string;
@@ -36,3 +38,11 @@ interface gamesState {
 interface selectedGameState {
     selectedGame: IGame | null;
 };
+
+export interface IScreenshot {
+    id: number, image: string
+}
+
+export interface IOption {
+    value: string, label: string
+}
