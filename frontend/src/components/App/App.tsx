@@ -17,7 +17,7 @@ import { fetchGamesData } from '../../utils/api';
 import { FETCH_GAMES_FAILURE, FETCH_GAMES_REQUEST, FETCH_GAMES_SUCCESS } from '../../services/actions/games';
 import Modal from '../Modal/Modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGear, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faFrown, faGear, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import InterfacePage from '../../pages/InterfacePage/InterfacePage';
 
 function App() {
@@ -29,18 +29,18 @@ function App() {
   const location = useLocation();
   const background = location.state && location.state.background;
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [isCORS, setIsCORS] = useState<boolean>(true);
+  const [isError, setError] = useState<boolean>(true);
 
   useEffect(() => {
     dispatch({ type: FETCH_GAMES_REQUEST });
     fetchGamesData()
       .then(res => {
         dispatch({ type: FETCH_GAMES_SUCCESS, payload: res });
-        setIsCORS(false)
+        setError(false)
       })
       .catch(error => {
         dispatch({ type: FETCH_GAMES_FAILURE });
-        setIsCORS(true)
+        setError(true)
       })
       .finally(() => {
         setIsLoading(false);
@@ -72,24 +72,17 @@ function App() {
             <main className={styles.main}></main>
           </>
         )
-        : isCORS
+        : isError
           ? (<>
             <Modal onClose={closeModal}>
               <div>
-                <p className={`${styles.mb8} ${styles.fontSizeLarge}`}><FontAwesomeIcon icon={faGear} fade size="1x" /> This demo of CORS Anywhere should only be used for development purposes</p>
+                <p className={`${styles.mb8} ${styles.fontSizeLarge}`}><FontAwesomeIcon icon={faGear} fade size="1x" /> Sorry, but i can get response, try again please later</p>
               </div>
 
               <div className={`${styles.mb4}`}>
-                <p>To temporarily unlock access to the demo, click on the following button:</p>
+                <p>We are very sorry <FontAwesomeIcon className={styles.smailNegative} icon={faFrown} size="2x" /></p>
               </div>
 
-              <div>
-                <NavLink to="https://cors-anywhere.herokuapp.com/https://www.freetogame.com/api/games">
-                  <button className={`${styles.button} ${styles.light}`}>
-                    Request temporary access to the demo server
-                  </button>
-                </NavLink>
-              </div>
             </Modal>
             <main className={styles.main}></main>
           </>
