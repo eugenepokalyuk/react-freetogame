@@ -2,7 +2,7 @@ import { FC, useState, useEffect, useRef } from 'react';
 import styles from './FindGame.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWindowMaximize } from '@fortawesome/free-solid-svg-icons';
-import { IGame } from '../../services/types';
+import { IGame, IOption } from '../../services/types';
 import { useAppDispatch, useAppSelector } from '../../services/hooks/hooks';
 import { NavLink, useLocation } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
@@ -113,7 +113,7 @@ const FindGame: FC = () => {
                         onChange={(e) => setSelectedSort(e.target.value)}
                     >
                         <option value="">Sort by</option>
-                        {sortOptions.map((option: any) => (
+                        {sortOptions.map((option: IOption) => (
                             <option key={option.value} value={option.value}>
                                 {option.label}
                             </option>
