@@ -124,6 +124,15 @@
     }
 }
 
+@media screen and (max-width: 768px) {
+    .section {
+        padding: 16px;
+    }
+    .container{
+        padding: 16px 0px;
+    }
+}
+
 @media screen and (max-width: 480px) {
     .section {
         padding: 0px;
@@ -136,11 +145,23 @@
         padding: 0px;
     }
 
-    .container > div:first-child {
+    .container div:first-child {
         padding: 24px 48px;
+    }
+
+    .container div img {
+        width: 100%;
     }
 
     .padding0n12 {
         padding: 24px 48px;
+    }
+
+
+}
+
+@media screen and (max-width: 320px) {
+    .buttonContainer {
+        display: flex;
     }
 }
