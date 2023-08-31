@@ -13,7 +13,7 @@ export const fetchGameData = async (id: number) => {
 
     while (attempts < 3) {
         try {
-            response = await axios.get(`${ApiUrlPathBackend}${endpoint}1${endpoint1}${queryParam}`);
+            response = await axios.get(`${ApiUrlPathBackend}${endpoint}${endpoint1}${queryParam}`);
 
             if (response.status === 200) {
                 return response.data;
@@ -43,7 +43,7 @@ export const fetchGameData = async (id: number) => {
         response = await axios.get(`${ApiUrlPath}${endpoint1}${queryParam}`, option);
 
         if (response.status === 200) {
-            return response.data;
+            return response;
         } else {
             throw new Error('Both sources failed');
         }
@@ -53,6 +53,9 @@ export const fetchGameData = async (id: number) => {
 }
 
 export const fetchGamesData = async (maxRetries = 3) => {
+
+    console.log('env', process.env.REACT_APP_NAME)
+
     const endpoint = '/games';
     const endpoint1 = '/all';
     let retries = 0;
@@ -74,6 +77,8 @@ export const fetchGamesData = async (maxRetries = 3) => {
     while (retries < maxRetries) {
         try {
             interface iOption extends AxiosRequestConfig {
+                method: string,
+                url: string,
                 headers: {
                     'X-RapidAPI-Key'?: string
                     'X-RapidAPI-Host': string
@@ -81,13 +86,15 @@ export const fetchGamesData = async (maxRetries = 3) => {
             }
 
             const option: iOption = {
+                method: 'GET',
+                url: 'https://free-to-play-games-database.p.rapidapi.com/api/games',
                 headers: {
                     'X-RapidAPI-Key': process.env.REACT_APP_NAME,
                     'X-RapidAPI-Host': 'free-to-play-games-database.p.rapidapi.com',
                 },
             };
 
-            const response = await axios.get(`${ApiUrlPath}${endpoint}`, option);
+            const response = await axios.request(option);
             return response.data;
         } catch (error) {
             console.error('Error fetching games data:', error);
