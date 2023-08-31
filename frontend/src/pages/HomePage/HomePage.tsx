@@ -1,7 +1,5 @@
 import { FC } from 'react';
 import styles from './HomePage.module.css';
-import { useMediaQuery } from "react-responsive";
-
 import GetStarted from '../../components/GetStarted/GetStarted';
 import PersonalizedRecommendations from '../../components/PersonalizedRecommendations/PersonalizedRecommendations';
 import MoreGames from '../../components/MoreGames/MoreGames';
@@ -10,10 +8,6 @@ import MoreFun from '../../components/MoreFun/MoreFun';
 import FindGame from '../../components/FindGame/FindGame';
 
 const HomePage: FC = () => {
-    const isDesktop = useMediaQuery({
-        query: "(min-width: 1224px)"
-    });
-
     return (
         <main className={`${styles.main}`}>
             <GetStarted />
