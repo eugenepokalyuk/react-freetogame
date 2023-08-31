@@ -12,6 +12,7 @@
 .flex {
     display: flex;
 }
+
 .flexColumn {
     flex-direction: column;
 }
@@ -20,7 +21,6 @@
     width: 180px;
     height: 100%;
     border-radius: 8px;
-
 }
 
 .defaultWidth {
@@ -395,15 +395,15 @@
     color: #fff;
 }
 
-.smailPositive {
+.smailPositive:hover {
     color: rgb(154, 205, 50, 0.8);
 }
 
-.smailNormal {
+.smailNormal:hover {
     color: rgb(255, 255, 0, 0.8);
 }
 
-.smailNegative {
+.smailNegative:hover {
     color: rgb(220, 20, 60, 0.8);
 }
 
