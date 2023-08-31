@@ -24,6 +24,9 @@ const FindGame: FC = () => {
     const searchInputRef = useRef<HTMLInputElement | null>(null);
     const [selectedText, setSelectedText] = useState<string>('');
 
+    const setBackground = ({ isActive }: { isActive: boolean }) =>
+        isActive ? styles.setBackground : '';
+
     let gamesPerPage = 6;
 
     const visiblePages = 5;
@@ -64,16 +67,6 @@ const FindGame: FC = () => {
             }
             return 0;
         })
-    // .sort((a: any, b: any) => {
-    //     if (selectedSort === 'release_date') {
-    //         return new Date(a.release_date).getTime() - new Date(b.release_date).getTime();
-    //     } else if (selectedSort === 'publisher') {
-    //         return b.publisher - a.publisher;
-    //     } else if (selectedSort === 'developer') {
-    //         return b.developer - a.developer;
-    //     }
-    //     return 0;
-    // })
 
     const totalPages = Math.ceil(filteredGames.length / gamesPerPage);
 
@@ -95,7 +88,7 @@ const FindGame: FC = () => {
     }
 
     const isDesktop = useMediaQuery({
-        query: "(min-width: 1224px)"
+        query: "(min-width: 1080px)"
     });
 
     return (
@@ -107,7 +100,7 @@ const FindGame: FC = () => {
                         placeholder="Search by title"
                         value={searchTerm}
                         onChange={(e) => {
-                            setSearchTerm(e.target.value)
+                            setSearchTerm(e.target.value);
                             setSelectedText(e.target.value);
                         }}
                         onFocus={() => setInputFocus(true)}
@@ -168,6 +161,9 @@ const FindGame: FC = () => {
                         </div>
                     ) : (
                         filteredGames.slice(startIndex, endIndex).map((item: IGame) => {
+                            const regex = new RegExp(searchTerm, 'gi');
+                            const matches = item.title.match(regex);
+
                             return (
                                 <NavLink to={`/game/${item.id}`} onClick={() => { handleDispatch(item) }} key={uuidv4()}>
                                     <div
@@ -178,8 +174,25 @@ const FindGame: FC = () => {
                                             <img src={item.thumbnail} alt="" className={`${styles.w100}`} />
 
                                             <div className={styles.cardHeader}>
-                                                <div>
-                                                    <h2 className={`${styles.cardTitle} ${styles.highlightedTitle}`}>{item.title}</h2>
+                                                <div key={item.id}>
+                                                    <h2 className={`${styles.cardTitle}s`}>
+                                                        {searchTerm && matches ? (
+                                                            <>
+                                                                {item.title.split(matches[0]).map((part, index) => (
+                                                                    <span key={index}>
+                                                                        {index > 0 && (
+                                                                            <span className={`${styles.highlightedText}`}>
+                                                                                {matches[0]}
+                                                                            </span>
+                                                                        )}
+                                                                        {part}
+                                                                    </span>
+                                                                ))}
+                                                            </>
+                                                        ) : (
+                                                            <span>{item.title}</span>
+                                                        )}
+                                                    </h2>
                                                 </div>
                                                 <div className={`${styles.icons} ${styles.iconContainer}`} title={item.platform}>
                                                     {item.platform === 'PC (Windows)'
@@ -195,11 +208,13 @@ const FindGame: FC = () => {
                                                 </div>
                                             </div>
 
-                                            <div className={`${styles.flex} ${styles.mb2}`}>
+                                            <div className={`${styles.flex}`}>
                                                 <p className={`${styles.mrAuto}`}>
                                                     {item.publisher}
                                                 </p>
+                                            </div>
 
+                                            <div className={`${styles.flex} ${styles.mb2}`}>
                                                 <p className={`${styles.mrAuto}`}>
                                                     {formatDate(item.release_date)}
                                                 </p>
@@ -207,17 +222,18 @@ const FindGame: FC = () => {
 
                                             <p className={`${styles.textMuted} ${styles.description}`}>{item.short_description}</p>
 
-                                            <div className={`${styles.flex} ${styles.mb2}`}>
+                                            <div className={`${styles.flex} ${styles.mb4}`}>
                                                 <p className={`${styles.mrAuto}`}>
                                                     <span className={`${styles.badge}`}>{item.genre}</span>
                                                 </p>
                                             </div>
 
                                         </div>
-
-                                        <div className={styles.w100}>
-                                            <button className={`${styles.button} ${styles.secondary} ${styles.w100}`} >Details</button>
-                                        </div>
+                                        {!isDesktop && (
+                                            <div className={styles.w100}>
+                                                <button className={`${styles.button} ${styles.secondary} ${styles.w100}`} >Details</button>
+                                            </div>
+                                        )}
                                     </div>
                                 </NavLink>
                             )
@@ -227,20 +243,18 @@ const FindGame: FC = () => {
 
                 <div className={styles.pagination}>
                     <div className={styles.paginationCardLeft}>
-
                         {location.pathname === '/interface'
-                            ? <NavLink to="/">
+                            ? <NavLink to="/" className={styles.buttonContainer}>
                                 <button className={`${styles.buttonSmall} ${styles.secondary} ${styles.followButtonHeight}`}>
                                     Follow to main page
                                 </button>
                             </NavLink>
-                            : <NavLink to="/interface">
+                            : <NavLink to="/interface" className={styles.buttonContainer}>
                                 <button className={`${isDesktop ? `${styles.buttonSmall} ${styles.followButtonHeight}` : styles.button} ${styles.secondary}`}>
                                     Follow to single interface
                                 </button>
                             </NavLink>
                         }
-
                     </div>
 
                     <div className={styles.paginationCardRight}>
@@ -281,8 +295,8 @@ const FindGame: FC = () => {
                         )}
                     </div>
                 </div>
-            </div>
-        </section>
+            </div >
+        </section >
     )
 }
 
