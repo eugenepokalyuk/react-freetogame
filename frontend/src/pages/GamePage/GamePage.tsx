@@ -129,7 +129,7 @@ const GamePage: FC = () => {
                 <div className={`${styles.p0n2} ${styles.mb4}`}>
                     <div className={styles.w100}>
                         {randomPositive === 0
-                            ? <p className={styles.cardItem}><FontAwesomeIcon icon={faThumbsUp} /> Positive</p>
+                            ? <p className={`${styles.cardItem}`}><FontAwesomeIcon icon={faThumbsUp} /> Positive</p>
                             : randomPositive === 1
                                 ? <p className={styles.cardItem}><FontAwesomeIcon icon={faCrown} /> Very Positive</p>
                                 : randomPositive === 2
@@ -151,11 +151,13 @@ const GamePage: FC = () => {
                     <h2>What do you think about Trove?</h2>
 
                     <div className={`${styles.flex} ${styles.flexSpaceBetween}`}>
-                        <span className={`${styles.icons} ${styles.g2} ${styles.m0n2}`}><FontAwesomeIcon icon={faSmile} size="2x" /> {randomNum1}</span>
-                        <span className={`${styles.icons} ${styles.g2} ${styles.m0n2}`}><FontAwesomeIcon icon={faMeh} size="2x" /> {randomNum2}</span>
-                        <span className={`${styles.icons} ${styles.g2} ${styles.m0n2}`}><FontAwesomeIcon icon={faFrown} size="2x" /> {randomNum3}</span>
+                        <span className={`${styles.icons} ${styles.g2} ${styles.m0n2}`}><FontAwesomeIcon className={styles.smailPositive} icon={faSmile} size="2x" /> {randomNum1}</span>
+                        <span className={`${styles.icons} ${styles.g2} ${styles.m0n2}`}><FontAwesomeIcon className={styles.smailNormal} icon={faMeh} size="2x" /> {randomNum2}</span>
+                        <span className={`${styles.icons} ${styles.g2} ${styles.m0n2}`}><FontAwesomeIcon className={styles.smailNegative} icon={faFrown} size="2x" /> {randomNum3}</span>
                     </div>
                 </div>
+
+                <div className={`${styles.br} ${styles.mb4}`}></div>
 
                 <ChatBlock />
             </div>
@@ -173,6 +175,8 @@ const GamePage: FC = () => {
             <div className={`${styles.cardContainer} ${styles.mb4}`}>
                 <h2 className={`${styles.h2}`}>About {game.title}</h2>
 
+                <div className={`${styles.br} ${styles.mt4} ${styles.mb4}`}></div>
+
                 <div
                     className={`${styles.descriptionContainer} ${isDescriptionExpanded ? styles.expanded : styles.collapsed
                         }`}
@@ -181,7 +185,7 @@ const GamePage: FC = () => {
                         (isDescriptionExpanded ? (
                             <div>
                                 {game.description.split('\r\n').map((paragraph: string, index: number) => (
-                                    <p key={index} className={`${styles.mb4}`}>
+                                    <p key={index} className={`${styles.textAlignJustify} ${styles.mb4}`}>
                                         {paragraph}
                                     </p>
                                 ))}
@@ -197,20 +201,21 @@ const GamePage: FC = () => {
                         {isDescriptionExpanded
                             ? (
                                 <>
-                                    <FontAwesomeIcon icon={faMinus} size="1x" /> Show Less
+                                    <FontAwesomeIcon icon={faMinus} size="1x" /> Read Less
                                 </>
                             )
                             : (
                                 <>
-                                    <FontAwesomeIcon icon={faPlus} size="1x" /> Show More
+                                    <FontAwesomeIcon icon={faPlus} size="1x" /> Read More
                                 </>
                             )
                         }
                     </button>
                 </div>
 
+                <div className={`${styles.br} ${styles.mt4}`}></div>
 
-                <p className={`${styles.textMuted} ${styles.fontSizeSmall} ${styles.mt4}`}>Disclosure: FreeToGame works closely with publishers and developers to offer a free and rewarding experience. In order to keep everything free to use we may sometimes earn a small commission from some partners. Find more info in our <a href="/faq" className={`${styles.link}`}>FAQ</a> page.</p>
+                <p className={`${styles.textMuted} ${styles.fontSizeSmall} ${styles.fontItalic} ${styles.mt4}`}>Disclosure: FreeToGame works closely with publishers and developers to offer a free and rewarding experience. In order to keep everything free to use we may sometimes earn a small commission from some partners. Find more info in our <NavLink to="/faq" className={`${styles.link}`}>FAQ</NavLink> page.</p>
             </div>
         )
     }
@@ -219,7 +224,9 @@ const GamePage: FC = () => {
         return (
             <div className={`${styles.cardContainer} ${styles.mb4}`}>
                 <h2 className={`${styles.h2}`}>Additional Information</h2>
-                <p className={`${styles.textMuted} ${styles.mb4}`}><FontAwesomeIcon icon={faInfoCircle} /> Please note this free-to-play game may or may not offer optional in-game purchases.</p>
+                <p className={`${styles.textMuted} ${styles.textColorBlue} ${styles.mb4}`}><FontAwesomeIcon icon={faInfoCircle} /> Please note this free-to-play game may or may not offer optional in-game purchases.</p>
+
+                <div className={`${styles.br}`}></div>
 
                 <div className={`${styles.additionalContainer}`}>
                     <div className={styles.additionalItem}>
@@ -300,6 +307,9 @@ const GamePage: FC = () => {
         return (
             <div className={`${styles.cardContainer} ${styles.mb4}`}>
                 <h2 className={`${styles.h2}`}>{game.title} Screenshots</h2>
+
+                <div className={`${styles.br} ${styles.mt4} ${styles.mb4}`}></div>
+
                 <SimpleCarousel game={game} />
             </div>
         )
@@ -312,6 +322,9 @@ const GamePage: FC = () => {
                     ?
                     <>
                         <h2 className={`${styles.h2}`}>Minimum System Requirements</h2>
+
+                        <div className={`${styles.br} ${styles.mt4} ${styles.mb4}`}></div>
+
                         <h3>Windows</h3>
                         <div className={`${styles.additionalContainer}`}>
                             <div className={styles.additionalItem}>
@@ -377,6 +390,9 @@ const GamePage: FC = () => {
                         ?
                         <>
                             <h2 className={`${styles.h2}`}>Minimum System Requirements ({game.platform})</h2>
+
+                            <div className={`${styles.br} ${styles.mt4} ${styles.mb4}`}></div>
+
                             <div className={`${styles.additionalContainer}`}>
                                 <div className={styles.additionalItem}>
                                     <div>
@@ -437,6 +453,9 @@ const GamePage: FC = () => {
                             ?
                             <>
                                 <h2 className={`${styles.h2}`}>Minimum System Requirements ({game.platform})</h2>
+
+                                <div className={`${styles.br} ${styles.mt4} ${styles.mb4}`}></div>
+
                                 <p>{game.title} is a browser based game and should run smoothly on practically any PC with a updated web-browser.</p>
                                 <p>If you have old hardware or software, you may still be able to play {game.title}, but your game experience may suffer. For the best gameplay experience, we recommend the latest versions of Firefox, Chrome, or Internet Explorer.</p>
                             </>
@@ -449,6 +468,9 @@ const GamePage: FC = () => {
     const LinkToMainPage: FC = () => {
         return (
             <div className={`${styles.cardContainer} ${styles.mb4}`}>
+
+                <div className={`${styles.br} ${styles.mb4}`}></div>
+
                 <NavLink to="/">
                     <button className={`${styles.button} ${styles.secondary}`}>
                         Follow to main page
@@ -468,6 +490,7 @@ const GamePage: FC = () => {
                                 <div>
                                     <img className={`${styles.imageDefaultSize}`} src={game.thumbnail} alt="" />
                                 </div>
+
                                 <div className={styles.textLeft}>
                                     <h2 className={`${styles.h2} ${styles.mb4}`}>{game.title}</h2>
 
