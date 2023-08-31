@@ -4,7 +4,7 @@ import FindGame from '../../components/FindGame/FindGame';
 
 const InterfacePage: FC = () => {
     return (
-        <div className={styles.mt}>
+        <div className={`${styles.container} ${styles.mt}`}>
             <FindGame />
         </div>
     );
