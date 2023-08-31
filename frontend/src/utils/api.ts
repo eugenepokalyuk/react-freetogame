@@ -13,10 +13,9 @@ export const fetchGameData = async (id: number) => {
 
     while (attempts < 3) {
         try {
-            response = await axios.get(`${ApiUrlPathBackend}1${endpoint}1${endpoint1}${queryParam}`);
+            response = await axios.get(`${ApiUrlPathBackend}${endpoint}1${endpoint1}${queryParam}`);
 
             if (response.status === 200) {
-                // const data = await response.json();
                 return response.data;
             } else {
                 attempts++;
@@ -41,7 +40,7 @@ export const fetchGameData = async (id: number) => {
             },
         };
 
-        response = await axios.get(`${ApiUrlPath}1${endpoint1}${queryParam}`, option);
+        response = await axios.get(`${ApiUrlPath}${endpoint1}${queryParam}`, option);
 
         if (response.status === 200) {
             return response.data;
