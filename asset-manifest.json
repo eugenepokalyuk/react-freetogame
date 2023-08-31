@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/react-freetogame/static/css/main.e9c62680.css",
-    "main.js": "/react-freetogame/static/js/main.7825bc72.js",
+    "main.css": "/react-freetogame/static/css/main.9d74a270.css",
+    "main.js": "/react-freetogame/static/js/main.f20e8309.js",
     "static/js/787.75073133.chunk.js": "/react-freetogame/static/js/787.75073133.chunk.js",
     "static/media/background.png": "/react-freetogame/static/media/background.0fddd1fbe0a5e0a0af93.png",
     "static/media/ftg-img.jpg": "/react-freetogame/static/media/ftg-img.81fad9108b327d54d7c6.jpg",
@@ -11,12 +11,12 @@
     "static/media/slick.ttf": "/react-freetogame/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/react-freetogame/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/react-freetogame/index.html",
-    "main.e9c62680.css.map": "/react-freetogame/static/css/main.e9c62680.css.map",
-    "main.7825bc72.js.map": "/react-freetogame/static/js/main.7825bc72.js.map",
+    "main.9d74a270.css.map": "/react-freetogame/static/css/main.9d74a270.css.map",
+    "main.f20e8309.js.map": "/react-freetogame/static/js/main.f20e8309.js.map",
     "787.75073133.chunk.js.map": "/react-freetogame/static/js/787.75073133.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e9c62680.css",
-    "static/js/main.7825bc72.js"
+    "static/css/main.9d74a270.css",
+    "static/js/main.f20e8309.js"
   ]
 }
