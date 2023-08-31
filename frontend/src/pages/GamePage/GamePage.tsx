@@ -26,7 +26,8 @@ const GamePage: FC = () => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const { selectedGame } = useAppSelector((store: any) => store.selectedGame);
 
-    const { id }: any = useParams();
+    // const { id }: any = useParams();
+    const id: any = useParams<Readonly<string>>();
     const gameIdNumber = parseInt(id, 10);
 
     useEffect(() => {
