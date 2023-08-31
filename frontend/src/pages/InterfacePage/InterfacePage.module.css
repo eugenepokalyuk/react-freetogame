@@ -1,3 +1,13 @@
 .mt {
     margin-top: 80px;
 }
+
+.container {
+    min-height: 80vh;
+}
+
+@media screen and (max-width: 460px) {
+    .container {
+        margin-top: 0;
+    }
+}
