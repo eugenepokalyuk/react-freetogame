@@ -16,7 +16,7 @@ const MoreFun: FC = () => {
                 <div className={`${styles.container} ${styles.flex} ${styles.padding6n12}`}>
 
                     <div>
-                        <img src={ftgImage} alt="" />
+                        <img src={ftgImage} alt="" className={`${styles.w100}`} />
                     </div>
 
                     <div className={`${styles.flex} ${styles.flexColumn} ${styles.padding0n12}`}>
@@ -56,7 +56,7 @@ const MoreFun: FC = () => {
                     <div className={`${styles.flex} ${styles.flexColumn} ${styles.padding0n12}`}>
                         <h1 className={`${styles.mt6} ${styles.mb2}`}>More Fun and More Rewarding!</h1>
                         <p className={`${styles.mb4}`}>We are FreeToGame, a new gaming platform that brings all the best Free-to-Play Multiplayer Games and MMO Games into one place while rewarding gamers with free premium loot and exlusive perks. Plus maintain your own games library, track what you've played and search for what to play next!</p>
-                        <div>
+                        <div className={`${styles.buttonContainer}`}>
                             <NavLink to="/join">
                                 <button className={`${styles.button} ${styles.light}`}>
                                     JOIN NOW
