@@ -2,6 +2,10 @@
     width: 100%;
     background: #23262b;
     border: 1px solid rgba(28, 28, 28, 0.6);
+
+    display: flex;
+    flex-direction: column;
+    min-height: 900px;
 }
 
 .section {
@@ -49,6 +53,15 @@
     margin-right: 10px;
 }
 
+.highlightedText {
+    color: #49acff;
+}
+
+.cardContainer {
+    /* height: 80vh; */
+    min-height: 900px;
+}
+
 .gameGrid {
     /* min-height: 900px; */
     padding: 8px 16px;
@@ -60,6 +73,7 @@
 
 .gameGrid a {
     display: flex;
+    flex-direction: column;
     /* height: 100%; */
     /* background: hotpink; */
 }
@@ -76,7 +90,7 @@
 
     justify-content: space-between;
 
-    height: auto;
+    height: 100%;
 }
 
 .notFoundBackground {
@@ -119,6 +133,7 @@
     padding: 10px 0;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: auto;
 }
 
 .paginationCardLeft {
@@ -406,13 +421,6 @@ select::-ms-expand {
         max-width: 100%;
     }
 
-    /* 
-    .filters input[type="text"] {
-        flex: 0 0 100%;
-        max-width: 100%;
-        width: 100%
-    } */
-
     .filters select {
         flex: 0 0 100%;
         max-width: 100%;
@@ -458,11 +466,35 @@ select::-ms-expand {
     .gameCard div {
         width: 100%;
     }
+
+    .iconContainer {
+        display: flex;
+    }
 }
 
 @media screen and (max-width: 768px) {
+    .section {
+        padding: 16px;
+    }
+
     .filters input[type="text"] {
         width: 95%;
+    }
+
+    .gameCard {
+        width: 100%;
+    }
+
+    .gameGrid a {
+        flex-direction: row;
+    }
+    .buttonContainer {
+        width: 100%;
+        padding: 0 40px;
+    }
+
+    .buttonContainer button {
+        width: 100%;
     }
 }
 
@@ -470,11 +502,32 @@ select::-ms-expand {
     .gameCard div {
         width: 100%;
     }
+    .buttonContainer {
+        width: 100%;
+        padding: 0 40px;
+    }
+
+    .buttonContainer button {
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 507px) {
+    .section {
+        padding: 0px;
+    }
+
     .filters input[type="text"] {
         width: 90%;
+    }
+
+    .buttonContainer {
+        width: 100%;
+        padding: 0 40px;
+    }
+
+    .buttonContainer button {
+        width: 100%;
     }
 }
 
@@ -482,10 +535,28 @@ select::-ms-expand {
     .filters input[type="text"] {
         width: 90%;
     }
+
+    .buttonContainer {
+        width: 100%;
+        padding: 0 40px;
+    }
+
+    .buttonContainer button {
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 678px) {
     input[type="text"] {
         width: 95%;
+    }
+
+    .buttonContainer {
+        width: 100%;
+        padding: 0 40px;
+    }
+
+    .buttonContainer button {
+        width: 100%;
     }
 }
