@@ -39,15 +39,15 @@ Backend:
 ## Developed a two-page interface for the Free-To-Play Games website.
 ### Interface Main Page: 
 <div>
-  <img src="https://github.com/eugenepokalyuk/react-freetogame/blob/main/frontend/src/images/screenshots/MainPage-screenshot.png?raw=true" />
+  <img src="https://github.com/eugenepokalyuk/react-freetogame/blob/main/frontend/src/images/screenshots/InterfacePage_screenshot.png?raw=true" />
 </div>
 
 ### Game Page:
 <div>
-  <img src="https://github.com/eugenepokalyuk/react-freetogame/blob/main/frontend/src/images/screenshots/GamePage-screenshot.png?raw=true" />
+  <img src="https://github.com/eugenepokalyuk/react-freetogame/blob/main/frontend/src/images/screenshots/GamePage_screenshot.png?raw=true" />
 </div>
 
 ### Full site page:
 <div>
-  <img src="https://github.com/eugenepokalyuk/react-freetogame/blob/main/frontend/src/images/screenshots/FullPage.png?raw=true" />
+  <img src="https://github.com/eugenepokalyuk/react-freetogame/blob/main/frontend/src/images/screenshots/FullPage_screenshot.png?raw=true" />
 </div>
