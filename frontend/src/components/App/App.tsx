@@ -17,7 +17,7 @@ import { fetchGamesData } from '../../utils/api';
 import { FETCH_GAMES_FAILURE, FETCH_GAMES_REQUEST, FETCH_GAMES_SUCCESS } from '../../services/actions/games';
 import Modal from '../Modal/Modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart, faGear, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faGear, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import InterfacePage from '../../pages/InterfacePage/InterfacePage';
 
 function App() {
