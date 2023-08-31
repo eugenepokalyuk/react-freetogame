@@ -24,9 +24,6 @@ const FindGame: FC = () => {
     const searchInputRef = useRef<HTMLInputElement | null>(null);
     const [selectedText, setSelectedText] = useState<string>('');
 
-    const setBackground = ({ isActive }: { isActive: boolean }) =>
-        isActive ? styles.setBackground : '';
-
     let gamesPerPage = 6;
 
     const visiblePages = 5;
