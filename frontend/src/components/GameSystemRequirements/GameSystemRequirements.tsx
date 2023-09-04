@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import styles from './GameSystemRequirements.module.css';
 import { useAppSelector } from '../../services/hooks/hooks';
+import {IGameDetails } from '../../services/types';
 
 const GameSystemRequirements: FC = () => {
-    const { game } = useAppSelector((store: any) => store.game);
-
+    const game = useAppSelector((store: {game: { game: IGameDetails }}) => store.game.game);
     return (
         <div className={`${styles.cardContainer} ${styles.mb4}`}>
             {game && game.platform === 'Windows, Web Browser'

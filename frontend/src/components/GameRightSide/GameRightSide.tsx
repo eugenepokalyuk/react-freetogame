@@ -9,7 +9,6 @@ import { FC } from 'react';
 
 const LinkToMainPage = () => (
     <div className={`${styles.cardContainer} ${styles.mb4}`}>
-
         <div className={`${styles.br} ${styles.mb4}`}></div>
 
         <NavLink to="/">

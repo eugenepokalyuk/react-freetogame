@@ -6,9 +6,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsDown, faThumbsUp, faCrown, faStar, faSmile, faFrown, faMeh, faUser, faComment, faLongArrowAltUp, faSignIn } from '@fortawesome/free-solid-svg-icons';
 import { NavLink } from 'react-router-dom';
 import GameChat from '../../components/GameChat/GameChat';
+import { IGameDetails } from '../../services/types';
 
 export const GameHeader: FC = () => {
-    const { game } = useAppSelector((store: any) => store.game);
+    const game = useAppSelector((store: { game: { game: IGameDetails } }) => store.game.game);
+
     const randomMember = Math.floor(Math.random() * 100);
     const randomPositive = Math.floor(Math.random() * 3);
     const randomGameLibrary = Math.floor(Math.random() * 1000);

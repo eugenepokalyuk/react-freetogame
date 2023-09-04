@@ -18,8 +18,13 @@ const GamePage: FC = () => {
     const [, setIsModalOpen] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [isError, setError] = useState<boolean>(true);
-    const { id }: any = useParams<Readonly<string>>();
-    const gameIdNumber = parseInt(id, 10);
+
+    type Param = {
+        id: string;
+    };
+
+    const { id } = useParams<Param>();
+    let gameIdNumber = parseInt(`${id}`);
 
     const isDesktop = useMediaQuery({
         query: "(min-width: 1224px)"
@@ -40,6 +45,7 @@ const GamePage: FC = () => {
                 setIsLoading(false);
             });
     }, [dispatch, gameIdNumber]);
+
 
     const closeModal = () => {
         navigate(-1);

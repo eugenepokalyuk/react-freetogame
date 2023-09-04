@@ -13,7 +13,7 @@ export const fetchGameData = async (id: number) => {
 
     while (attempts < 3) {
         try {
-            response = await axios.get(`${ApiUrlPathBackend}${endpoint}1${endpoint1}${queryParam}`);
+            response = await axios.get(`${ApiUrlPathBackend}${endpoint}${endpoint1}${queryParam}`);
             if (response.status === 200) {
                 return response.data;
             } else {
@@ -60,7 +60,7 @@ export const fetchGamesData = async () => {
     // запрос с бэкенда
     while (attempts < 3) {
         try {
-            response = await axios.get(`${ApiUrlPathBackend}${endpoint}1${endpoint1}`);
+            response = await axios.get(`${ApiUrlPathBackend}${endpoint}${endpoint1}`);
             if (response.status === 200) {
                 return response.data;
             } else {

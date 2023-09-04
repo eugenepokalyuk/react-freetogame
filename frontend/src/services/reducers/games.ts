@@ -13,10 +13,6 @@ const initialState = {
 
 export const selectGames = (state: TGames) => state;
 
-export const selectLoading = (state: any) => state.loading;
-export const selectError = (state: any) => state.error;
-export const selectGamesLoading = (state: any) => state.loading;
-
 export const gamesReducer = (state = initialState, action: TGames) => {
     switch (action.type) {
         case FETCH_GAMES_REQUEST:

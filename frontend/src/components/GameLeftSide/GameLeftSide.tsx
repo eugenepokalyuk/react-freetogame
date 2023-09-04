@@ -5,9 +5,11 @@ import { useAppSelector } from '../../services/hooks/hooks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignIn } from '@fortawesome/free-solid-svg-icons';
 import { NavLink } from 'react-router-dom';
+import { IGameDetails } from '../../services/types';
 
 const GameLeftSide: FC = () => {
-    const { game } = useAppSelector((store: any) => store.game);
+    const game = useAppSelector((store: { game: { game: IGameDetails } }) => store.game.game);
+
     const isDesktop = useMediaQuery({
         query: "(min-width: 1224px)"
     });

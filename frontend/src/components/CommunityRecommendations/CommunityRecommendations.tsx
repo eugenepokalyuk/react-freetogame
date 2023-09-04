@@ -4,7 +4,7 @@ import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import profileImage1 from '../../images/profile_image_1.png';
 import profileImage2 from '../../images/profile_image_2.png';
-import { IGame } from '../../services/types';
+import { IGame, RootState } from '../../services/types';
 import { useAppDispatch, useAppSelector } from '../../services/hooks/hooks';
 import { v4 as uuidv4 } from 'uuid';
 import { NavLink } from 'react-router-dom';
@@ -13,7 +13,7 @@ import { ADD_SELECTED_GAME } from '../../services/actions/selectedGame';
 
 const CommunityRecommendations: FC = () => {
     const dispatch = useAppDispatch();
-    const { games } = useAppSelector((store: any) => store.games);
+    const games = useAppSelector((store: RootState) => store.games.games);
     const filteredFirstGame = games.find((game: IGame) => game.title === 'Genshin Impact');
     const filteredSecondGame = games.find((game: IGame) => game.title === 'Valorant');
 

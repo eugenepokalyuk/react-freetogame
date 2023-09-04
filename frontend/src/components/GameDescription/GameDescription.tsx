@@ -4,9 +4,10 @@ import { useAppSelector } from '../../services/hooks/hooks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { NavLink } from 'react-router-dom';
+import { IGameDetails } from '../../services/types';
 
 const GameDescription: FC = () => {
-    const { game } = useAppSelector((store: any) => store.game);
+    const game = useAppSelector((store: { game: { game: IGameDetails } }) => store.game.game);
     const [isDescriptionExpanded, setDescriptionExpanded] = useState(false);
 
     const toggleDescription = () => {

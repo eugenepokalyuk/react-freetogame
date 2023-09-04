@@ -8,7 +8,7 @@ import { faWindows } from '@fortawesome/free-brands-svg-icons'
 
 import { shuffle } from 'lodash';
 import { NavLink } from 'react-router-dom';
-import { IGame } from '../../services/types';
+import { IGame, RootState } from '../../services/types';
 
 import { useAppDispatch, useAppSelector } from '../../services/hooks/hooks';
 import { v4 as uuidv4 } from 'uuid';
@@ -17,7 +17,7 @@ import { ADD_SELECTED_GAME } from '../../services/actions/selectedGame';
 const RecentlyAdded: FC = () => {
     const dispatch = useAppDispatch();
 
-    const { games } = useAppSelector((store: any) => store.games);
+    const games = useAppSelector((store: RootState) => store.games.games);
     const filteredGames = useMemo(() => games.filter((game: IGame) => game.genre === 'Shooter'), [games]);
     const randomGames = useMemo(() => shuffle(filteredGames), [filteredGames]);
     const sevenRandomGames = useMemo(() => randomGames.slice(0, 7), [randomGames]);
@@ -142,7 +142,7 @@ const RecentlyAdded: FC = () => {
 const MostPlayedToday: FC = () => {
     const dispatch = useAppDispatch();
 
-    const { games } = useAppSelector((store: any) => store.games);
+    const { games } = useAppSelector((store: RootState) => store.games);
     const filteredGames = useMemo(() => games.filter((game: IGame) => game.genre === 'Shooter'), [games]);
     const randomGames = useMemo(() => shuffle(filteredGames), [filteredGames]);
     const fourRandomGames = useMemo(() => randomGames.slice(0, 4), [randomGames]);

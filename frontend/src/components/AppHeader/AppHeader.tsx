@@ -6,11 +6,11 @@ import { faSearch, faGift, faClone, faEllipsisH, faCaretDown, faCaretUp, faBars 
 import { NavLink } from 'react-router-dom';
 import logoUrl from '../../images/freetogame-logo.png'
 import { useAppSelector } from '../../services/hooks/hooks';
-import { IGame } from '../../services/types';
+import { IGame, RootState } from '../../services/types';
 import { v4 as uuidv4 } from 'uuid';
 
 const AppHeader: FC = () => {
-    const { games } = useAppSelector((store: any) => store.games);
+    const games = useAppSelector((store: RootState) => store.games.games);
     const [isGenreMenuOpen, setIsGenreMenuOpen] = useState(false);
     const [isBrowserMenuOpen, setIsBrowserMenuOpen] = useState(false);
     const menuRef = useRef<HTMLUListElement | null>(null);

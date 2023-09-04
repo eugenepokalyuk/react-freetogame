@@ -1,21 +1,24 @@
-import React from 'react';
+import React, { FC } from 'react';
 import styles from './Carousel.module.css';
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { IGame, IScreenshot } from '../../services/types';
+import { IGameDetails } from '../../services/types';
 
-const SimpleCarousel = (game: any) => {
-    const { screenshots } = game.game;
+interface SimpleCarouselProps {
+    game: IGameDetails;
+}
+
+const SimpleCarousel: FC<SimpleCarouselProps> = ({ game }) => {
+
+    console.log('game', game);
 
     const settings = {
         arrows: false,
         dots: true,
         infinite: true,
-        // autoplay: true,
         speed: 2000,
-        // autoplaySpeed: 2000,
         slidesToShow: 2,
         slidesToScroll: 1,
         initialSlide: 0,
@@ -54,17 +57,16 @@ const SimpleCarousel = (game: any) => {
 
     return (
         <div className={`${styles.sliderContainer}`}>
+
             <Slider className={`${styles.slider}`} {...settings}>
-                {screenshots && screenshots.map((item: IScreenshot) =>
-                    <div key={item.id} className={styles.card}>
-                        <img src={item.image} alt="" className={styles.cardImage} />
+                {game.screenshots.map((screenshot) => (
+                    <div key={screenshot.id} className={styles.card}>
+                        <img src={screenshot.image} alt={`Screenshot ${screenshot.id + 1}`} className={styles.cardImage} />
                     </div>
-                )}
+                ))}
             </Slider>
         </div>
-
     );
-}
-
+};
 
 export default SimpleCarousel;

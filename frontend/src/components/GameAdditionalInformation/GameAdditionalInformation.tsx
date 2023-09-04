@@ -4,9 +4,10 @@ import { useAppSelector } from '../../services/hooks/hooks';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle, faWindowMaximize } from '@fortawesome/free-solid-svg-icons';
 import { faWindows } from '@fortawesome/free-brands-svg-icons'
+import { IGame } from '../../services/types';
 
 const GameAdditionalInformation: FC = () => {
-    const { game } = useAppSelector((store: any) => store.game);
+    const game = useAppSelector((store: {game: { game: IGame }}) => store.game.game);
     const formatDate = (dateString: string) => {
         const options: Object = { year: 'numeric', month: 'long', day: 'numeric' };
         return new Date(dateString).toLocaleDateString('en-US', options);
