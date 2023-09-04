@@ -1,0 +1,73 @@
+.cardContainer {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.mb4 {
+    margin-bottom: calc(4 * 4px);
+}
+
+.h2 {
+    font-size: 24, 65px;
+}
+
+.br {
+    border-top: 1px solid rgba(94, 84, 84, .1);
+}
+
+.mt4 {
+    margin-top: calc(4 * 4px);
+}
+
+.descriptionContainer {
+    overflow: hidden;
+    max-height: 500px;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    opacity: 1;
+}
+
+.descriptionContainer.expanded {
+    max-height: 1000px;
+    opacity: 1;
+}
+
+.descriptionContainer.collapsed {
+    max-height: 100px;
+    opacity: 0.8;
+}
+
+.textAlignJustify {
+    text-align: justify;
+}
+
+.textLeft {
+    text-align: left;
+}
+
+.toggleButton {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 0;
+    font-size: 16px;
+    transition: color 0.3s ease;
+    margin-top: 24px;
+}
+
+.toggleButton:hover {
+    color: #0056b3;
+}
+
+.fontSizeSmall {
+    font-size: 80%;
+}
+
+.fontItalic {
+    font-style: italic;
+}
+
+.link {
+    color: #fff;
+}
