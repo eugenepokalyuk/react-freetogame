@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import profileImage from '../../images/profile_image_large.png';
+import profileImage from '../../images/profile_image_large.webp';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './GameChat.module.css';
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";

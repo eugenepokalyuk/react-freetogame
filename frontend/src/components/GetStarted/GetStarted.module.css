@@ -90,7 +90,7 @@
 .backgroundImage {
     height: 165px;
 
-    background: url(../../images/background.png);
+    background: url(../../images/background.webp);
     background-repeat: no-repeat;
     background-color: #1c1e22;
     background-position: top;

@@ -4,7 +4,7 @@ import { useMediaQuery } from "react-responsive";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch, faGift, faClone, faEllipsisH, faCaretDown, faCaretUp, faBars } from '@fortawesome/free-solid-svg-icons'
 import { NavLink } from 'react-router-dom';
-import logoUrl from '../../images/freetogame-logo.png'
+import logoUrl from '../../images/freetogame-logo.webp'
 import { useAppSelector } from '../../services/hooks/hooks';
 import { IGame, RootState } from '../../services/types';
 import { v4 as uuidv4 } from 'uuid';

@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import styles from './MoreFun.module.css';
-import ftgImage from '../../images/ftg-img.jpg';
+import ftgImage from '../../images/ftg-img.webp';
 import { NavLink } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 
