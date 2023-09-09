@@ -197,7 +197,6 @@ const AppHeader: FC = () => {
                     <FontAwesomeIcon icon={faBars} size="3x" onClick={handleMenuClick} className={styles.menuIcon} />
                     {isMenuOpen && (
                         <ul className={`${styles.menu}`} >
-
                             <NavLink to='/'>
                                 <li className={`${styles.menuItem}`}>Free Games</li>
                             </NavLink>
