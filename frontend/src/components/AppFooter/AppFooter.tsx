@@ -2,7 +2,7 @@ import { FC } from 'react';
 import styles from './AppFooter.module.css';
 import { useMediaQuery } from "react-responsive";
 import { NavLink } from 'react-router-dom';
-import LogoFooter from '../../images/logo-footer.png'
+import LogoFooter from '../../images/logo-footer.webp'
 import { faFacebookF, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { faRss } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

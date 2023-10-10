@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import styles from './App.module.css';
 
 import AppHeader from "../AppHeader/AppHeader"
@@ -17,14 +17,14 @@ import { fetchGamesData } from '../../utils/api';
 import { FETCH_GAMES_FAILURE, FETCH_GAMES_REQUEST, FETCH_GAMES_SUCCESS } from '../../services/actions/games';
 import Modal from '../Modal/Modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFrown, faGear, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faGear, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import InterfacePage from '../../pages/InterfacePage/InterfacePage';
 
 function App() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [, setIsModalOpen] = useState<boolean>(false);
 
   const location = useLocation();
   const background = location.state && location.state.background;

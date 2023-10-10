@@ -8,9 +8,6 @@ const initialState = {
     selectedGame: null,
 } as const;
 
-// export const selectGame = (state: TCurrentGame) => state;
-export const selectGame = (state: any) => state.selectedGame;
-
 export const selectedGameReducer = (state = initialState, action: TCurrentGame) => {
     switch (action.type) {
         case ADD_SELECTED_GAME:

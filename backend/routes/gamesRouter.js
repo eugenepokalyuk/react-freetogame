@@ -12,7 +12,7 @@ router.get('/all', async (req, res) => {
         let temp = await axios.get(ApiUrlPath + endpoint);
         res.json(temp.data);
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 });
 
@@ -20,13 +20,12 @@ router.get('/game', async (req, res) => {
     try {
         const endpoint = '/game';
         const id = req.query.id;
-        console.log('id', id)
         if (id) {
             let temp = await axios.get(ApiUrlPath + `${endpoint}?id=${id}`);
             res.json(temp.data);
         }
     } catch (error) {
-        console.log(error)
+        // console.log(error)
     }
 });
 

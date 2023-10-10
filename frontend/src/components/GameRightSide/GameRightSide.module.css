@@ -1,0 +1,39 @@
+.cardContainer {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.mb4 {
+    margin-bottom: calc(4 * 4px);
+}
+
+.br {
+    border-top: 1px solid rgba(94, 84, 84, .1);
+}
+
+.button {
+    padding: 0.75rem 1rem;
+    font-size: .9375rem;
+    line-height: 1.5;
+
+    border: none;
+    border-radius: 8px;
+
+    transition: .15s;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.secondary {
+    background: transparent;
+    border: 1px solid #7a8288;
+    color: #7a8288;
+}
+
+.secondary:hover {
+    border-color: #fff;
+    color: #fff;
+}

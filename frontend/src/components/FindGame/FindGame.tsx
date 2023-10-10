@@ -2,7 +2,7 @@ import { FC, useState, useEffect, useRef } from 'react';
 import styles from './FindGame.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWindowMaximize } from '@fortawesome/free-solid-svg-icons';
-import { IGame, IOption } from '../../services/types';
+import { IGame, IOption, RootState } from '../../services/types';
 import { useAppDispatch, useAppSelector } from '../../services/hooks/hooks';
 import { NavLink, useLocation } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
@@ -12,7 +12,7 @@ import { useMediaQuery } from 'react-responsive';
 
 const FindGame: FC = () => {
     const dispatch = useAppDispatch();
-    const { games } = useAppSelector((store: any) => store.games);
+    const games = useAppSelector((store: RootState) => store.games.games);
 
     const location = useLocation();
 
@@ -22,7 +22,7 @@ const FindGame: FC = () => {
     const [searchTerm, setSearchTerm] = useState<string>('');
     const [inputFocus, setInputFocus] = useState<boolean>(false);
     const searchInputRef = useRef<HTMLInputElement | null>(null);
-    const [selectedText, setSelectedText] = useState<string>('');
+    const [, setSelectedText] = useState<string>('');
 
     let gamesPerPage = 6;
 
@@ -44,8 +44,8 @@ const FindGame: FC = () => {
         { value: 'developer', label: 'Developer' }
     ];
 
-    const uniqueGenres = Array.from(new Set(games.map((item: IGame) => item.genre)));
-    const uniquePlatforms = Array.from(new Set(games.map((item: IGame) => item.platform)));
+    const uniqueGenres: string[] = Array.from(new Set(games.map((item: IGame) => item.genre)));
+    const uniquePlatforms: string[] = Array.from(new Set(games.map((item: IGame) => item.platform)));
 
     const filteredGames = games
         .filter((game: IGame) => {
@@ -54,7 +54,7 @@ const FindGame: FC = () => {
             const platformMatch = selectedPlatform === '' || game.platform === selectedPlatform;
             return searchMatch && genreMatch && platformMatch;
         })
-        .sort((a: any, b: any) => {
+        .sort((a: IGame, b: IGame) => {
             if (selectedSort === 'release_date') {
                 return new Date(a.release_date).getTime() - new Date(b.release_date).getTime();
             } else if (selectedSort === 'publisher') {
@@ -63,7 +63,7 @@ const FindGame: FC = () => {
                 return b.developer.localeCompare(a.developer);
             }
             return 0;
-        })
+        });
 
     const totalPages = Math.ceil(filteredGames.length / gamesPerPage);
 
@@ -124,7 +124,8 @@ const FindGame: FC = () => {
                         onChange={(e) => setSelectedGenre(e.target.value)}
                     >
                         <option value="">Choose a genre</option>
-                        {uniqueGenres.map((genre: any) => (
+
+                        {uniqueGenres && uniqueGenres.map((genre) => (
                             <option
                                 key={uuidv4()}
                                 value={genre}
@@ -132,6 +133,7 @@ const FindGame: FC = () => {
                                 {genre}
                             </option>
                         ))}
+
                     </select>
 
                     <select
@@ -140,12 +142,12 @@ const FindGame: FC = () => {
                         onChange={(e) => setSelectedPlatform(e.target.value)}
                     >
                         <option value="">Select a platform</option>
-                        {uniquePlatforms.map((genre: any) => (
+                        {uniquePlatforms && uniquePlatforms.map((platform) => (
                             <option
                                 key={uuidv4()}
-                                value={genre}
+                                value={platform}
                             >
-                                {genre}
+                                {platform}
                             </option>
                         ))}
                     </select>
