@@ -4,7 +4,7 @@ import { useMediaQuery } from "react-responsive";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faRobot, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import { shuffle } from 'lodash';
-import { IGame } from '../../services/types';
+import { IGame, RootState } from '../../services/types';
 import { useAppDispatch, useAppSelector } from '../../services/hooks/hooks';
 import { NavLink } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
@@ -12,7 +12,7 @@ import { ADD_SELECTED_GAME } from '../../services/actions/selectedGame';
 
 const PersonalizedRecommendations: FC = () => {
     const dispatch = useAppDispatch();
-    const { games } = useAppSelector((store: any) => store.games);
+    const games = useAppSelector((store: RootState) => store.games.games);
     const filteredGames = useMemo(() => games.filter((game: IGame) => game.genre === 'Shooter'), [games]);
     const randomGames = useMemo(() => shuffle(filteredGames), [filteredGames]);
     const threeRandomGames = useMemo(() => randomGames.slice(0, 3), [randomGames]);

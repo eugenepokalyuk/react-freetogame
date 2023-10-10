@@ -1,0 +1,44 @@
+.cardContainer {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.mb4 {
+    margin-bottom: calc(4 * 4px);
+}
+
+.mr2 {
+    margin-right: calc(2 * 4px);
+}
+
+.h2 {
+    font-size: 24, 65px;
+}
+
+.textColorBlue {
+    color: #4799eb;
+}
+
+.br {
+    border-top: 1px solid rgba(94, 84, 84, .1);
+}
+
+.additionalContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 4fr);
+}
+
+.additionalItem {
+    margin: 8px;
+    gap: 10px;
+}
+
+@media screen and (min-width: 300px) and (max-width: 880px) {
+    .additionalContainer {
+        display: grid;
+        grid-template-columns: repeat(2, 4fr);
+        max-width: 80%;
+    }
+}
+

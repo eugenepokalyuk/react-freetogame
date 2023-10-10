@@ -13,6 +13,11 @@ const initialState: RootState = {
     selectedGame: {
         selectedGame: null,
     },
+    game: {
+        game: [],
+        loading: false,
+        error: null,
+    },
 };
 
 export type TApplicationActions = any;

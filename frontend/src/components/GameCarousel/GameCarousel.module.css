@@ -1,0 +1,21 @@
+.cardContainer {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.h2 {
+    font-size: 24, 65px;
+}
+
+.br {
+    border-top: 1px solid rgba(94, 84, 84, .1);
+}
+
+.mt4 {
+    margin-top: calc(4 * 4px);
+}
+
+.mb4 {
+    margin-bottom: calc(4 * 4px);
+}
