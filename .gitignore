@@ -6,10 +6,10 @@
 /frontend/.pnp.js
 
 # testing
-/coverage
+/frontend/coverage
 
 # production
-/build
+/frontend/build
 
 # misc
 /frontend/.DS_Store
